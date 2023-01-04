@@ -1,0 +1,42 @@
+.GameCard {
+  background-color: #d0d0d0;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-bottom: 4px;
+
+  display: grid;
+  grid-template-columns: repeat(4, [col] 1fr);
+  grid-template-rows: repeat(3, [row] 1fr);
+  gap: 4px;
+}
+
+.LastGames {}
+
+.fpName {}
+.spName {
+  grid-row: row 2;
+}
+
+.fpScore {}
+.fpScore div{
+  display: inline-block;
+  margin-right: 4px;
+}
+.spScore {
+  grid-row: row 2;
+}
+.spScore div{
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.date {
+  grid-column: col 4;
+  grid-row: row 3;
+  font-size: .6em;
+  justify-self: end;
+  align-self: end;
+  padding: 4px;
+}
+
+.winner{}

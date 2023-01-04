@@ -1,0 +1,38 @@
+.Table {
+
+  grid-area: b;
+  margin: auto;
+  width: 260px;
+  height: 150px;
+  background-color: lightskyblue;
+  border: 3px solid white;
+  position: relative;
+
+  box-shadow: 1px 1px 3px 1px gray;
+}
+
+.table::before {
+  content: '';
+  width: 260px;
+  height: 2px;
+  background-color: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.table::after {
+  content: '';
+  width: 2px;
+  height: 145px;
+  background-color: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}

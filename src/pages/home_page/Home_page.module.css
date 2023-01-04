@@ -1,0 +1,10 @@
+.Home_page {
+  /* background-color: #aaaaaa; */
+  width: 100%;
+  margin: auto;
+  padding: 16px;
+
+  display: grid;
+  grid-template-areas: "a b b c""d d d d""e e e e";
+  gap: 16px;
+}

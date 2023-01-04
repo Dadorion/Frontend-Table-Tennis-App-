@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from '../src/UI/Header/Header';
+import Footer from '../src/UI/Footer/Footer';
+import Content from './UI/content/Content';
 
-function App() {
+function App(props) {
+  // debugger;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className='black_hat'>black hat</div>
+
+      <Header />
+      <Content store={props.store}/>
+      <Footer />
+
+      <div className='white_line'/>
+
     </div>
   );
 }

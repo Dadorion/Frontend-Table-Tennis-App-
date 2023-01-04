@@ -1,0 +1,35 @@
+.Header {
+   position: fixed;
+   z-index: 1;
+   top: 50px;
+
+   width: 100%;
+   display: grid;
+   gap: 16px;
+   grid-template-areas: "b c";
+
+   background-color: #fff;
+}
+
+.Header a {
+   text-decoration: none;
+   color: black;
+}
+
+.logo {
+   grid-area: b;
+   justify-self: start;
+   margin-left: 16px;
+   font-size: 1em;
+   color: black;
+   cursor: pointer;
+}
+
+.menu {
+   grid-area: c;
+   justify-self: end;
+}
+
+.menu a {
+   margin-right: 16px;
+}
