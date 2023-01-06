@@ -1,17 +1,14 @@
-import React from 'react';
-import s from './LastGames.module.css';
 import LastGames from './LastGames';
+import { connect } from 'react-redux';
 
-function LastGamesContainer(props) {
-
-  let games = props.store.getState().gameReducer.games;
-
-
-
-  return (
-    <div className={`${s.LastGamesContainer}`}>
-      <LastGames games={games} />
-    </div>
-  )
+function mapStateToProps(state) {
+  return {
+    games: state.gameReducer.games
+  }
 }
+function mapDispatchToProps(state) { return {} }
+
+const LastGamesContainer =
+  connect(mapStateToProps, mapDispatchToProps)(LastGames);
+
 export default LastGamesContainer;

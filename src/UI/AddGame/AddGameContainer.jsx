@@ -1,39 +1,38 @@
-import React from 'react';
 import AddGame from './AddGame';
 import { updateFirstNameActionCreator, updateSecondNameActionCreator, updateFirstScoreActionCreator, updateSecondScoreActionCreator, addNewGameActionCreator } from '../../redux/game-reducer';
+import { connect } from 'react-redux';
 
-function AddGameContainer(props) {
-  function onFirstNameChange(e) {
-    let newName = e.target.value;
-    props.store.dispatch(updateFirstNameActionCreator(newName));
+function mapStateToProps(state) {
+  return {
+    state: state.gameReducer
   }
-  function onSecondNameChange(e) {
-    let newName = e.target.value;
-    props.store.dispatch(updateSecondNameActionCreator(newName));
-  }
-  function onFirstScoreChange(e) {
-    let score = e.target.value;
-    props.store.dispatch(updateFirstScoreActionCreator(score));
-  }
-  function onSecondScoreChange(e) {
-    let score = e.target.value;
-    props.store.dispatch(updateSecondScoreActionCreator(score));
-  }
-
-  function onAddClick() {
-    props.store.dispatch(addNewGameActionCreator());
-  }
-
-
-  return (
-    <AddGame
-      state={props.store.getState().gameReducer}
-      onFirstNameChange={onFirstNameChange}
-      onSecondNameChange={onSecondNameChange}
-      onFirstScoreChange={onFirstScoreChange}
-      onSecondScoreChange={onSecondScoreChange}
-      onAddClick={onAddClick}
-    />
-  )
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    firstNameChange: (body) => {
+      dispatch(updateFirstNameActionCreator(body));
+    },
+    secondNameChange: (body) => {
+      dispatch(updateSecondNameActionCreator(body));
+    },
+    firstScoreChange: (body) => {
+      dispatch(updateFirstScoreActionCreator(body));
+    },
+    secondScoreChange: (body) => {
+      dispatch(updateSecondScoreActionCreator(body));
+    },
+    addClick: () => {
+      dispatch(addNewGameActionCreator());
+    },
+  }
+}
+
+const AddGameContainer =
+  connect(mapStateToProps, mapDispatchToProps)(AddGame);
+
+
+
+
+
 export default AddGameContainer;
