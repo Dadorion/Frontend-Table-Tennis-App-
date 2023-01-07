@@ -53,45 +53,62 @@ function gameReducer(state = initialState, action) {
 
     switch (action.type) {
         case UPDATE_FIRST_NAME:
-            state.newFirstName = action.name;
-            return state;
+            return {
+                ...state,
+                newFirstName: action.name
+            };
         case UPDATE_SECOND_NAME:
-            state.newSecondName = action.name;
-            return state;
+            return {
+                ...state,
+                newSecondName: action.name
+            };
         case UPDATE_FIRST_SCORE:
-            state.newFirstScore = action.score;
-            return state;
+            return {
+                ...state,
+                newFirstScore: action.score
+            };
         case UPDATE_SECOND_SCORE:
-            state.newSecondScore = action.score;
-            return state;
+            return {
+                ...state,
+                newSecondScore: action.score
+            };
         case ADD_NEW_GAME:
-            debugger;
             let winner = state.newFirstScore > state.newSecondScore;
-
+            function toKnowDate() {
+                let Y = new Date().getFullYear();
+                let M = new Date().getMonth() + 1;
+                M = M < 10 ? `0${M}` : M;
+                let D = new Date().getDate();
+                return `${D}.${M}.${Y}`
+            }
             let newGame = {
-                id: state.games.length + 1,
-                date: new Date(),
+                id: Date.now(),
+                date: toKnowDate(),
                 gameFrom: 1,
                 firstPlayer: {
                     id: 5,
                     name: state.newFirstName,
-                    score: state.newFirstScore,
+                    score: [state.newFirstScore],
                     isWinner: winner
                 },
                 secondPlayer: {
                     id: 6,
-                    name: state.newFirstName,
-                    score: state.newFirstScore,
+                    name: state.newSecondName,
+                    score: [state.newSecondScore],
                     isWinner: !winner
                 },
                 table: 'blue'
             }
-            state.games.push(newGame);
-            state.newFirstName = '';
-            state.newSecondName = '';
-            state.newFirstScore = '';
-            state.newSecondScore = '';
-            return state;
+
+            return {
+                ...state,
+                games: [...state.games, newGame],
+                newFirstName: '',
+                newSecondName: '',
+                newFirstScore: '',
+                newSecondScore: '',
+            };
+
         default:
             return state;
     };

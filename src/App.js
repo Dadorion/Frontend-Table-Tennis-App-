@@ -4,7 +4,6 @@ import Footer from '../src/UI/Footer/Footer';
 import Content from './UI/content/Content';
 
 function App(props) {
-  // debugger;
   return (
     <div className="App">
 

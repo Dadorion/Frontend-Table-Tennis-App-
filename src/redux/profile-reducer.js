@@ -32,17 +32,22 @@ function profileReducer(state = initialState, action) {
 
     switch (action.type) {
         case UDATE_NEW_NAME_TEXT:
-            state.newCityText = action.newName;
-            return state;
+            return { ...state };
         case UDATE_NEW_SURNAME_TEXT:
-            state.newCityText = action.newSurname;
-            return state;
+            return {
+                ...state,
+                newCityText: action.newSurname
+            };
         case UDATE_NEW_BIRTHDATE_TEXT:
-            state.newCityText = action.newBirthdate;
-            return state;
+            return {
+                ...state,
+                newCityText: action.newBirthdate
+            };
         case UDATE_NEW_LOCRATING_TEXT:
-            state.newCityText = action.newLocRating;
-            return state;
+            return {
+                ...state,
+                newCityText: action.newLocRating
+            };
         case ADD_NEW_PROFILE:
             let newProfile = {
                 id: new Date(),
@@ -51,12 +56,15 @@ function profileReducer(state = initialState, action) {
                 birthdate: state.newBirthdate,
                 locRating: state.newLocRating,
             }
-            state.profiles.push(newProfile);
-            state.newName = '';
-            state.newSurname = '';
-            state.newBirthdate = '';
-            state.newLocRating = '';
-            return state;
+
+            return {
+                ...state,
+                profiles: [...state.profiles, newProfile],
+                newName: '',
+                newSurname: '',
+                newBirthdate: '',
+                newLocRating: ''
+            };
         default:
             return state;
     };

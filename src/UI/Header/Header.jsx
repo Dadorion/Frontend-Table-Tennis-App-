@@ -13,6 +13,7 @@ function Header(props) {
          <div className={`${s.menu}`}>
             <NavLink to='statistic'>Статистика</NavLink>
             <NavLink to='profile'>Мой профиль</NavLink>
+            <NavLink to='users'>Игроки</NavLink>
          </div>
       </div>
    )

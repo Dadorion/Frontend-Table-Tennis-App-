@@ -19,9 +19,12 @@ function AddGame(props) {
     let body = e.target.value;
     props.secondScoreChange(body);
   }
-  function onAddClick(e) {
+  function onAddGame(e) {
     let body = e.target.value;
-    props.addClick(body);
+    props.addGame(body);
+  }
+  function onAddPart(e) {
+    alert ("Функционал не прописан")
   }
 
   return (
@@ -53,7 +56,8 @@ function AddGame(props) {
           onChange={onSecondScoreChange} />
       </div>
       <div className={`${s.btn}`}>
-        <button onClick={onAddClick}>Записать игру</button>
+        <button onClick={onAddGame}>Записать игру</button>
+        <button onClick={onAddPart}>Добавить партию</button>
       </div>
 
     </div>

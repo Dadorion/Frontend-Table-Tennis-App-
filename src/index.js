@@ -9,8 +9,7 @@ import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-function rerenderEntireTree(state) {
-    // debugger;
+
     root.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -20,12 +19,3 @@ function rerenderEntireTree(state) {
             </BrowserRouter>
         </React.StrictMode>
     );
-}
-
-rerenderEntireTree(store.getState());
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
-}
-);
-// store.subscribe(rerenderEntireTree);

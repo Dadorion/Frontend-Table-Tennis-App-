@@ -9,11 +9,6 @@ function LastGames(props) {
     let gSpScore = game.secondPlayer.score;
     let firstScores = gFpScore.map(score => <div>{score}</div>)
     let secondScores = gSpScore.map(score => <div>{score}</div>)
-    let secondScores2 = () => {
-      gSpScore instanceof Array
-        ? gSpScore.map(score => <div>{score}</div>)
-        : <div>{gSpScore}</div>
-    }
 
 
     return (
@@ -25,6 +20,7 @@ function LastGames(props) {
         spWin={game.secondPlayer.isWinner}
         fpWin={game.firstPlayer.isWinner}
         date={game.date}
+        key={game.id}
       />
     )
   })

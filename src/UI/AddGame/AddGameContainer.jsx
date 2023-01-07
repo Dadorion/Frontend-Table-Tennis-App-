@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch) {
     secondScoreChange: (body) => {
       dispatch(updateSecondScoreActionCreator(body));
     },
-    addClick: () => {
+    addGame: () => {
       dispatch(addNewGameActionCreator());
     },
   }
