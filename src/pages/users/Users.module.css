@@ -2,3 +2,19 @@
   background-color: #fff;
   margin: 20px;
 }
+
+.Users img {
+  height: 50px;
+  width: 50px;
+}
+
+.Users span {
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.selectedPage {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 8px;
+}
