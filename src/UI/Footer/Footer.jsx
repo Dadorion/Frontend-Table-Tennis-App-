@@ -5,7 +5,7 @@ function Footer(props) {
 
   return (
     <div className={`${s.Footer}`}>
-      © ABabenko 2023
+      Copyright © ABabenko 2023 All rights reserved
     </div>
   )
 }

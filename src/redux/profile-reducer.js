@@ -3,29 +3,31 @@ const UDATE_NEW_NAME_TEXT = 'UDATE-NEW-NAME-TEXT';
 const UDATE_NEW_SURNAME_TEXT = 'UDATE-NEW-SURNAME-TEXT';
 const UDATE_NEW_BIRTHDATE_TEXT = 'UDATE-NEW-BIRTHDATE-TEXT';
 const UDATE_NEW_LOCRATING_TEXT = 'UDATE-NEW-LOCRATING-TEXT';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 
 let initialState = {
     profiles: [
-        {
-            id: 0,
-            name: 'Василий',
-            surname: 'Твердоухов',
-            birthdate: '25.12.2022',
-            locRating: 0
-        },
-        {
-            id: 1,
-            name: 'Джафа',
-            surname: 'Гордецов',
-            birthdate: '25.12.2022',
-            locRating: 0
-        },
+        // {
+        //     id: 0,
+        //     name: 'Василий',
+        //     surname: 'Твердоухов',
+        //     birthdate: '25.12.2022',
+        //     locRating: 0
+        // },
+        // {
+        //     id: 1,
+        //     name: 'Джафа',
+        //     surname: 'Гордецов',
+        //     birthdate: '25.12.2022',
+        //     locRating: 0
+        // },
     ],
     newName: '',
     newSurname: '',
     newBirthdate: '',
     newLocRating: '',
+    profile: null,
 };
 
 function profileReducer(state = initialState, action) {
@@ -48,6 +50,7 @@ function profileReducer(state = initialState, action) {
                 ...state,
                 newCityText: action.newLocRating
             };
+
         case ADD_NEW_PROFILE:
             let newProfile = {
                 id: new Date(),
@@ -64,6 +67,11 @@ function profileReducer(state = initialState, action) {
                 newSurname: '',
                 newBirthdate: '',
                 newLocRating: ''
+            };
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
             };
         default:
             return state;
@@ -97,6 +105,9 @@ export function updateNewProfileLocRatingActionCreator(newLocRating) {
 
 export function addNewProfileActionCreator() {
     return { type: ADD_NEW_PROFILE }
+}
+export function setUserProfile(profile) {
+    return { type: SET_USER_PROFILE, profile }
 }
 
 export default profileReducer;

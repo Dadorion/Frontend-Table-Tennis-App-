@@ -1,7 +1,7 @@
 import './App.css';
-import Header from '../src/UI/Header/Header';
 import Footer from '../src/UI/Footer/Footer';
 import Content from './UI/content/Content';
+import HeaderContainer from './UI/Header/HeaderContainer';
 
 function App(props) {
   return (
@@ -9,7 +9,7 @@ function App(props) {
 
       <div className='black_hat'>black hat</div>
 
-      <Header />
+      <HeaderContainer />
       <Content store={props.store}/>
       <Footer />
 

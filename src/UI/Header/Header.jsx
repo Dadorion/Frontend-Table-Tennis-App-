@@ -11,9 +11,14 @@ function Header(props) {
          </NavLink>
 
          <div className={`${s.menu}`}>
-            <NavLink to='statistic'>Статистика</NavLink>
-            <NavLink to='profile'>Мой профиль</NavLink>
+            {/* <NavLink to='statistic'>Статистика</NavLink> */}
+            {/* <NavLink to='profile'>Мой профиль</NavLink> */}
             <NavLink to='users'>Игроки</NavLink>
+            <div className="loginBlock">
+               {props.isAuth ? props.login
+                  : <NavLink to='auth'>Login</NavLink>}
+            </div>
+
          </div>
       </div>
    )

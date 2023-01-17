@@ -3,13 +3,17 @@
   margin: 20px;
 }
 .face{
-  width: 100px;
-  height: 100px;
+  /* width: 100px;
+  height: 100px; */
   /* border: 1px solid black; */
-  border-radius: 50%;
+  /* border-radius: 50%; */
   overflow:hidden;
   margin: auto;
 }
 .Profile img{
   height: 200px;
+}
+
+.preloader {
+  margin: auto;
 }
