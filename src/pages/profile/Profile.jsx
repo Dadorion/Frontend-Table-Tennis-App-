@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Profile.module.css';
-import pro_face from '../../icons/1c6o_vj2k_211112.jpg';
-// import Preloader from '../../UI/preloader/Preloader';
+import pro_face from '../../icons/profile.png';
 import PreloaderBall from '../../UI/preloader/PreloaderBall';
 
 function Profile(props) {

@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const ADD_NEW_PROFILE = 'ADD-NEW-PROFILE';
 const UDATE_NEW_NAME_TEXT = 'UDATE-NEW-NAME-TEXT';
 const UDATE_NEW_SURNAME_TEXT = 'UDATE-NEW-SURNAME-TEXT';
@@ -50,7 +52,6 @@ function profileReducer(state = initialState, action) {
                 ...state,
                 newCityText: action.newLocRating
             };
-
         case ADD_NEW_PROFILE:
             let newProfile = {
                 id: new Date(),
@@ -108,6 +109,17 @@ export function addNewProfileActionCreator() {
 }
 export function setUserProfile(profile) {
     return { type: SET_USER_PROFILE, profile }
+}
+
+
+//getProfileThunkCreator ->
+export function getProfile(userId) {
+    return (dispatch) => {
+        usersAPI.getProfile(userId)
+            .then(responce => {
+                dispatch(setUserProfile(responce.data));
+            });
+    }
 }
 
 export default profileReducer;

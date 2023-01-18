@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import { usersAPI } from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -87,10 +87,10 @@ function usersReducer(state = initialState, action) {
     };
 }
 
-export function follow(id) {
+export function followSuccess(id) {
     return { type: FOLLOW, id }
 }
-export function unfollow(id) {
+export function unfollowSuccess(id) {
     return { type: UNFOLLOW, id }
 }
 export function setUsers(users) {
@@ -122,6 +122,32 @@ export function getUsers(pageNumber, pageSize) {
             });
     }
 
+}
+//followThunkCreator ->
+export function follow(userId) {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        usersAPI.follow(userId)
+          .then(responce => {
+            if (responce.data.resultCode === 0) {
+                dispatch(followSuccess(userId))
+            }
+            dispatch(toggleFollowingProgress(false, userId));
+          });
+    }
+}
+//unfollowThunkCreator ->
+export function unfollow(userId) {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId));
+        usersAPI.unfollow(userId)
+          .then(responce => {
+            if (responce.data.resultCode === 0) {
+                dispatch(unfollowSuccess(userId))
+            }
+            dispatch(toggleFollowingProgress(false, userId));
+          });
+    }
 }
 
 export default usersReducer;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from './Profile';
+import Profile from './Login';
 import { connect } from 'react-redux';
 import { getProfile } from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
