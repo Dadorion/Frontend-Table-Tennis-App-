@@ -11,7 +11,9 @@ function Content(props) {
   return (
     <div className={`${s.Content}`}>
       <Routes>
-        <Route path="/" element={<HomePage store={props.store}/>} />
+        <Route path="/" element={<HomePage store={props.store} 
+        // isAuth={props.store.auth.isAuth}
+        />} />
         <Route path="/profile/:userId" element={<ProfileContainer/>} />
         <Route path="/users" element={<UsersContainer/>} />
         <Route path="/login" element={<Login/>} />

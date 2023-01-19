@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Profile.module.css';
 import pro_face from '../../icons/profile.png';
 import PreloaderBall from '../../UI/preloader/PreloaderBall';
+import { Navigate } from 'react-router-dom';
 
 function Profile(props) {
   if (!props.profile) {

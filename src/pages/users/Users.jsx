@@ -13,7 +13,6 @@ function Users(props) {
   for (let i = 1; i <= 9; i++) {
     pages.push(i);
   }
-
   return (
     <div className={`${s.Users}`}>
       <div>
