@@ -15,7 +15,7 @@ function Users(props) {
   }
   return (
     <div className={`${s.Users}`}>
-      <div>
+      <div className={`${s.pageNumbers}`}>
         {
           pages.map(p => {
             return (

@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import { usersAPI, profileAPI } from "../api/api";
 
 const ADD_NEW_PROFILE = 'ADD-NEW-PROFILE';
 const UDATE_NEW_NAME_TEXT = 'UDATE-NEW-NAME-TEXT';
@@ -6,6 +6,7 @@ const UDATE_NEW_SURNAME_TEXT = 'UDATE-NEW-SURNAME-TEXT';
 const UDATE_NEW_BIRTHDATE_TEXT = 'UDATE-NEW-BIRTHDATE-TEXT';
 const UDATE_NEW_LOCRATING_TEXT = 'UDATE-NEW-LOCRATING-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET-STATUS';
 
 
 let initialState = {
@@ -30,6 +31,7 @@ let initialState = {
     newBirthdate: '',
     newLocRating: '',
     profile: null,
+    status: ""
 };
 
 function profileReducer(state = initialState, action) {
@@ -74,6 +76,11 @@ function profileReducer(state = initialState, action) {
                 ...state,
                 profile: action.profile
             };
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            };
         default:
             return state;
     };
@@ -110,6 +117,9 @@ export function addNewProfileActionCreator() {
 export function setUserProfile(profile) {
     return { type: SET_USER_PROFILE, profile }
 }
+export function setStatus(status) {
+    return { type: SET_STATUS, status }
+}
 
 
 //getProfileThunkCreator ->
@@ -118,6 +128,26 @@ export function getProfile(userId) {
         usersAPI.getProfile(userId)
             .then(responce => {
                 dispatch(setUserProfile(responce.data));
+            });
+    }
+}
+//getStatusThunkCreator ->
+export function getStatus(userId) {
+    return (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(responce => {
+                dispatch(setStatus(responce.data));
+            });
+    }
+}
+//updateStatusThunkCreator ->
+export function updateStatus(status) {
+    return (dispatch) => {
+        profileAPI.updateStatus(status)
+            .then(responce => {
+                if (responce.data.resultCode === 0) {
+                    dispatch(setStatus(status));
+                }
             });
     }
 }

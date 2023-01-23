@@ -1,3 +1,7 @@
+.Preloader {
+	display: flex;
+	justify-content: center;
+}
 .Preloader img{
    height: 50px;
    width: 50px;

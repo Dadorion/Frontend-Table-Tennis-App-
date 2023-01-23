@@ -1,16 +1,14 @@
-.Profile {
+.ProfileInfo {
   background-color: #fff;
   margin: 20px;
 }
-.msg {
-  margin-bottom: 20px;
-  }
 
 .P_Line {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .face{
   /* width: 100px;
   height: 100px; */

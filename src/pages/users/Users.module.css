@@ -3,6 +3,12 @@
   margin: 20px;
 }
 
+.pageNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .Users img {
   height: 50px;
   width: 50px;
