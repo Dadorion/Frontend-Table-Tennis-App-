@@ -15,8 +15,13 @@ function Header(props) {
             {/* <NavLink to='profile'>Мой профиль</NavLink> */}
             <NavLink to='users'>Игроки</NavLink>
             {props.isAuth
-               ? <NavLink to='profile'>{props.login}</NavLink>
-               : <NavLink to='auth'>Login</NavLink>}
+               ? <NavLink to='profile/27483'>
+                  <div>
+                     {props.login} - <button onClick={props.logout}>Log out</button>
+                  </div>
+                  
+               </NavLink>
+               : <NavLink to='login'>Login</NavLink>}
          </div>
       </div>
    )

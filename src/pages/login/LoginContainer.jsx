@@ -2,15 +2,8 @@ import React from 'react';
 import Profile from './Login';
 import { connect } from 'react-redux';
 import { getProfile } from '../../redux/profile-reducer';
-import { useParams } from 'react-router-dom';
+import { withRouter } from '../../redux/withRouter';
 
-
-export function withRouter(Children) {
-  return (props) => {
-    const match = { params: useParams() };
-    return <Children {...props} match={match} />
-  }
-}
 
 class ProfileContainer extends React.Component {
 

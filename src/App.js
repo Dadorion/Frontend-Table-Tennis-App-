@@ -1,22 +1,47 @@
+import React from 'react';
 import './App.css';
 import Footer from '../src/UI/Footer/Footer';
 import Content from './UI/content/Content';
 import HeaderContainer from './UI/Header/HeaderContainer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { initializeApp } from './redux/app-reduser';
+import { withRouter } from './redux/withRouter';
+import Preloader from './UI/preloader/PreloaderBall';
 
-function App(props) {
-  return (
-    <div className="App">
+class App extends React.Component {
 
-      <div className='black_hat'>black hat</div>
+  componentDidMount() {
+    this.props.initializeApp();
+  }
 
-      <HeaderContainer />
-      <Content store={props.store}/>
-      <Footer />
+  render() {
 
-      <div className='white_line'/>
+    if (!this.props.initialized) {
+      return <Preloader />
+    }
 
-    </div>
-  );
+    return (
+      <div className="App">
+
+        <div className='black_hat'>black hat</div>
+
+        <HeaderContainer />
+        <Content store={this.props.store} />
+        <Footer />
+
+        <div className='white_line' />
+
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return { initialized: state.app.initialized }
+}
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, { initializeApp }))
+  (App);
