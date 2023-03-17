@@ -24,3 +24,12 @@
 .preloader {
   margin: auto;
 }
+
+.my_games {
+  border-top: 1px solid black;
+  margin-top: 16px;
+}
+.my_games h4{
+  padding: 8px;
+  margin-bottom: 32px;
+}

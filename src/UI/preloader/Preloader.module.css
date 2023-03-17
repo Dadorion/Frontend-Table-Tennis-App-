@@ -1,6 +1,8 @@
 .Preloader {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+/* margin: 0 auto; */
 }
 .Preloader img{
    height: 50px;
@@ -12,8 +14,7 @@
 	background-color: hsl(232, 90%, 95%);
 	font: 1em/1.5 sans-serif;
 	height: 100vh;
-	display: grid;
-	place-items: center;
+	width: 100vh;
 } */
 .pl,
 .pl__ball,
@@ -94,7 +95,7 @@
 .pl__ball_texture:before {
 	animation-name: ballTexture;
 	animation-duration: 0.25s;
-	background: url(https://assets.codepen.io/416221/snow.jpg) 0 0 / 50% 100%;
+	background: url("../../textures/snow.jpg") 0 0 / 50% 100%;
 	content: "";
 	display: block;
 	filter: brightness(1.05);

@@ -20,7 +20,7 @@ class ProfileStatus extends React.Component {
 
    }
 
-   // componentDidUpdate -эта функция нужна для того, чтобы своевременно обновляьб стейт и компоненту с ним связанную. Но с ним у мнея работает хуже. Если будут проблемы, см. урок 74.
+   // componentDidUpdate -эта функция нужна для того, чтобы своевременно обновлять стейт и компоненту с ним связанную. Но с ним у мнея работает хуже. Если будут проблемы, см. урок 74.
    componentDidUpdate(prevProps, prevState) {
       // if (this.props.status !== prevState.status) {
       //    this.setState({ status: this.props.status });
@@ -53,4 +53,5 @@ class ProfileStatus extends React.Component {
    }
 
 }
+
 export default ProfileStatus;

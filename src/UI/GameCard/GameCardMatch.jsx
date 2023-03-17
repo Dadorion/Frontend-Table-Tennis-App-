@@ -1,11 +1,11 @@
 import React from 'react';
-import s from './GameCard.module.css';
+import s from './GameCardMatch.module.css';
 
-function GameCard(props) {
+function GameCardMatch(props) {
 
 
   return (
-    <div className={`${s.GameCard}`}>
+    <div className={`${s.GameCardMatch}`}>
       {
         props.fpName === "Anton"
           ? <div className={`${s.fpName}`}>Me</div>
@@ -31,4 +31,4 @@ function GameCard(props) {
     </div>
   )
 }
-export default GameCard;
+export default GameCardMatch;

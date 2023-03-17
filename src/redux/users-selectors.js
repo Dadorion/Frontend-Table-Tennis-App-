@@ -1,3 +1,13 @@
+// import { createSelectorHook } from "react-redux";
+
+// export function getUsers() {
+//    createSelectorHook(getUsersSelector, (users) => {
+//       return users.filter(u => true);
+//    })
+// }
+// function getUsersSelector(state) {
+//    return state.usersReducer.users;
+// }
 export function getUsers(state) {
    return state.usersReducer.users;
 }

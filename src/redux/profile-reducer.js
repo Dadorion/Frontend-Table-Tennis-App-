@@ -7,6 +7,7 @@ const UDATE_NEW_BIRTHDATE_TEXT = 'UDATE-NEW-BIRTHDATE-TEXT';
 const UDATE_NEW_LOCRATING_TEXT = 'UDATE-NEW-LOCRATING-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
+const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS';
 
 
 let initialState = {
@@ -81,6 +82,11 @@ function profileReducer(state = initialState, action) {
                 ...state,
                 status: action.status
             };
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: { ...state.profile, photos: action.photos }
+            };
         default:
             return state;
     };
@@ -120,35 +126,39 @@ export function setUserProfile(profile) {
 export function setStatus(status) {
     return { type: SET_STATUS, status }
 }
+export function savePhotoSuccess(photos) {
+    return { type: SAVE_PHOTO_SUCCESS, photos }
+}
 
 
 //getProfileThunkCreator ->
+// export const getProfile = (userId) => async (dispatch) => {
+//     let responce = await usersAPI.getProfile(userId);
+//     dispatch(setUserProfile(responce.data));
+// }
 export function getProfile(userId) {
-    return (dispatch) => {
-        usersAPI.getProfile(userId)
-            .then(responce => {
-                dispatch(setUserProfile(responce.data));
-            });
+    return async (dispatch) => {
+        let responce = await usersAPI.getProfile(userId);
+        dispatch(setUserProfile(responce.data));
     }
 }
 //getStatusThunkCreator ->
-export function getStatus(userId) {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(responce => {
-                dispatch(setStatus(responce.data));
-            });
-    }
+export const getStatus = (userId) => async (dispatch) => {
+    let responce = await profileAPI.getStatus(userId);
+    dispatch(setStatus(responce.data));
 }
 //updateStatusThunkCreator ->
-export function updateStatus(status) {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(responce => {
-                if (responce.data.resultCode === 0) {
-                    dispatch(setStatus(status));
-                }
-            });
+export const updateStatus = (status) => async (dispatch) => {
+    let responce = await profileAPI.updateStatus(status);
+    if (responce.data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
+}
+//savePhotoThunkCreator ->
+export const savePhoto = (file) => async (dispatch) => {
+    let responce = await profileAPI.savePhoto(file);
+    if (responce.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(responce.data.data.photos));
     }
 }
 

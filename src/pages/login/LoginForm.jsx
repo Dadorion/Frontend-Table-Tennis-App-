@@ -33,6 +33,21 @@ function LoginForm(props) {
             type="checkbox"
             component={'input'} /> remember me
         </div>
+
+        { 
+        props.captchaUrl 
+        && 
+        <>
+        <img src={props.captchaUrl} alt="captcha Img"/>
+        <Field
+            name='captcha'
+            placeholder='Simbols from image'
+            component={Input}
+            validate={[required]} />
+        </>
+        }
+
+
         {props.error && <div className={sFC.formSummaryError}>
           {props.error}
         </div>}

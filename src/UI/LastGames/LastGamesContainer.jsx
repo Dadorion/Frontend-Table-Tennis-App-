@@ -1,6 +1,7 @@
 import LastGames from './LastGames';
 import { connect } from 'react-redux';
 
+
 function mapStateToProps(state) {
   return {
     games: state.gameReducer.games

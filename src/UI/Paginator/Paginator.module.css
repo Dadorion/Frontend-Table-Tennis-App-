@@ -1,0 +1,14 @@
+.pageNumbers {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+ .selectedPage {
+   font-size: 1.1em;
+   font-weight: bold;
+   margin: 0 8px;
+ }
+ span {
+   cursor: pointer;
+   margin: 0 4px;
+ }

@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Users.module.css';
 import pro_face from '../../icons/profile.png';
 import { NavLink } from 'react-router-dom';
+import Paginator from '../../UI/Paginator/Paginator';
 
 
 
@@ -15,22 +16,10 @@ function Users(props) {
   }
   return (
     <div className={`${s.Users}`}>
-      <div className={`${s.pageNumbers}`}>
-        {
-          pages.map(p => {
-            return (
-              <span
-                key={p}
-                className={props.currentPage === p
-                  ? s.selectedPage
-                  : undefined}
-                onClick={(e) => { props.onPageChanged(p); }}>
-
-                {p}
-              </span>)
-          })
-        }
-      </div>
+      <Paginator
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+      />
       {
         props.users.map(u =>
           <div key={u.id}>
@@ -41,7 +30,8 @@ function Users(props) {
                 alt="ava" />
             </NavLink>
 
-            {`${u.name} ${'u.surname'} rat - ${'u.locRating'} `}
+            {/* {`${u.name} ${'u.surname'} rat - ${'u.locRating'} `} */}
+            {`${u.name}`}
             <div>
               {u.followed
                 ? <button

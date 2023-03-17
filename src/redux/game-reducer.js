@@ -12,14 +12,14 @@ let initialState = {
             gameFrom: 3,
             firstPlayer: {
                 id: 1,
-                name: 'Alexander',
-                score: [11, 9, 17],
+                name: 'Anton',
+                score: [11],
                 isWinner: true,
             },
             secondPlayer: {
                 id: 2,
                 name: 'Alik',
-                score: [7, 11, 15],
+                score: [7],
                 isWinner: false,
             },
             table: 'lightskyblue'

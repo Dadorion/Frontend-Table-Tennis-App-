@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, legacy_createStore as createStore } from "redux";
+import { applyMiddleware, combineReducers, legacy_createStore as createStore, compose } from "redux";
 import profileReducer from './profile-reducer';
 import gameReducer from './game-reducer';
 import usersReducer from './users-reducer';
@@ -16,8 +16,17 @@ let redusers = combineReducers({
    app: appReducer
 });
 
-let store = createStore(redusers, applyMiddleware(thunkMiddleware));
+// дря расширения REDUX в браузере хром
 
-window.store = store;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(redusers, composeEnhancers(
+   applyMiddleware(thunkMiddleware)
+));
+
+//
+
+// let store = createStore(redusers, applyMiddleware(thunkMiddleware));
+
+// window.store = store;
 
 export default store;
