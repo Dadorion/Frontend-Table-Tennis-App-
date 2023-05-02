@@ -30,3 +30,14 @@ body {
 }
 
 ::-webkit-scrollbar {width: 0px;}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+    url('../src/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+.font-roboto-regular{
+  font-family: "Roboto";
+}

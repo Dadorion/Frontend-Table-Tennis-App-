@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Footer from '../src/UI/Footer/Footer';
-import Content from './UI/content/Content';
-import HeaderContainer from './UI/Header/HeaderContainer';
+import HeaderContainer from './sections/Header/HeaderContainer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reduser';
 import { withRouter } from './redux/withRouter';
 import Preloader from './UI/preloader/PreloaderBall';
+import MainPage from './sections/Main/MainPage';
 
 class App extends React.Component {
 
@@ -22,15 +22,11 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
-
-        <div className='black_hat'>black hat</div>
+      <div className="App font-roboto-regular">
 
         <HeaderContainer />
-        <Content store={this.props.store} />
+        <MainPage store={this.props.store} />
         <Footer />
-
-        <div className='white_line' />
 
       </div>
     );
