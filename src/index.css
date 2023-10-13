@@ -30,10 +30,24 @@ body {
   padding: 0;
 }
 
+<<<<<<< HEAD
 ::-webkit-scrollbar {
   width: 0px;
 }
 
 a {
   color: #385A64;
+=======
+::-webkit-scrollbar {width: 0px;}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+    url('../src/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+.font-roboto-regular{
+  font-family: "Roboto";
+>>>>>>> 2f13fb1dd5b713add5aa0823f7e36ced87e1d4be
 }

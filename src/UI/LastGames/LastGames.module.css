@@ -1,3 +1,51 @@
-.LastGames {
-  grid-area: e;
+.wrapperBlock{
+  grid-column: 1/5;
+  margin-bottom: 40px;
+}
+
+.title{
+  margin: 0;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.wrapper{
+  background-color: #B1B1B1;
+  padding: 1px 0 10px 0;
+  border-radius: 8px;
+}
+
+.date{
+  margin: 0 30%;
+  padding: 5px 0;
+  background: #D9D9D9;
+  border-radius: 0px 0px 20px 20px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.info{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.avatarLk{
+  width: 50px;
+}
+
+.link{
+  margin-left: 60%;
+  font-size: 12px;
+  font-style: italic;
+  text-decoration: none;
+  color: #000000;
 }

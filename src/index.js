@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
+import '../src/fonts/Roboto/Roboto-Regular.ttf'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
