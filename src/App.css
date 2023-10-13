@@ -13,9 +13,10 @@
   background-color: black;
   z-index: 200;
 }
+
 .white_line {
   position: fixed;
-  bottom: 24px;
+  bottom: 8px;
   left: 50%;
   translate: -50%;
   width: 180px;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import sL from './Login.module.css';
 import sFC from '../../UI/FormControls/FormControls.module.css';
 import { Field, reduxForm } from 'redux-form';
@@ -9,50 +9,72 @@ const maxLength30 = maxLengthCreator(30);
 const minLength4 = minLengthCreator(4);
 
 function LoginForm(props) {
+  const [isChecked, setIsChecked] = useState(true);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className={sL.LoginForm}>
       <form onSubmit={props.handleSubmit}>
         <div>
           <Field
+            className={sL.InputForm}
             name='email'
-            placeholder='Email'
+            placeholder='Емайл'
             component={Input}
             validate={[required, maxLength30]} />
         </div>
-        <div>
+        <div >
           <Field
+            className={sL.InputForm}
             name='password'
-            placeholder='Password DD2_aadm9mRxNrC'
+            placeholder='Пароль'
+            // DD2_aadm9mRxNrC
             type="password"
             component={Input}
             validate={[required, minLength4]} />
         </div>
-        <div>
-          <Field
-            name='rememberMe'
-            type="checkbox"
-            component={'input'} /> remember me
+        <div className={sL.underInputs}>
+          <div className={sL.checkboxRemember}>
+            <Field
+              name='rememberMe'
+              type="checkbox"
+              value="true"
+              component={'input'}
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            /> Запомнить меня
+          </div>
+          <a href="/"> Забыли пароль? </a>
         </div>
 
-        { 
-        props.captchaUrl 
-        && 
-        <>
-        <img src={props.captchaUrl} alt="captcha Img"/>
-        <Field
-            name='captcha'
-            placeholder='Simbols from image'
-            component={Input}
-            validate={[required]} />
-        </>
+
+
+        {
+          props.captchaUrl
+          &&
+          <>
+            <img src={props.captchaUrl} alt="captcha Img" />
+            <Field
+              name='captcha'
+              placeholder='Simbols from image'
+              component={Input}
+              validate={[required]} />
+          </>
         }
 
 
         {props.error && <div className={sFC.formSummaryError}>
           {props.error}
         </div>}
-        <div>
-          <button>Log In</button>
+        <div className={sL.ButtonForm}>
+          <div >
+            <button >Войти</button>
+          </div>
+          <div>
+            Нет аккаунта? <a href="/"> Зарегистрироваться </a>
+          </div>
         </div>
       </form>
 
@@ -62,7 +84,7 @@ function LoginForm(props) {
 
 
 const LoginReduxForm = reduxForm({
-  //a unique name for the form
+  //an unique name for the form
   form: 'login'
 })(LoginForm)
 

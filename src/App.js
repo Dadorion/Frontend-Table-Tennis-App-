@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Footer from '../src/UI/Footer/Footer';
+// import Footer from '../src/UI/Footer/Footer';
 import Content from './UI/content/Content';
-import HeaderContainer from './UI/Header/HeaderContainer';
+// import HeaderContainer from './UI/Header/HeaderContainer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reduser';
@@ -24,13 +24,13 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <div className='black_hat'>black hat</div>
+        {/* <div className='black_hat'>black hat</div> */}
 
-        <HeaderContainer />
+        {/* <HeaderContainer /> */}
         <Content store={this.props.store} />
-        <Footer />
+        {/* <Footer /> */}
 
-        <div className='white_line' />
+        {/* <div className='white_line' /> */}
 
       </div>
     );

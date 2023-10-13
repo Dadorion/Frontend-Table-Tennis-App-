@@ -5,6 +5,7 @@ import HomePage from '../../pages/home_page/Home_page';
 // import UsersContainer from '../../pages/users/UsersContainer';
 import ProfileContainer from '../../pages/profile/ProfileContainer';
 import Login from '../../pages/login/LoginContainer';
+import Registration from '../../pages/registration/RegistrationContainer';
 
 const UsersContainer = React.lazy(() => import('../../pages/users/UsersContainer'));
 
@@ -25,6 +26,7 @@ function Content(props) {
 
         } />
         <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
       </Routes>
     </div>
 

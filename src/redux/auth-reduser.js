@@ -44,6 +44,23 @@ export const getAuthUserData = () => async (dispatch) => {
 
 }
 
+//registrationThunkCreator ->
+export const registration = (email, password, rememberMe, captcha) => async (dispatch) => {
+   const responce = await authAPI.login(email, password, rememberMe, captcha);
+   if (responce.data.resultCode === 0) {
+      dispatch(getAuthUserData())
+   } else {
+      if (responce.data.resultCode === 10) {
+         dispatch(getCaptchaUrl());
+      }
+      const message = responce.data.messages.length > 0
+         ? responce.data.messages[0]
+         : "Something went wrong. Please change your email or password and try again."
+      dispatch(
+         stopSubmit("login", { _error: message })
+      );
+   }
+}
 //loginThunkCreator ->
 export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
    const responce = await authAPI.login(email, password, rememberMe, captcha);

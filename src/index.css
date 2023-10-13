@@ -23,10 +23,17 @@ code {
 
 html,
 body {
+  background: #FFF;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-::-webkit-scrollbar {width: 0px;}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+a {
+  color: #385A64;
+}

@@ -1,4 +1,92 @@
 .Login {
-  background-color: #fff;
-  margin: 20px;
+  margin: 0 20px;
+  height: 100%;
+}
+
+.Login img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.InputForm {
+  width: 100%;
+  padding: 19px 24px;
+  margin: 8px 0;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  background: #FFF;
+}
+
+.LoginForm a {
+  color: #2C444E;
+}
+
+.ButtonForm {
+  width: 100%;
+  padding: 0;
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 16px;
+}
+
+.ButtonForm button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 19px 24px;
+  justify-content: center;
+  align-items: center;
+
+  color: #FFF;
+  /* border-radius: 8px; */
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  background: #385A64;
+
+
+}
+
+.ButtonForm text {
+  color: #000;
+  text-align: center;
+  font-family: SF UI Text;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  color: #2C444E;
+  font-family: SF UI Text;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.checkboxRemember {
+  display: flex;
+  justify-content: flex-start;
+
+  color: var(--black-60, rgba(0, 0, 0, 0.60));
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.checkboxRemember input {
+  margin-left: 0;
+}
+
+.underInputs {
+  display: flex;
+  justify-content: space-between;
 }

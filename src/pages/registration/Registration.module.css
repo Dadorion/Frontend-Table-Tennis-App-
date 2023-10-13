@@ -1,0 +1,193 @@
+.Registration {
+  background: #FFF;
+  height: 100%;
+  margin: 0 20px;
+}
+
+.funcHeader {
+  /* display: grid;
+  grid-template-columns: 24px 1fr; */
+}
+
+.arrowIcon {
+  position: fixed;
+  top: 228px;
+}
+
+.Registration h1 {
+  color: var(--Basic, #333);
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  justify-self: center;
+}
+
+.Registration img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+/*------------------------*/
+.RegistrationFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+.RegistrationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.InputForm {
+  width: 100%;
+  padding: 19px 24px;
+  margin: 8px 0;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  background: #FFF;
+}
+
+/* .ButtonFormBlock {
+  flex-grow: 1;
+} */
+
+.ButtonForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ButtonForm button {
+  box-sizing: border-box;
+  /* position: absolute; */
+  bottom: 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 343px;
+  margin-bottom: 8px;
+
+  border-radius: 8px;
+  background: #385A64;
+}
+
+.ButtonForm button:disabled {
+  /* background-color: gray; */
+  cursor: not-allowed;
+
+  border-radius: 8px;
+  background: #999;
+}
+
+.ButtonForm button:not(:disabled) {
+  background-color: #385A64;
+  color: white;
+}
+
+.ButtonForm button:not(:disabled):hover {
+  /* background-color: darkgreen; */
+  background-color: #385A64;
+}
+
+.ButtonForm button:not(:active) {
+  border-radius: 8.4px;
+  background: #385A64;
+  box-shadow: 0px 4px 10px 0px rgba(56, 90, 100, 0.25);
+}
+
+
+
+.ButtonForm text {
+  color: #000;
+  text-align: center;
+  font-family: SF UI Text;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  font-family: SF UI Text;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.hasAkkaunt {
+  margin: 8px 0 0 0;
+
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.hasAkkaunt a {
+  margin: 0 4px;
+}
+
+.checkboxRemember {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+
+  color: #3E3E3E;
+  text-align: center;
+  font-family: SF UI Text;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.textLink {
+  display: flex;
+  flex-wrap: wrap;
+
+  color: #3E3E3E;
+  text-align: center;
+  font-family: SF UI Text;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.checkboxRemember input {
+  margin-right: 8px;
+}
+
+.ScreenIndicators {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.Indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  /* background-color: gray; */
+  background-color: rgba(56, 90, 100, 0.20);
+  ;
+}
+
+.Indicator.Active {
+  background-color: #385A64;
+  /* или любой другой цвет для активного состояния */
+}
