@@ -1,7 +1,9 @@
 .Registration {
-  background: #FFF;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   margin: 0 20px;
+  justify-content: flex-start;
 }
 
 .funcHeader {
@@ -30,17 +32,18 @@
 
 
 /*------------------------*/
-.RegistrationFormContainer {
+.FormContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 0;
+  height: 100%;
 }
 
 .RegistrationForm {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .InputForm {
@@ -56,73 +59,19 @@
   background: #FFF;
 }
 
-/* .ButtonFormBlock {
-  flex-grow: 1;
-} */
+.ButtonFormBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 24px;
+}
 
-.ButtonForm {
+/* .ButtonForm {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.ButtonForm button {
-  box-sizing: border-box;
-  /* position: absolute; */
-  bottom: 0;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 343px;
-  margin-bottom: 8px;
-
-  border-radius: 8px;
-  background: #385A64;
-}
-
-.ButtonForm button:disabled {
-  /* background-color: gray; */
-  cursor: not-allowed;
-
-  border-radius: 8px;
-  background: #999;
-}
-
-.ButtonForm button:not(:disabled) {
-  background-color: #385A64;
-  color: white;
-}
-
-.ButtonForm button:not(:disabled):hover {
-  /* background-color: darkgreen; */
-  background-color: #385A64;
-}
-
-.ButtonForm button:not(:active) {
-  border-radius: 8.4px;
-  background: #385A64;
-  box-shadow: 0px 4px 10px 0px rgba(56, 90, 100, 0.25);
-}
-
-
-
-.ButtonForm text {
-  color: #000;
-  text-align: center;
-  font-family: SF UI Text;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-
-  font-family: SF UI Text;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-decoration-line: underline;
-}
+  width: 100%;
+} */
 
 .hasAkkaunt {
   margin: 8px 0 0 0;

@@ -1,4 +1,4 @@
-import { authAPI, securityAPI } from "../api/api";
+import { authAPI, securityAPI } from "../api/api_lern";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'ttsh/auth/SET-USER-DATA';
@@ -11,19 +11,6 @@ let initialState = {
    isAuth: false,
    captchaUrl: null, // if null, the CAPTCHA is not required
 };
-function authReducer(state = initialState, action) {
-
-   switch (action.type) {
-      case SET_USER_DATA:
-      case GET_CAPTCHA_URL_SUCCESS:
-         return {
-            ...state,
-            ...action.payload,
-         }
-      default:
-         return state;
-   };
-}
 
 export function setAuthUserData(userId, email, login, isAuth, captchaUrl) {
    return { type: SET_USER_DATA, payload: { userId, email, login, isAuth, captchaUrl } }
@@ -32,20 +19,24 @@ export function getCaptchaUrlSuccess(captchaUrl) {
    return { type: GET_CAPTCHA_URL_SUCCESS, payload: { captchaUrl } }
 }
 
+
+
+
 //authThunkCreator ->
 export const getAuthUserData = () => async (dispatch) => {
 
-   const responce = await authAPI.me();
+   // const responce = await authAPI.me();
 
-   if (responce.data.resultCode === 0) {
-      const { id, email, login } = responce.data.data;
-      dispatch(setAuthUserData(id, email, login, true))
-   }
+   // if (responce.data.resultCode === 0) {
+   //    const { id, email, login } = responce.data.data;
+   //    dispatch(setAuthUserData(id, email, login, true))
+   // }
+   dispatch(setAuthUserData(1, 'test@email.com', 'test_login', true))
 
 }
 
-//registrationThunkCreator ->
-export const registration = (email, password, rememberMe, captcha) => async (dispatch) => {
+//authThunkCreator ->
+export const authThunk = (email, password, rememberMe, captcha) => async (dispatch) => {
    const responce = await authAPI.login(email, password, rememberMe, captcha);
    if (responce.data.resultCode === 0) {
       dispatch(getAuthUserData())
@@ -93,6 +84,20 @@ export const logout = () => async (dispatch) => {
    if (responce.data.resultCode === 0) {
       dispatch(setAuthUserData(null, null, null, false, null));
    }
+}
+
+function authReducer(state = initialState, action) {
+
+   switch (action.type) {
+      case SET_USER_DATA:
+      case GET_CAPTCHA_URL_SUCCESS:
+         return {
+            ...state,
+            ...action.payload,
+         }
+      default:
+         return state;
+   };
 }
 
 export default authReducer;

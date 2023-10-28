@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import s from './Paginator.module.css';
 
 function Paginator(props) {
@@ -38,14 +38,14 @@ export default Paginator;
 
 // let sersPaginator = (props) => {
 
-//    let [pageCounter, setPageCounter] = useState(props.pageCounterRedux) //pageCounterRedux - поле в стэйте 
+//    let [pageCounter, setPageCounter] = useState(props.pageCounterRedux) //pageCounterRedux - поле в стэйте
 //    let [cicleI, setcicleI] = useState(props.CicleCounterRedux) // тоже что и пункт выше, чтоб стэйт помнил значение
 
 //    const SetNewPageCounter = () => {
 //       setPageCounter(pageCounter + 1)
 //       setcicleI(cicleI + 10)
-//       props.PlusPagesFunc(pageCounter + 1) // dispatch action creator-а 
-//       props.CiclePagesFunc(cicleI + 10) // dispatch action creator-а 
+//       props.PlusPagesFunc(pageCounter + 1) // dispatch action creator-а
+//       props.CiclePagesFunc(cicleI + 10) // dispatch action creator-а
 //    }      // функция которая вставляется в кнопку "next"
 
 //    const SetNewPageCounter2 = () => {

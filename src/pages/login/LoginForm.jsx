@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import sL from './Login.module.css';
 import sFC from '../../UI/FormControls/FormControls.module.css';
 import { Field, reduxForm } from 'redux-form';
-import { required, maxLengthCreator, minLengthCreator } from '../../utils/valdators/validators';
+import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators';
 import Input from '../../UI/FormControls/FormControls';
 
 const maxLength30 = maxLengthCreator(30);

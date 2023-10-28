@@ -1,4 +1,4 @@
-import { usersAPI, profileAPI } from "../api/api";
+import { usersAPI, profileAPI } from "../api/api_lern";
 
 const ADD_NEW_PROFILE = 'ADD-NEW-PROFILE';
 const UDATE_NEW_NAME_TEXT = 'UDATE-NEW-NAME-TEXT';

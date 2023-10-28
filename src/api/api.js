@@ -2,60 +2,32 @@ import axios from 'axios';
 
 const instance = axios.create({
    withCredentials: true,
-   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+   baseURL: 'http://localhost:5000/',
    headers: {
-      "API-KEY": "8fb233dd-cf30-4a1d-ae9b-c52215385e11"
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwMSwiaWF0IjoxNjkzOTc1NTg4LCJleHAiOjE3MDI2MTU1ODh9.AK2xD5MC09xtN_hJWD4U0GjXisSO5Leq-EQDZa8HQBk",
+      'Content-Type': 'application/json'
    }
 
 })
-
-
-export const usersAPI = {
-   getUsers(pageNumber = 1, pageSize = 5) {
+// ---------------------------
+export const headerPageAPI = {
+   getProfileInfo() {
       return instance
-         .get(`users?page=${pageNumber}&count=${pageSize}`)
+         .get(`api/profile/1483`)
          .then(response => response.data)
-   },
-   follow(userId) {
-      return instance
-         .post(`follow/${userId}`)
-   },
-   unfollow(userId) {
-      return instance
-         .delete(`follow/${userId}`)
-   },
-   getProfile(userId) {
-      console.warn('Obsolete, use profileAPI instead.');
-      return profileAPI.getProfile(userId);
    }
 }
-export const profileAPI = {
-   getProfile(userId) {
-      return instance.get(`profile/${userId}`)
-   },
-   getStatus(userId) {
-      return instance.get(`profile/status/${userId}`);
-   },
-   updateStatus(status) {
-      return instance.put(`profile/status`, { status: status });
-   },
-   savePhoto(photoFile) {
-      const formData = new FormData();
-      formData.append('image', photoFile);
-      return instance.put(
-         `profile/photo/`,
-         formData,
-         // {
-         //    headers: {
-         //       'Content-Type': 'multipart/form-data'
-         //    }
-         // }
-      );
-   },
+
+export const registrationAPI = {
+   registration(formData) {
+      return instance
+         .post(`auth/registration`, formData)
+   }
 }
+// ---------------------------
 
 export const authAPI = {
-   me() {
+   me() { // TODO дописать аутенфикацию на бэкэнде
       return instance
          .get(`auth/me`)
    },
@@ -67,11 +39,4 @@ export const authAPI = {
       return instance
          .delete(`auth/login`)
    },
-}
-
-export const securityAPI = {
-   getCaptchaUrl() {
-      return instance
-         .get(`security/get-captcha-url`)
-   }
 }

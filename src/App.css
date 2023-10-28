@@ -1,9 +1,8 @@
 .App {
   max-width: 375px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
-<<<<<<< HEAD
 
 .black_hat {
   position: fixed;
@@ -28,5 +27,3 @@
   background-color: rgb(0, 0, 0);
   z-index: 200;
 }
-=======
->>>>>>> 2f13fb1dd5b713add5aa0823f7e36ced87e1d4be

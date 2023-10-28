@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators';
+import Input from '../../UI/FormControls/FormControls';
+import { ReactComponent as ArrowIcon } from '../../icons/Back.svg';
+import Button from '../../UI/Button/Button';
 import s from './Registration.module.css';
 import sFC from '../../UI/FormControls/FormControls.module.css';
-import { Field, reduxForm } from 'redux-form';
-import { required, maxLengthCreator, minLengthCreator } from '../../utils/valdators/validators';
-import Input from '../../UI/FormControls/FormControls';
-import { ReactComponent as ArrowIcon } from '../../icons/Back.svg'
 
 const maxLength30 = maxLengthCreator(30);
 const minLength4 = minLengthCreator(4);
 
-function RegistrationForm(props) {
-  let [isFirstScreen, setIsFirstScreen] = useState(true);
+const RegistrationForm = (props) => {
+  const [isFirstScreen, setIsFirstScreen] = useState(true);
 
   const handleNextClick = () => {
     setIsFirstScreen(false);
@@ -19,21 +20,19 @@ function RegistrationForm(props) {
   const handleBackClick = () => {
     setIsFirstScreen(true);
   };
-  // isFirstScreen = true
 
   return (
-    <div className={s.RegistrationFormContainer}>
+    <div className={s.FormContainer}>
       <div className={s.funcHeader} onClick={handleBackClick}>
-        {
-          !isFirstScreen
-            ? <div className={s.arrowIcon}><ArrowIcon /></div>
-            : null
-        }
+        {!isFirstScreen && <div className={s.arrowIcon}><ArrowIcon /></div>}
       </div>
 
-      <form className={s.RegistrationForm} onSubmit={props.handleSubmit}>
+      <form
+        className={s.RegistrationForm}
+        onSubmit={props.handleSubmit}
+      >
         <div>
-          {isFirstScreen && (
+          {isFirstScreen ? (
             <>
               <div>
                 <Field
@@ -41,37 +40,39 @@ function RegistrationForm(props) {
                   name='name'
                   placeholder='Имя'
                   component={Input}
-                  validate={[required, maxLength30]} />
+                  validate={[required, maxLength30]}
+                />
               </div>
-              <div >
+              <div>
                 <Field
                   className={s.InputForm}
                   name='surname'
                   placeholder='Фамилия'
                   component={Input}
-                  validate={[required, maxLength30]} />
+                  validate={[required, maxLength30]}
+                />
               </div>
-              <div >
+              <div>
                 <Field
                   className={s.InputForm}
                   name='birthday'
                   placeholder='Дата рождения'
                   type="date"
                   component={Input}
-                  validate={[required, maxLength30]} />
+                  validate={[required, maxLength30]}
+                />
               </div>
-              <div >
+              <div>
                 <Field
                   className={s.InputForm}
                   name='city'
                   placeholder='Город'
                   component={Input}
-                  validate={[required, maxLength30]} />
+                  validate={[required, maxLength30]}
+                />
               </div>
             </>
-          )}
-
-          {!isFirstScreen && (
+          ) : (
             <>
               <div>
                 <Field
@@ -79,41 +80,40 @@ function RegistrationForm(props) {
                   name='email'
                   placeholder='Емайл'
                   component={Input}
-                  validate={[required, maxLength30]} />
+                  validate={[required, maxLength30]}
+                />
               </div>
-              <div >
+              <div>
                 <Field
                   className={s.InputForm}
-                  name='password'
+                  name='password_1'
                   placeholder='Пароль'
-                  // DD2_aadm9mRxNrC
                   type="password"
                   component={Input}
-                  validate={[required, minLength4]} />
+                  validate={[required, minLength4]}
+                />
               </div>
-              <div >
+              <div>
                 <Field
                   className={s.InputForm}
-                  name='password'
+                  name='password_2'
                   placeholder='Пароль еще раз'
-                  // DD2_aadm9mRxNrC
                   type="password"
                   component={Input}
-                  validate={[required, minLength4]} />
+                  validate={[required, minLength4]}
+                />
               </div>
-              <div className={s.checkboxRemember}>
+              {/* <div className={s.checkboxRemember}>
                 <Field
-                  name='rememberMe'
+                  name='agreement'
                   type="checkbox"
-                  component={'input'} />
-
+                  component={'input'}
+                />
                 <div className={s.textLink}>
                   <div>Я принимаю условия</div>
-
                   <a href="/">Пользовательского соглашения</a>
                 </div>
-
-              </div>
+              </div> */}
             </>
           )}
         </div>
@@ -124,58 +124,36 @@ function RegistrationForm(props) {
         </div>
 
         <div>
-          {
-            props.captchaUrl
-            &&
-            <>
-              <img src={props.captchaUrl} alt="captcha Img" />
-              <Field
-                name='captcha'
-                placeholder='Simbols from image'
-                component={Input}
-                validate={[required]} />
-            </>
-          }
-        </div>
-
-
-        <div>
           {props.error && <div className={sFC.formSummaryError}>
             {props.error}
           </div>}
         </div>
 
-      </form >
-
-      <div className={s.ButtonFormBlock}>
-        {isFirstScreen ? (
-          <div className={s.ButtonForm}>
-            <button disabled={props.invalid} onClick={handleNextClick}>
-              Далее
-            </button>
-          </div>
-        ) : (
-          <div className={s.ButtonForm}>
+        <div className={s.ButtonFormBlock}>
+          {isFirstScreen ? (
+            // FIXME кнопка работает корректно один раз вперед, стрелка назад тоже отрабатывает. Но после возвращения кнопка дизейблится и уже ни как не разблокируется.
+            <Button
+              buttName='Далее'
+              isDisabled={!props.valid}
+              onClick={handleNextClick}
+            />
+            // <button type="submit" disabled={!props.valid} onClick={handleNextClick}>Зарегистрироваться</button>
+          ) : (
             <button type="submit">Зарегистрироваться</button>
+          )}
+          {/* TODO прописать ссылку на страницу логинизации и переместить в Registration.jsx */}
+          <div className={s.hasAkkaunt}>
           </div>
-        )}
-
-        <div className={s.hasAkkaunt}>
           Уже есть аккаунт?
           <a href="/">Войти</a>
         </div>
-      </div>
+      </form >
     </div >
   )
 }
 
-export const isFirstScreen = () => {
-  return isFirstScreen;
-};
-
 const RegistrationReduxForm = reduxForm({
-  //a unique name for the form
-  form: 'registration'
-})(RegistrationForm)
+  form: 'registration',
+})(RegistrationForm);
 
 export default RegistrationReduxForm;

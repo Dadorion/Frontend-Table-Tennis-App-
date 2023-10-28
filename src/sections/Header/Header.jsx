@@ -1,15 +1,15 @@
 import React from 'react';
 import s from './Header.module.css';
 import HeaderTop from './HeaderTop/HeaderTop';
-import HeaderBottom from './HeaderBottom/HeaderBottom';
+import HeaderContent from './Header_content';
 
-function Header() {
+function Header(props) {
 
    return (
       <div className={s.header}>
-      <HeaderTop />
-      <HeaderBottom/>
-   </div>
+         <HeaderTop />
+         <HeaderContent />
+      </div>
    )
 }
 

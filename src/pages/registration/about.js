@@ -1,2 +1,1 @@
-// TODO Кнопку отправить в UI компоненты
-// TODO Чекнуть, чтобы position: fixed не ломал адаптивность
+// TODO Избавиться от логинизации через https://social-network.samuraijs.com
