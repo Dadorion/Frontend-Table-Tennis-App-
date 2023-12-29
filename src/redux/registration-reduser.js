@@ -1,8 +1,10 @@
-import { registrationAPI } from "../api/api";
+import {
+   registrationAPI
+} from "../api/api";
 // import { stopSubmit } from "redux-form";
 
 // -------------= preparing constatnt =--------------
-let initialState = {
+const initialState = {
    name: null,
    surname: null,
    city: null,
@@ -13,15 +15,30 @@ let initialState = {
 const REGISTRATION = 'ttsh/auth/REGISTRATION';
 
 export function setRegistrationUserData(name, surname, city, birthday, email) {
-   return { type: REGISTRATION, payload: { name, surname, city, birthday, email } }
+   return {
+      type: REGISTRATION,
+      payload: {
+         name,
+         surname,
+         city,
+         birthday,
+         email
+      }
+   }
 }
 
 export function registrationTC(formData) {
    return async (dispatch) => {
       const responce = await registrationAPI.registration(formData)
-      console.log(responce)
+      if (responce.status) {
+         console.log("responce.status: ", responce.status)
+         console.log("responce: ", responce)
+      }
 
-      if (responce.status !== 200) { console.log('Ошибка: Ответ от сервера не пришел.') }
+
+      if (responce.status !== 200) {
+         console.log('Ошибка: Ответ от сервера не пришел.')
+      }
       console.log(responce.data.message)
 
       // const { name, surname, city, birthday, email } = responce
@@ -52,7 +69,14 @@ export const getRegistrationUserData = () => async (dispatch) => {
    const responce = await registrationAPI.registration();
 
    if (responce.data.resultCode === 0) {
-      const { name, surname, city, birthday, email, password } = responce.data.data;
+      const {
+         name,
+         surname,
+         city,
+         birthday,
+         email,
+         password
+      } = responce.data.data;
       dispatch(setRegistrationUserData(name, surname, city, birthday, email, password))
    }
 
@@ -85,8 +109,8 @@ function registrationReducer(state = initialState, action) {
             ...state,
             ...action.payload,
          }
-      default:
-         return state;
+         default:
+            return state;
    };
 }
 

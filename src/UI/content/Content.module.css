@@ -1,6 +1,13 @@
 .Content {
   overflow: auto;
-  height: 100vh;
+}
+.ContentWithTapbar{
+  overflow: auto;
+  height: calc(100vh - 80px);
+}
+.ContentWithoutTapbar{
+  overflow: auto;
+  height: calc(100vh - 10px);
 }
 
 input[type="checkbox"] {

@@ -1,103 +1,118 @@
-import { authAPI, securityAPI } from "../api/api_lern";
-import { stopSubmit } from "redux-form";
+import { authAPI } from "../api/api"
+import { stopSubmit } from "redux-form"
 
-const SET_USER_DATA = 'ttsh/auth/SET-USER-DATA';
-const GET_CAPTCHA_URL_SUCCESS = 'ttsh/auth/GET-CAPTCHA-URL-SUCCESS';
+const SET_USER_DATA = "ttsh/auth/SET-USER-DATA"
+const LOGIN = "ttsh/auth/LOGIN"
 
-let initialState = {
-   userId: null,
+const initialState = {
+   user_id: null,
+   birthday: null,
+   city: null,
    email: null,
-   login: null,
+   password: null,
+   name: null,
+   status: null,
+   surname: null,
    isAuth: false,
-   captchaUrl: null, // if null, the CAPTCHA is not required
-};
-
-export function setAuthUserData(userId, email, login, isAuth, captchaUrl) {
-   return { type: SET_USER_DATA, payload: { userId, email, login, isAuth, captchaUrl } }
-}
-export function getCaptchaUrlSuccess(captchaUrl) {
-   return { type: GET_CAPTCHA_URL_SUCCESS, payload: { captchaUrl } }
+   rememberMe: false,
 }
 
-
-
+export function setAuthUserData(payload) {
+   return {
+      type: SET_USER_DATA,
+      payload,
+   }
+}
+export function setLoginUserData(formData) {
+   return {
+      type: LOGIN,
+      payload: formData,
+   }
+}
 
 //authThunkCreator ->
 export const getAuthUserData = () => async (dispatch) => {
-
-   // const responce = await authAPI.me();
-
-   // if (responce.data.resultCode === 0) {
-   //    const { id, email, login } = responce.data.data;
-   //    dispatch(setAuthUserData(id, email, login, true))
-   // }
-   dispatch(setAuthUserData(1, 'test@email.com', 'test_login', true))
-
+   try {
+      if(!localStorage.token) return
+      const responce = await authAPI.me()
+      if (responce.status === 200) {
+         dispatch(
+            setAuthUserData({
+               ...responce.data,
+               isAuth: true,
+            })
+         )
+      }
+   } catch (error) {
+      console.log("ошибка: ", error.message)
+      console.log("сообщение: ", error.response.data.message)
+      dispatch(setAuthUserData({ isAuth: false }));
+   }
 }
 
 //authThunkCreator ->
-export const authThunk = (email, password, rememberMe, captcha) => async (dispatch) => {
-   const responce = await authAPI.login(email, password, rememberMe, captcha);
-   if (responce.data.resultCode === 0) {
-      dispatch(getAuthUserData())
-   } else {
-      if (responce.data.resultCode === 10) {
-         dispatch(getCaptchaUrl());
-      }
-      const message = responce.data.messages.length > 0
-         ? responce.data.messages[0]
-         : "Something went wrong. Please change your email or password and try again."
-      dispatch(
-         stopSubmit("login", { _error: message })
-      );
-   }
-}
-//loginThunkCreator ->
-export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
-   const responce = await authAPI.login(email, password, rememberMe, captcha);
-   if (responce.data.resultCode === 0) {
-      dispatch(getAuthUserData())
-   } else {
-      if (responce.data.resultCode === 10) {
-         dispatch(getCaptchaUrl());
-      }
-      const message = responce.data.messages.length > 0
-         ? responce.data.messages[0]
-         : "Something went wrong. Please change your email or password and try again."
-      dispatch(
-         stopSubmit("login", { _error: message })
-      );
-   }
-}
+export function loginTC(formData) {
+   return async (dispatch) => {
+      console.log("попытка логинизации")
+      const responce = await authAPI.login(formData)
+      const token = responce.data
 
-//captchaThunkCreator ->
-export const getCaptchaUrl = () => async (dispatch) => {
-   const responce = await securityAPI.getCaptchaUrl();
-   const captchaUrl = responce.data.url;
-   dispatch(getCaptchaUrlSuccess(captchaUrl));
-
+      if (!token) {
+         const message =
+            responce.data.messages.length > 0
+               ? responce.data.messages[0]
+               : "Something went wrong. Please change your email or password and try again."
+         dispatch(stopSubmit("login", { _error: message }))
+         return
+      }
+      localStorage.setItem("token", token)
+      console.log('токен установлен в локалсторедж');
+      dispatch(
+         setLoginUserData({
+            ...formData,
+            isAuth: true,
+         })
+      )
+   }
 }
 
 //logoutThunkCreator ->
-export const logout = () => async (dispatch) => {
-   const responce = await authAPI.logout();
-   if (responce.data.resultCode === 0) {
-      dispatch(setAuthUserData(null, null, null, false, null));
+export const logoutTC = () => async (dispatch) => {
+   const responce = await authAPI.logout()
+   if (responce.data.code === 0) {
+      const nullObject = {
+         user_id: null,
+         birthday: null,
+         city: null,
+         email: null,
+         password: null,
+         name: null,
+         status: null,
+         surname: null,
+         isAuth: false,
+         rememberMe: false,
+      }
+      dispatch(setAuthUserData(nullObject))
+      localStorage.removeItem("token")
    }
 }
 
-function authReducer(state = initialState, action) {
-
-   switch (action.type) {
-      case SET_USER_DATA:
-      case GET_CAPTCHA_URL_SUCCESS:
-         return {
-            ...state,
-            ...action.payload,
-         }
-      default:
-         return state;
+function updateUserData(state, payload) {
+   return {
+      ...state,
+      ...payload,
    };
 }
 
-export default authReducer;
+function authReducer(state = initialState, action) {
+   switch (action.type) {
+      case SET_USER_DATA:
+         return updateUserData(state, action.payload);
+      case LOGIN:
+         return updateUserData(state, action.payload);
+      default:
+         return state
+   }
+}
+
+export default authReducer

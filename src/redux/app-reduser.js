@@ -2,9 +2,9 @@ import { getAuthUserData } from "./auth-reduser";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
-let initialState = {
+const initialState = {
    initialized: false,
-};
+}
 
 function appReducer(state = initialState, action) {
 
@@ -19,7 +19,8 @@ function appReducer(state = initialState, action) {
    };
 }
 
-export function initializedSuccsess() {
+// appActionCreator
+function initializedSuccsess() {
    return { type: INITIALIZED_SUCCESS }
 }
 

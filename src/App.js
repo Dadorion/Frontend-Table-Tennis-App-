@@ -10,27 +10,17 @@ import Preloader from './UI/preloader/PreloaderBall';
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.initializeApp();
+    this.props.initializeApp()
   }
-
+  
   render() {
-
     if (!this.props.initialized) {
       return <Preloader />
     }
 
     return (
       <div className="App">
-
-        {/* <div className='black_hat'>black hat</div> */}
-
-        {/* <HeaderContainer /> */}
-        {/* <MainPage /> */}
-        <Content store={this.props.store} />
-        {/* <Footer /> */}
-
-        {/* <div className='white_line' /> */}
-
+        <Content />
       </div>
     );
   }

@@ -1,0 +1,42 @@
+.Tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+
+    background: var(--main-main, #385A64);
+    /* box-shadow: 0px -1px 4px 0px rgba(51, 51, 51, 0.10); */
+    color: #fff;
+
+    color: var(--Background, #FFF);
+
+    /* Tabbar button/regular */
+    font-family: Open Sans;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.active {
+    border-radius: 12px;
+    background: var(--main-light, #87A8B2);
+}
+
+.Tabbar div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 8px;
+
+    opacity: 0.6;
+}
+
+.Tabbar img {
+    width: 24px;
+    height: 24px;
+}

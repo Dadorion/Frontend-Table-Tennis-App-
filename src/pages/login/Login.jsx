@@ -1,36 +1,33 @@
-import React from 'react';
-import s from './Login.module.css';
-import LoginReduxForm from './LoginForm';
-import { connect } from 'react-redux';
-import { login } from '../../redux/auth-reduser';
-import { Navigate } from 'react-router-dom';
-import logimImgage from '../../images/b4e94ff0b6f1b09b24d24c7c0212a3f6.jpg'
+import React from "react";
+import s from "./Login.module.css";
+import LoginReduxForm from "./LoginForm";
+import { connect } from "react-redux";
+import { loginTC } from "../../redux/auth-reduser";
+import { getProfile } from "../../redux/profile-reducer";
+import { Navigate } from "react-router-dom";
+import loginImgage from "../../images/b4e94ff0b6f1b09b24d24c7c0212a3f6.jpg";
 
-function Login(props) {
-
+function Login({ isAuth, loginTC, getProfile }) {
   const onSubmit = (formData) => {
-    props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
-  }
+    loginTC(formData);
+  };
 
-
-  if (props.isAuth) {
-    return <Navigate to={"/profile"} />
+  if (isAuth) {
+    return <Navigate to={"/"} />;
   }
   return (
     <div className={s.Login}>
-      <img src={logimImgage} alt="logo_img" />
-      {/* <h1>LOGIN</h1> */}
+      <img src={loginImgage} alt="logo_img" />
       <h1>Войти</h1>
-      <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
+      <LoginReduxForm onSubmit={onSubmit} />
     </div>
-  )
+  );
 }
 
 function mapStateToProps(state) {
   return {
     isAuth: state.auth.isAuth,
-    captchaUrl: state.auth.captchaUrl
-  }
+  };
 }
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { loginTC, getProfile })(Login);

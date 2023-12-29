@@ -1,28 +1,82 @@
 .Profile {
+  position: relative;
+  top: 0;
+  color: var(--Basic-text, #333);
+}
+
+.headerContainer {
+  position: relative;
+  top: 0;
+  padding: 36px 16px 0 16px;
+
+  background: var(--main-main, #385A64);
+}
+
+.contentContainer {
+  position: relative;
+  top: -40px;
   background-color: #fff;
-  margin: 20px;
+  border-radius: 20px;
+  padding-top: 24px;
 }
-.msg {
-  margin-bottom: 20px;
-  }
 
-.P_Line {
+h3 {
+  color: var(--Basic-text, #333);
+  grid-column: 2;
+
+  /* Heading 3/semibold */
+  font-family: Open Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  margin-right: 8px;
+}
+
+.manageBlock {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-}
-.face{
-  /* width: 100px;
-  height: 100px; */
-  /* border: 1px solid black; */
-  /* border-radius: 50%; */
-  overflow:hidden;
-  margin: auto;
-}
-.Profile img{
-  height: 200px;
+  margin-top: 24px;
+  padding: 0 16px;
 }
 
-.preloader {
-  margin: auto;
+.exitButton {
+  display: flex;
+  padding: 18px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  border: 1px solid var(--main-light, #87A8B2);
+
+  color: var(--main-dark, #123741);
+
+  /* Button */
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
+
+.bugReport {
+  display: inline-flex;
+  padding: 0px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+
+  color: var(--Basic-text, #333);
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+

@@ -10,26 +10,9 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS';
 const PLUS_PAGE_COUNTER = 'PLUS-PAGE-COUNTER';
 const CICLE_PAGE_COUNTER = 'CICLE-PAGE-COUNTER';
 
-let initialState = {
-    users: [
-        // {
-        //     id: 0,
-        //     followed: false,
-        //     name: 'Василий',
-        //     surname: 'Теплоухов',
-        //     birthdate: '25.12.2022',
-        //     locRating: 214
-        // },
-        // {
-        //     id: 1,
-        //     followed: false,
-        //     name: 'Джафа',
-        //     surname: 'Гордецов',
-        //     birthdate: '25.12.2022',
-        //     locRating: 118
-        // },
-    ],
-    pageSize: 5,
+const initialState = {
+    users: null,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -39,10 +22,9 @@ let initialState = {
     followingInProgressinfo: [],
     pageCounterRedux: 1,
     CicleCounterRedux: 1,
-};
+}
 
 function usersReducer(state = initialState, action) {
-
     switch (action.type) {
         case FOLLOW:
             return {

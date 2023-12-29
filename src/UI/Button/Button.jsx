@@ -16,8 +16,16 @@ function Button(props) {
             return (
                 <div className={s.Button}>
                     <button
+                        type={'submit'}
+                    >{buttName}</button>
+                </div>
+            )
+        case 'Войти':
+            return (
+                <div className={s.Button}>
+                    <button
                         // disabled={isDisabled}
-                        type={type || 'button'}
+                        type={type || 'submit'}
                     >{buttName}</button>
                 </div>
             )

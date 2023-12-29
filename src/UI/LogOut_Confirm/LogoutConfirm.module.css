@@ -1,0 +1,25 @@
+.exit {
+   position: fixed;
+   top: 0;
+   left: 0;
+
+   width: 100%;
+   height: 100%;
+
+   background-color: white;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+#buttons {
+   display: flex;
+   margin-top: 16px;   
+}
+#buttons div {
+   margin: 0 8px;   
+}
+#yes{color: green;}
+#no{color: red}

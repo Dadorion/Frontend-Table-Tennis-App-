@@ -1,42 +1,111 @@
-import axios from 'axios';
+import axios from "axios";
 
 const instance = axios.create({
-   withCredentials: true,
-   baseURL: 'http://localhost:5000/',
-   headers: {
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwMSwiaWF0IjoxNjkzOTc1NTg4LCJleHAiOjE3MDI2MTU1ODh9.AK2xD5MC09xtN_hJWD4U0GjXisSO5Leq-EQDZa8HQBk",
-      'Content-Type': 'application/json'
-   }
+  withCredentials: true,
+  baseURL: "http://localhost:5000/",
+});
 
-})
+// Добавляем interceptor для запросов
+instance.interceptors.request.use(
+  (config) => {
+    // Получаем токен из локального хранилища
+    const token = localStorage.getItem("token");
+
+    // Если токен существует, добавляем его в заголовки запроса
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 // ---------------------------
-export const headerPageAPI = {
-   getProfileInfo() {
-      return instance
-         .get(`api/profile/1483`)
-         .then(response => response.data)
-   }
-}
-
 export const registrationAPI = {
-   registration(formData) {
-      return instance
-         .post(`auth/registration`, formData)
-   }
-}
+  async registration(formData) {
+    try {
+      return await instance.post(`auth/registration`, formData);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+};
 // ---------------------------
 
 export const authAPI = {
-   me() { // TODO дописать аутенфикацию на бэкэнде
-      return instance
-         .get(`auth/me`)
-   },
-   login(email, password, rememberMe = false, captcha = null) {
-      return instance
-         .post(`auth/login`, { email, password, rememberMe, captcha })
-   },
-   logout() {
-      return instance
-         .delete(`auth/login`)
-   },
-}
+  me() {
+    try {
+      return instance.get(`auth/me`);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  login(formData) {
+    const { email, password, rememberMe = false } = formData;
+
+    return instance.post(`auth/login`, {
+      email,
+      password,
+      rememberMe,
+    });
+  },
+  logout() {
+    return instance.delete(`auth/login`);
+  },
+};
+
+export const usersAPI = {};
+export const profileAPI = {
+  async getMyProfile() {
+    try {
+      const response = await instance.get(`api/profile`);
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при запросе за профилем: ", error);
+      throw error;
+    }
+  },
+  async updateMyProfile(newProfileData) {
+    try {
+      const response = await instance.put(
+        `api/profile/update_my_profile`,
+        newProfileData
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при обновлении профиля: ", error);
+      throw error;
+    }
+  },
+  async updateStatus(status) {
+    try {
+      const response = await instance.put(`api/profile/update_my_status`, {
+        status,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при обновлении статуса: ", error);
+      throw error;
+    }
+  },
+  async updatePhoto(file) {
+    try {
+      const response = await instance.put(
+        `api/profile/upload`,
+        file,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при обновлении аватара: ", error);
+      throw error;
+    }
+  },
+};

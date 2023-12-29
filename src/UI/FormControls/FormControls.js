@@ -4,7 +4,7 @@ import s from './FormControls.module.css';
 
 function FormControl({ input, meta, ...props }) {
 
-   const hasErrors = meta.touched && meta.error;
+   const hasErrors = meta.touched && meta.error
 
    return <div className={s.formControl + ' ' + (hasErrors ? s.error : '')}>
       {props.children}

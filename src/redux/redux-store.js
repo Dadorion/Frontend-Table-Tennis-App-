@@ -21,17 +21,12 @@ let redusers = combineReducers({
 });
 
 // дря расширения REDUX в браузере хром
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(redusers, composeEnhancers(
    applyMiddleware(thunkMiddleware)
-));
+))
 
-//
-
-// let store = createStore(redusers, applyMiddleware(thunkMiddleware));
-
-// window.store = store;
+window.store = store;
 
 export default store;

@@ -1,0 +1,28 @@
+.AddMatch {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.AddMatch h1 {
+  color: var(--Basic, #333);
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  justify-self: center;
+  margin: 64px 0 24px 0;
+}
+
+.btn {
+  display: flex;
+  height: 40px;
+  padding: 10px;
+  justify-content: center;
+
+  border-radius: 8px;
+  background: #C6C6C6;
+
+  margin: 16px;
+
+}

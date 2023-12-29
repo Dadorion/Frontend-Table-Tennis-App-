@@ -1,0 +1,82 @@
+.Profile {
+  position: relative;
+  top: 0;
+  color: var(--Basic-text, #333);
+}
+
+.headerContainer {
+  position: relative;
+  top: 0;
+  padding: 36px 16px 0 16px;
+
+  background: var(--Accent-Blue, #424A6D);
+}
+
+.contentContainer {
+  position: relative;
+  top: -40px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding-top: 24px;
+}
+
+h3 {
+  color: var(--Basic-text, #333);
+  grid-column: 2;
+
+  /* Heading 3/semibold */
+  font-family: Open Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  margin-right: 8px;
+}
+
+.manageBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 0 16px;
+}
+
+.exitButton {
+  display: flex;
+  padding: 18px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  border: 1px solid var(--main-light, #87A8B2);
+
+  color: var(--main-dark, #123741);
+
+  /* Button */
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.bugReport {
+  display: inline-flex;
+  padding: 0px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+
+  color: var(--Basic-text, #333);
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
