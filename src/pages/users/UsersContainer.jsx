@@ -1,14 +1,21 @@
 import React from "react";
 import Users from "./Users";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import { withRouter } from "../../redux/withRouter";
+import { requestUsers } from "../../redux/users-reducer";
 
 function UsersContainer(props) {
+  const dispatch = useDispatch();
+
+  if (!props.users) {
+    dispatch(requestUsers(1,10));
+  }
+
   return (
     <>
-      <Users {...props}/>
+      <Users {...props} />
     </>
   );
 }
@@ -16,8 +23,9 @@ function UsersContainer(props) {
 function mapStateToProps(state) {
   return {
     users: state.usersReducer.users,
-    authorizedUserId: state.auth.userId,
-    isAuth: state.auth.isAuth,
+    findUserName: state.usersReducer.findUserName,
+    // authorizedUserId: state.auth.userId,
+    // isAuth: state.auth.isAuth,
   };
 }
 function mapDispatchToProps() {

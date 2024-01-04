@@ -1,5 +1,6 @@
 .Item {
    width: 100%;
+   border-bottom: #3333331c 1px solid;
 }
 
 .mainInfo {
@@ -39,6 +40,7 @@
 #avatar {
    width: 52px;
    height: 52px;
+   border-radius: 50%;
 }
 
 #v_down {
@@ -72,9 +74,13 @@
 
 .tapContainer {
    display: flex;
-   justify-content: flex-end;
+   justify-content: center;
    width: 44px;
    height: 44px;
+   padding: 8px;
+
+   border-radius: 8px;
+   border: 1px solid var(--Main-main, #385A64);
 }
 
 
@@ -98,4 +104,3 @@
 
    color: var(--Basic-text);
 }
-

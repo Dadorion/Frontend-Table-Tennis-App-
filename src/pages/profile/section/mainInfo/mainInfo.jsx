@@ -54,13 +54,6 @@ function MainInfo({ name, surname, status, avatar }) {
           {location.pathname === "/profile" && (
             <>
               <div>
-                {/* <Avatar 
-                  width={100}
-                  height={100}
-                  // onClose={}
-                  // onCrop={}
-                  src={avatar || avatarAlt}
-                /> */}
                 <img src={avatar || avatarAlt} alt="avatar" />
               </div>
 

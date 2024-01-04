@@ -57,11 +57,32 @@ export const authAPI = {
   },
 };
 
-export const usersAPI = {};
+export const usersAPI = {
+  async getUsers(page, pageSize) {
+    try {
+      const response = await instance.get(`api/players`);
+      return response.data.body;
+    } catch (error) {
+      console.error("Ошибка при запросе за игроками: ", error);
+      throw error;
+    }
+  },
+  async getUsersWithName(name) {
+    console.log('API стартовал запрос');
+    try {
+      const response = await instance.post(`api/players`, {name});
+      console.log("Ответ по запросу: ",response.data.body);
+      return response.data.body;
+    } catch (error) {
+      console.error("Ошибка при запросе поиска по имени: ", error);
+      throw error;
+    }
+  },
+};
 export const profileAPI = {
   async getMyProfile() {
     try {
-      const response = await instance.get(`api/profile`);
+      const response = await instance.get(`api/profile/me`);
       return response.data;
     } catch (error) {
       console.error("Ошибка при запросе за профилем: ", error);
@@ -93,15 +114,11 @@ export const profileAPI = {
   },
   async updatePhoto(file) {
     try {
-      const response = await instance.put(
-        `api/profile/upload`,
-        file,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          },
-        }
-      );
+      const response = await instance.put(`api/profile/upload`, file, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return response.data;
     } catch (error) {
       console.error("Ошибка при обновлении аватара: ", error);
