@@ -1,6 +1,7 @@
 .sortMenu {
    position: absolute;
-   left: 40px;
+   left: 8px;
+   top: 42px;
    z-index: 100;
    
    display: flex;
@@ -16,5 +17,7 @@
 }
 
 .sortMenu div{
-   border-bottom: black;
+   width: 100%;
+   border-bottom: #33333328 1px solid;
+   padding: 4px;
 }

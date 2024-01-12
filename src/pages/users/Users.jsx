@@ -5,10 +5,13 @@ import settingsIcon from "../../icons/svg/settings.svg";
 import UserItem from "../../UI/User_Item/User_item";
 import magnifier from "../../icons/svg/magnifier.svg";
 import SorterMenu from "../../UI/SorterMenu/SorterMenu";
+import FilterMenu from "../../UI/FilterMenu/FilterMenu";
 import FinderInput from "../../UI/FinderInput/FinderInput";
 
 function Users(props) {
   const [showSorter, setShowSorter] = useState(false);
+  const [sortMode, setSortMode] = useState("Последние");
+  const [showFilters, setShowFilters] = useState(false);
   const [showFinderUserName, setShowFinderUserName] = useState(false);
   if (!props.users) {
     return <div className={s.Users}>Loading...</div>;
@@ -25,8 +28,15 @@ function Users(props) {
     );
   });
 
+  const handleSetSortMode = (e) => {
+    const mode = e.target.innerHTML;
+    setSortMode(mode);
+  };
   const handleSort = () => {
     setShowSorter(!showSorter);
+  };
+  const handleFilter = () => {
+    setShowFilters(!showFilters);
   };
   const handleFindUserName = () => {
     setShowFinderUserName(!showFinderUserName);
@@ -42,14 +52,15 @@ function Users(props) {
       {!showFinderUserName && (
         <div className={`${s.filter}`}>
           <div className={`${s.sorter}`}>
-            <div onClick={handleSort}>
+            <div className={`${s.sortMode}`} onClick={handleSort}>
               <img src={sorterIcon} alt="filter_icon" />
-              Последние
+              {sortMode}
             </div>
           </div>
-          {showSorter && <SorterMenu />}
+          {showSorter && <SorterMenu handleSetSortMode={handleSetSortMode} />}
+          {showFilters && <FilterMenu handleSetSortMode={handleSetSortMode} setShowFilters={setShowFilters}/>}
 
-          <div>
+          <div onClick={handleFilter}>
             <img src={settingsIcon} alt="filter_icon" />
           </div>
         </div>

@@ -30,13 +30,14 @@
 }
 
 .filter {
+  position: relative;
   display: flex;
   padding: 12px 0px;
   justify-content: space-between;
   align-self: stretch;
 }
 
-.filter div {
+.sortMode {
   display: flex;
   gap: 10px;
 }

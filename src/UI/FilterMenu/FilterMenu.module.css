@@ -1,0 +1,254 @@
+.FilterMenu {
+   position: absolute;
+   left: 0px;
+   top: 42px;
+   z-index: 100;
+   width: 100%;
+
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 10px;
+
+   border-radius: 12px;
+   background: #F0F0F0;
+   box-shadow: 1px 1px 8px grey;
+
+   padding: 25px 16px;
+}
+
+.realRadio {
+   position: absolute;
+   width: 0;
+   height: 0;
+   opacity: 0;
+   z-index: -1;
+}
+
+.customRadio {
+   position: relative;
+   display: inline-block;
+   width: 16px;
+   height: 16px;
+   margin-right: 8px;
+
+   background-color: #fff;
+   border: 2px solid #385A64;
+   border-radius: 50%;
+}
+
+.customRadio::before {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%) scale(0);
+   transition: 0.2s ease-in;
+
+
+   content: '';
+   display: inline-block;
+   width: 8px;
+   height: 8px;
+   background-color: #385A64;
+   border-radius: 50%;
+
+
+}
+
+.realRadio:checked+.customRadio::before {
+   transform: translate(-50%, -50%) scale(1);
+}
+
+.FilterMenu label {
+   cursor: pointer;
+}
+
+.FilterHeader {
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   align-items: center;
+}
+
+#left {
+   justify-self: start;
+}
+
+#center {
+   justify-self: center;
+}
+
+#right {
+   justify-self: end;
+}
+
+.FilterContent {
+   display: flex;
+   flex-direction: column;
+}
+
+.FilterContent h3 {
+   color: var(--Basic-text, #333);
+
+   /* Heading 3/semibold */
+   font-family: Open Sans;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: normal;
+
+   margin-top: 36px;
+}
+
+.FilterContent_wrap {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+.dateContent {
+   display: flex;
+   justify-content: space-between;
+
+   padding-top: 16px;
+   align-items: flex-start;
+}
+
+.dateContent_item {
+   display: flex;
+   flex-direction: column;
+}
+
+.dateContent_item :not(:first-child) {
+   margin-top: 8px;
+}
+
+.dateContent_period {
+   width: 100%;
+   margin-top: 24px;
+   margin-left: 12px;
+}
+
+.dateContent_period h4 {
+   color: #000;
+
+   /* Paragraph/regular */
+   font-family: Open Sans;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+}
+
+.dateContent_period_items {
+   display: flex;
+   margin-top: 12px;
+}
+
+.dateContent_period_items>div {
+   display: flex;
+}
+
+.dateContent_period_items :not(:first-child) {
+   margin-left: 8px;
+}
+
+.dateContent_period_items>div input {
+   height: 28px;
+   width: auto;
+   margin-left: 8px;
+}
+
+.genderContent>div {
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+}
+
+.genderContent>div :not(:first-child) {
+   margin-top: 8px;
+}
+
+.genderContent>div label {
+   margin-left: 8px;
+}
+
+.winerContent>div {
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+}
+
+.winerContent>div :not(:first-child) {
+   margin-top: 8px;
+}
+
+.winerContent>div label {
+   margin-left: 8px;
+}
+
+.selectWrapper {
+   position: relative;
+}
+
+.selectWrapper::before {
+   content: "";
+   display: block;
+
+   position: absolute;
+   top: 60%;
+   right: 10px;
+   transform: translateY(50%);
+
+   pointer-events: none;
+
+   width: 0px;
+   height: 0px;
+   border-style: solid;
+   border-width: 10px 5px 0 5px;
+   border-color: #333333 transparent transparent transparent;
+   transform: rotate(0deg);
+}
+
+.selectWrapper select::-ms-expand {
+   display: none;
+}
+
+.selectWrapper select {
+   -moz-appearance: none;
+   -webkit-appearance: none;
+   appearance: none;
+   outline: none;
+
+   width: 100%;
+   padding: 8px 28px 8px 14px;
+   margin-top: 20px;
+
+   border-radius: 4px;
+   border: 1px solid var(--Basic-text, #333);
+   background: var(--Background, #FFF);
+   cursor: pointer;
+}
+
+.selectWrapper select:focus {
+   outline: none;
+   box-shadow: 0px 0px 0px 1px #36636e, 0px 0px 10px #69c5dc;
+}
+
+.lastLocation {
+   margin-top: 16px;
+
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+}
+
+.lastLocation>div {
+   margin: 0 6px;
+   display: flex;
+}
+
+.btnShow {
+   position: sticky;
+   bottom: 0;
+}

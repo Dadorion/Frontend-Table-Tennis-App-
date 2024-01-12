@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React  /*, {useState}  */ from "react";
 import s from "./User_item.module.css";
-import ExtraInfo from "./extra_info";
-import racket from "../../icons/svg/racket.svg";
+// import ExtraInfo from "./extra_info";
+// import racket from "../../icons/svg/racket.svg";
 import user_pic from "../../icons/profile.png";
 
 function UserItem(props) {
-  const [showExtra, setShowExtra] = useState(false);
+  // const [showExtra, setShowExtra] = useState(false);
 
-  const handleVArrow = () => {
-    setShowExtra(!showExtra);
-  };
+  // const handleVArrow = () => {
+  //   setShowExtra(!showExtra);
+  // };
   const winsPersentStr =
     props.pers !== "пока нет побед" ? `побед: ${props.pers}%` : props.pers;
 
@@ -28,18 +28,18 @@ function UserItem(props) {
               <div className={s.subtitle}>{winsPersentStr}</div>
             </div>
           </div>
-          <div className={s.tapContainer} onClick={handleVArrow}>
+          {/* <div className={s.tapContainer} onClick={handleVArrow}>
             <img
               id={s.v_down}
               className={showExtra ? s.v_down_invert : ""}
               src={racket}
               alt="v_down"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       {/* <hr /> */}
-      {showExtra && <ExtraInfo />}
+      {/* {showExtra && <ExtraInfo />} */}
     </div>
   );
 }

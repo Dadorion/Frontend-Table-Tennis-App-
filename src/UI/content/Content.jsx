@@ -10,6 +10,7 @@ import AddMatch from "../../pages/add_match/AddMatch";
 import HomePageContainer from "../../pages/home_page/HomePageContainer";
 import Tabbar from "../../UI/Tabbar/Tabbar";
 import AvatarEditor from "../../pages/profile/avatar_editor/avatar_editor_react";
+import HistoryContainer from "../../pages/history/HistoryContainer";
 
 // UsersContainer = React.lazy(() => import('../../pages/users/UsersContainer'));
 
@@ -34,6 +35,7 @@ function Content(props) {
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/add_match" element={<AddMatch />} />
+        <Route path="/history" element={<HistoryContainer />} />
       </Routes>
       <Tabbar />
     </div>

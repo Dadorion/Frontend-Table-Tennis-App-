@@ -24,6 +24,7 @@ function mapStateToProps(state) {
   return {
     users: state.usersReducer.users,
     findUserName: state.usersReducer.findUserName,
+    filter: state.filterReducer
     // authorizedUserId: state.auth.userId,
     // isAuth: state.auth.isAuth,
   };

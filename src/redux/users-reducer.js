@@ -110,7 +110,6 @@ export const requestUsers = (page, pageSize) => {
   };
 };
 export const requestUsersWithName = (text) => {
-  console.log("Санка начала поиск: ", text);
 
   if (!text.trim()) {
     return async (dispatch) => {

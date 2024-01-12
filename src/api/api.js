@@ -68,10 +68,8 @@ export const usersAPI = {
     }
   },
   async getUsersWithName(name) {
-    console.log('API стартовал запрос');
     try {
       const response = await instance.post(`api/players`, {name});
-      console.log("Ответ по запросу: ",response.data.body);
       return response.data.body;
     } catch (error) {
       console.error("Ошибка при запросе поиска по имени: ", error);
