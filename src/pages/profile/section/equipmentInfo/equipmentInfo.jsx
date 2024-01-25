@@ -1,13 +1,16 @@
 import React from "react";
 import s from "./equipmentInfo.module.css";
-import pad from "../../../../icons/svg/pad.svg";
 import { useLocation } from "react-router-dom";
-import { changeRacketBase, changeRacketForhand, changeRacketBackhand } from "../../../../redux/profile-reducer";
+import {
+  changeRacketBase,
+  changeRacketForhand,
+  changeRacketBackhand,
+} from "../../../../redux/profile-reducer";
 import { useDispatch } from "react-redux";
 
 function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
   const location = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // const [equipData, setEquipData] = useState({
   //   base: base || '',
@@ -30,38 +33,37 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
 
   return (
     <div className={s.EquipmentInfo}>
-      
-          {location.pathname === "/profile" && (
-            <>
-              <div className={s.header}>
-                <img src={pad} alt="edite_pen" />
-                <h3>Ракетка</h3>
+      {location.pathname === "/profile" && (
+        <>
+          <div className={s.header}>
+            <h3>Ракетка</h3>
+          </div>
+          <div className={s.hardInfo}>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Основание</p>
+                <p className={s.rightColumn}>{base}</p>
               </div>
-              <div className={s.hardInfo}>
-                <div>
-                  <span>Основание</span>
-                  <span>{base}</span>
-                </div>
-                <hr />
-                <div>
-                  <span>Форхенд</span>
-                  <span>{forhand_pad}</span>
-                </div>
-                <hr />
-                <div>
-                  <span>Бекхэнд</span>
-                  <span>{backhand_pad}</span>
-                </div>
-                <hr />
+            </div>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Форхенд</p>
+                <p className={s.rightColumn}>{forhand_pad}</p>
               </div>
-            </>
-          )}
-      
+            </div>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Бекхэнд</p>
+                <p className={s.rightColumn}>{backhand_pad}</p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       {location.pathname === "/edit-my-profile" && (
         <>
           <div className={s.header}>
-            <img src={pad} alt="edite_pen" />
             <h3>Ракетка</h3>
           </div>
           <div className={s.wrapper}>
@@ -77,18 +79,18 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
               <div className={s.inpItem}>
                 <span className={`${s.leftColumn}`}>Форхенд</span>
                 <input
-                value={forhand_pad}
-                // ref={racketForhandInput}
-                onChange={handlerChangeRacketForhand}
-              />
+                  value={forhand_pad}
+                  // ref={racketForhandInput}
+                  onChange={handlerChangeRacketForhand}
+                />
               </div>
               <div className={s.inpItem}>
                 <span className={`${s.leftColumn}`}>Бекхенд</span>
                 <input
-                value={backhand_pad}
-                // ref={racketBackhandInput}
-                onChange={handlerChangeRacketBackhand}
-              />
+                  value={backhand_pad}
+                  // ref={racketBackhandInput}
+                  onChange={handlerChangeRacketBackhand}
+                />
               </div>
             </div>
           </div>

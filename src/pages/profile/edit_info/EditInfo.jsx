@@ -48,7 +48,7 @@ function EditInfo(props) {
   return (
     <div className={`${s.EditInfo}`}>
       <div className={`${s.headerContainer}`}>
-        <Header headName="Редактировать" right={"/profile"} />
+        <Header headName="Редактировать" exit={"/profile"} />
 
         <MainInfo
           avatar={avatarPath}

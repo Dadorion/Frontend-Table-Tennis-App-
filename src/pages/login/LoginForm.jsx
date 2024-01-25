@@ -8,7 +8,7 @@ import {
   minLengthCreator,
 } from "../../utils/validators/validators";
 import Input from "../../UI/FormControls/FormControls";
-import Button from "../../UI/Button/Button";
+import Button from "../../UI/Buttons/Button/Button";
 
 const maxLength30 = maxLengthCreator(30);
 const minLength4 = minLengthCreator(4);

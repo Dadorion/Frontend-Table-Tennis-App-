@@ -11,12 +11,20 @@
 
 .header {
    display: flex;
-   margin-top: 36px;
+   margin-top: 24px;
 }
 
 .Equipment img {
    width: 21px;
    height: 21px;
+}
+
+.leftColumn {
+   opacity: 0.6;
+}
+
+.rightColumn {
+   text-align: right;
 }
 
 .hardInfo {
@@ -26,16 +34,37 @@
    justify-content: space-between;
 }
 
-.hardInfo div {
+.hardInfo {
+   margin-top: 24px;
    display: flex;
-   margin-top: 12px;
-   justify-content: space-between;
+   flex-direction: column;
+   justify-content: center;
 }
 
-hr {
-   margin-top: 12px;
-   stroke-width: 1px;
-   stroke: rgba(51, 51, 51, 0.10);
+.item {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 4px;
+}
+
+.item:not(:first-child) {
+   margin-top: 8px;
+}
+
+.item>div {
+   display: flex;
+   justify-content: space-between;
+   /* background-color: green; */
+}
+
+.item::after {
+   content: '';
+   height: 2px;
+   margin-top: 8px;
+
+   -webkit-box-shadow: 0px 1px 0px 0px rgba(51, 51, 51, 0.10);
+   -moz-box-shadow: 0px 1px 0px 0px rgba(51, 51, 51, 0.10);
+   box-shadow: 0px 1px 0px 0px rgba(51, 51, 51, 0.10);
 }
 
 .inpItem {
@@ -59,16 +88,9 @@ hr {
    background: rgba(135, 168, 178, 0.20);
    box-shadow: 0px 1px 8px 0px rgba(51, 51, 51, 0.20) inset;
 
-   color: var(--Basic-text, #333);
-
-   /* Paragraph/semibold */
-   font-family: Open Sans;
-   font-size: 16px;
-   font-style: normal;
-   font-weight: 600;
-   line-height: normal;
    opacity: 0.6;
 }
+
 .wrapper {
    margin-top: 8px;
 }

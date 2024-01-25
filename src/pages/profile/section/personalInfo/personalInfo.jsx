@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./personalInfo.module.css";
-import pad from "../../../../icons/svg/pad.svg";
 import { useLocation } from "react-router-dom";
 import {
   changeCity,
@@ -14,9 +13,8 @@ function PersonalInfo({ city, region, birthday, percentOfWin }) {
 
   const ageNum = new Date().getFullYear() - new Date(birthday).getFullYear();
   function age(ageNum) {
-
-    const lastNum = ageNum.toString().split('').pop()
-    let word
+    const lastNum = ageNum.toString().split("").pop();
+    let word;
 
     if (ageNum === 0 || ageNum === 11) {
       word = "лет";
@@ -31,7 +29,7 @@ function PersonalInfo({ city, region, birthday, percentOfWin }) {
     } else if (lastNum === 0) {
       word = "лет";
     }
-    return `${ageNum} ${word}`
+    return `${ageNum} ${word}`;
   }
 
   const birthdayDate = `${new Date(birthday).getDate()}.${
@@ -57,48 +55,50 @@ function PersonalInfo({ city, region, birthday, percentOfWin }) {
       {location.pathname === "/profile" && (
         <>
           <div>
-            <img src={pad} alt="edit_pen" />
             <h3>Информация</h3>
           </div>
-          <div className={`${s.hardInfo}`}>
-            {/* <div className={s.wrapper}> */}
-            <div>
-              <span className={`${s.leftColumn}`}>Город</span>
-              <span className={`${s.rightColumn}`}>{city}</span>
+
+          <div className={s.hardInfo}>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Город</p>
+                <p className={s.rightColumn}>{city}</p>
+              </div>
             </div>
-            <hr />
-            <div>
-              <span className={`${s.leftColumn}`}>Область</span>
-              <span className={`${s.rightColumn}`}>{region}</span>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Область</p>
+                <p className={s.rightColumn}>{region}</p>
+              </div>
             </div>
-            <hr />
-            <div>
-              <span className={`${s.leftColumn}`}>Возраст</span>
-              <span className={`${s.rightColumn}`}>{age(ageNum)}</span>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Возраст</p>
+                <p className={s.rightColumn}>{age(ageNum)}</p>
+              </div>
             </div>
-            <hr />
-            <div>
-              <span className={`${s.leftColumn}`}>Пол</span>
-              <span className={`${s.rightColumn}`}>{"мужской"}</span>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Пол</p>
+                <p className={s.rightColumn}>{"мужской"}</p>
+              </div>
             </div>
-            <hr />
-            <div>
-              <span className={`${s.leftColumn}`}>Процент побед</span>
-              <span className={`${s.rightColumn}`}>{percentOfWin}%</span>
+            <div className={s.item}>
+              <div>
+                <p className={s.leftColumn}>Процент побед</p>
+                <p className={s.rightColumn}>{percentOfWin}%</p>
+              </div>
             </div>
-            <hr />
-            {/* </div> */}
           </div>
         </>
       )}
       {location.pathname === "/edit-my-profile" && (
         <>
           <div>
-            <img src={pad} alt="edit_pen" />
             <h3>Информация</h3>
           </div>
           <div className={s.inpCity}>
-            <span className={`${s.leftColumn}`}>Город</span>
+            <p className={s.leftColumn}>Город</p>
             <input
               value={`${city}, ${region}`}
               onChange={handlerChangeCityRegion}
@@ -106,11 +106,11 @@ function PersonalInfo({ city, region, birthday, percentOfWin }) {
           </div>
           <div className={s.birthday_gender}>
             <div className={s.inpBirthday}>
-              <span className={`${s.leftColumn}`}>Дата рождения</span>
+              <p className={s.leftColumn}>Дата рождения</p>
               <input value={birthdayDate} onChange={handlerChangeBirthday} />
             </div>
             <div className={s.inpGender}>
-              <span className={`${s.leftColumn}`}>Пол</span>
+              <p className={s.leftColumn}>Пол</p>
               <select id="gender" name="gender">
                 <option value="male">мужской</option>
                 <option value="female">женский</option>

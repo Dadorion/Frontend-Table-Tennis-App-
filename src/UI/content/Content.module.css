@@ -1,11 +1,11 @@
-.Content {
-  overflow: auto;
-}
-.ContentWithTapbar{
+.ContentWithTabbar {
+  position: relative;
   overflow: auto;
   height: calc(100vh - 80px);
 }
-.ContentWithoutTapbar{
+
+.ContentWithoutTabbar {
+  position: relative;
   overflow: auto;
   height: calc(100vh - 10px);
 }

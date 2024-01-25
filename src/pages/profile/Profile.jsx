@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import s from "./Profile.module.css";
 // import ProfileInfo from './profile_info/ProfileInfo';
 // import PreloaderBall from '../../UI/preloader/PreloaderBall';
-import exit from "../../icons/svg/exit.svg";
-import airplane from "../../icons/svg/airplane.svg";
 import MainInfo from "./section/mainInfo/mainInfo";
 import PersonalInfo from "./section/personalInfo/personalInfo";
 import EquipmentInfo from "./section/equipmentInfo/equipmentInfo";
@@ -12,6 +10,8 @@ import { getProfile } from "../../redux/profile-reducer";
 import { logoutTC } from "../../redux/auth-reduser";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../UI/header/header";
+import CustomButton from "../../UI/Buttons/CustomButton/CustomButton";
+import ChangePasswordPopup from "../../UI/ChangePassword_popup/ChangePassword_popup";
 
 function Profile(props) {
   // if (!props.profile) {
@@ -24,6 +24,7 @@ function Profile(props) {
   // }
   const dispatch = useDispatch();
   const [exitQwest, setExitQwest] = useState(false);
+  const [changePassQwest, setChangePassQwest] = useState(true);
 
   const profile = useSelector((state) => state.profileReducer.profile);
   const newProfileData = useSelector(
@@ -31,7 +32,11 @@ function Profile(props) {
   );
 
   const handleExit = () => {
-    setExitQwest(!exitQwest);
+    // setExitQwest(!exitQwest);
+    window.alert('hop')
+  };
+  const handleChangePass = () => {
+    setChangePassQwest(!changePassQwest);
   };
 
   useEffect(() => {
@@ -48,7 +53,7 @@ function Profile(props) {
   return (
     <div className={`${s.Profile}`}>
       <div className={`${s.headerContainer}`}>
-        <Header headName="Мой профиль" left={"/edit-my-profile"} right={"/"} />
+        <Header headName="Мой профиль" edit={"/edit-my-profile"} />
 
         <MainInfo
           avatar={avatarPath}
@@ -73,19 +78,14 @@ function Profile(props) {
           backhand_pad={profile && profile.backhand_pad}
         />
         <div className={s.manageBlock}>
-          <div className={s.exitButton} onClick={handleExit}>
-            <img src={exit} alt="exit" />
-            Выйти из профиля
-          </div>
-
-          <div className={s.bugReport}>
-            <img src={airplane} alt="exit" />
-            {/*TODO прописать на бэке и добавить таблицу в БД  */}
-            <span>Сообщить об ошибке</span>
-          </div>
+          <h3>Настройки</h3>
+          <CustomButton btnName={'Сообщить об ошибке'} handler={handleExit}/>
+          <CustomButton btnName={'Сменить пароль'} handler={handleChangePass}/>
+          <CustomButton btnName={'Выйти из профиля'} handler={handleExit}/>
         </div>
 
         <ConfirmPopUp qwest={exitQwest} setQwest={setExitQwest} TC={logoutTC} />
+        <ChangePasswordPopup qwest={changePassQwest} setQwest={setChangePassQwest} />
       </div>
     </div>
   );

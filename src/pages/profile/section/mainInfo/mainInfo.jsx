@@ -16,20 +16,10 @@ function MainInfo({ name, surname, status, avatar }) {
   const dispatch = useDispatch();
   const [editStatus, setEditStatus] = useState(false);
 
-  // TODO забрать полезный код для отображения размера файла
-  // function returnFileSize(number) {
-  //   if (number < 1024) {
-  //     return `${number} bytes`;
-  //   } else if (number >= 1024 && number < 1048576) {
-  //     return `${(number / 1024).toFixed(1)} KB`;
-  //   } else if (number >= 1048576) {
-  //     return `${(number / 1048576).toFixed(1)} MB`;
-  //   }
-  // }
-
   const handlerChangeName = (e) => {
     const text = e.target.value;
     dispatch(changeName(text));
+    // TODO не работает. проверить
   };
   const handlerChangeSurname = (e) => {
     const text = e.target.value;
@@ -59,14 +49,14 @@ function MainInfo({ name, surname, status, avatar }) {
 
               <div className={`${s.name_status}`}>
                 <div className={`${s.name}`}>
-                  <h1>
+                  <h2>
                     {name} {surname}
-                  </h1>
+                  </h2>
                 </div>
                 {!editStatus && (
-                  <div className={`${s.status}`} onClick={handleEditStatus}>
-                    {status || "Я играю в настольный теннис"}
-                  </div>
+                  <span className={`${s.status}`} onClick={handleEditStatus}>
+                    {status || "Нажми, чтобы изменить свой статус"}
+                  </span>
                 )}
                 {editStatus && (
                   <input

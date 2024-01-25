@@ -7,7 +7,7 @@ import {
 } from "../../utils/validators/validators"
 import Input from "../../UI/FormControls/FormControls"
 import { ReactComponent as ArrowIcon } from "../../icons/Back.svg"
-import Button from "../../UI/Button/Button"
+import Button from "../../UI/Buttons/Button/Button";
 import s from "./Registration.module.css"
 import sFC from "../../UI/FormControls/FormControls.module.css"
 

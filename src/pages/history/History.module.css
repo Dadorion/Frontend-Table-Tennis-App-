@@ -9,17 +9,9 @@
   background: var(--Main-dark, #123741);
 }
 
-.header {
-
-  color: var(--Background, #FFF);
+.History h3 {
+  color: var(--Background);
   text-align: center;
-
-  /* Heading 3/regular */
-  font-family: Open Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .filter {

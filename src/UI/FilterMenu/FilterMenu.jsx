@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./FilterMenu.module.css";
 import cros from "../../icons/svg/cros.svg";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button/Button";
 import { useDispatch } from "react-redux";
 import {
   setRivals,

@@ -1,9 +1,7 @@
 import s from "./Tabbar.module.css";
-import statsIcon from "../../icons/svg/stats.svg";
-import userIcon from "../../icons/svg/users.svg";
-import historyIcon from "../../icons/svg/history.svg";
-import homeIcon from "../../icons/svg/home.svg";
-import plusIcon from "../../icons/svg/plus.svg";
+import profileIcon from "../../icons/svg_pack/Black/Light/User_light.svg";
+import homeIcon from "../../icons/svg_pack/Black/Regular/House.svg";
+import plusIcon from "../../icons/svg_pack/Black/Regular/AddCircle.svg";
 import { Link, useLocation } from "react-router-dom";
 
 function Tabbar(props) {
@@ -13,35 +11,26 @@ function Tabbar(props) {
     <>
       {location.pathname !== "/edit-my-profile" && (
         <div className={s.Tabbar}>
-          <div className={location.pathname === "/" ? s.active : ""}>
+          <div className={location.pathname === "/" ? s.active : s.disactive}>
             <Link to="/">
-              <img src={homeIcon} alt="home_icon" />
+              <img src={homeIcon} alt="homeIcon" />
             </Link>
-            <span>Главная</span>
+            <font>Главная</font>
           </div>
-          <div className={location.pathname === "/reports" ? s.active : ""}>
-            <Link to="/reports">
-              <img src={statsIcon} alt="stats_icon" />
-            </Link>
-            <span>Отчеты</span>
-          </div>
-          <div className={location.pathname === "/counter" ? s.active : ""}>
+          
+          <div className={location.pathname === "/counter" ? s.active : s.disactive}>
             <Link to="/counter">
-              <img src={plusIcon} alt="plus_icon" />
+              <img src={plusIcon} alt="plusIcon" className={s.plusIcon}/>
             </Link>
-            <span>Счетчик</span>
+            <font>Счёт</font>
           </div>
-          <div className={location.pathname === "/history" ? s.active : ""}>
-            <Link to="/history">
-              <img src={historyIcon} alt="history_icon" />
+          
+          <div className={location.pathname === "/users" ? s.active : s.disactive}>
+            <Link to="/profile">
+              <img src={profileIcon} alt="profileIcon" />
             </Link>
-            <span>История</span>
-          </div>
-          <div className={location.pathname === "/users" ? s.active : ""}>
-            <Link to="/users">
-              <img src={userIcon} alt="users_icon" />
-            </Link>
-            <span>Игроки</span>
+            
+            <font>Профиль</font>
           </div>
         </div>
       )}

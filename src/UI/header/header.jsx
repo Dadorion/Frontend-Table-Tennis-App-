@@ -1,21 +1,23 @@
 import React from "react";
 import s from "./header.module.css";
 import { Link } from "react-router-dom";
-import edit_pen_w from "../../icons/svg/edit_pen_w.svg";
-import cros_w from "../../icons/svg/cros_w.svg";
+import editIcon from "../../icons/svg_pack/White/Light/Edit.svg";
+import backIcon from "../../icons/svg_pack/White/Regular/ArrowLeft.svg"
+import checkIcon from "../../icons/svg_pack/White/Regular/Check.svg"
 
 function Header(props) {
   return (
     <div className={s.header}>
-      <Link to={props.left}>
+      <Link to={props.exit}>
         <div className={s.tapArea}>
-          {props.left && <img src={edit_pen_w} alt="edit_pen" />}
+          {props.exit && <img src={backIcon} alt="backIcon" />}
         </div>
       </Link>
-      <span>{props.headName || 'заголовок'}</span>
-      <Link to={props.right}>
+      <p>{props.headName || 'заголовок'}</p>
+      <Link to={props.edit}>
         <div className={s.tapArea}>
-          {props.right && <img src={cros_w} alt="cros_w" />}
+          {props.edit && <img src={editIcon} alt="edit_pen" />}
+          {props.confirm && <img src={checkIcon} alt="checkIcon" />}
         </div>
       </Link>
     </div>

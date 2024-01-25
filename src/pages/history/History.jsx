@@ -30,7 +30,7 @@ function History(props) {
   return (
     <div className={s.History}>
       <div className={s.header}>
-        <span>История встреч</span>
+        <h3>История встреч</h3>
       </div>
       <div className={`${s.filter}`}>
           <div className={`${s.sorter}`}>

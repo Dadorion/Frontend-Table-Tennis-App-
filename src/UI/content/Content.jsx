@@ -17,7 +17,7 @@ import HistoryContainer from "../../pages/history/HistoryContainer";
 function Content(props) {
   const location = useLocation();
   return (
-    <div className={location.pathname !== "/edit-my-profile" ? s.ContentWithTapbar : s.ContentWithoutTapbar}>
+    <div className={location.pathname !== "/edit-my-profile" ? s.ContentWithTabbar : s.ContentWithoutTabbar}>
       <Routes>
         <Route path="/" element={<HomePageContainer />} />
         <Route path="/profile/:userId" element={<ProfileContainer />} />
