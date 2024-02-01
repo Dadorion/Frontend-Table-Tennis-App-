@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import s from "./Home_page.module.css";
-import HeadMenu from "../../UI/HeadMenu/HeadMenu";
 import greyCirclIcon from "../../icons/svg/grey_circl.svg";
 
 function HomePage(props) {
   return (
     <div className={`${s.Home_page}`}>
-      {/* <HeadMenu user={props.user} /> */}
+
       <h1>Твои успехи за неделю</h1>
       <h2>В сравнении с предыдущей</h2>
       <div className={s.chartLegend}>

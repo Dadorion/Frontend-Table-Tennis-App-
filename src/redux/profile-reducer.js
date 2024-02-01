@@ -14,20 +14,13 @@ let initialState = {
     backhand_pad: "",
     photoUrl: "",
   },
+  newPasswordData: {
+    oldPassword: "",
+    newPasswordOne: "",
+    newPasswordTwo: "",
+  },
+  isChangedPassword: false,
 };
-
-// const profile = {
-//   name: "Антон",
-//   surname: "Бабенко",
-//   status: "Мой примой статус.",
-//   city: "Калининград",
-//   region: "Калининградская область",
-//   birthday: "1987-11-07T20:00:00.000Z",
-//   base: "Китайская",
-//   forhand_pad: "Тоже китайская липучка",
-//   backhand_pad: "Европейский полутензер",
-//   percentOfWin: 50,
-// };
 
 // ----------reduser's types----------
 const SET_MY_PROFILE = "SET_MY_PROFILE";
@@ -42,6 +35,10 @@ const CHANGE_RACKET_BASE = "CHANGE_RACKET_BASE";
 const CHANGE_RACKET_FORHAND = "CHANGE_RACKET_FORHAND";
 const CHANGE_RACKET_BACKHAND = "CHANGE_RACKET_BACKHAND";
 const CHANGE_PHOTO = "CHANGE_PHOTO";
+const CHANGE_OLD_PASSWORD = "CHANGE_OLD_PASSWORD";
+const CHANGE_NEW_PASSWORD_ONE = "CHANGE_NEW_PASSWORD_ONE";
+const CHANGE_NEW_PASSWORD_TWO = "CHANGE_NEW_PASSWORD_TWO";
+const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 
 // ----------action creaters----------
 export function setMyProfile(profile) {
@@ -80,6 +77,18 @@ export function changeRacketBackhand(text) {
 }
 export function changePhoto(url) {
   return { type: CHANGE_PHOTO, payload: url };
+}
+export function changeOldPassword(text) {
+  return { type: CHANGE_OLD_PASSWORD, payload: text };
+}
+export function changeNewPasswordOne(text) {
+  return { type: CHANGE_NEW_PASSWORD_ONE, payload: text };
+}
+export function changeNewPasswordTwo(text) {
+  return { type: CHANGE_NEW_PASSWORD_TWO, payload: text };
+}
+export function changePasswordSuccess() {
+  return { type: CHANGE_PASSWORD_SUCCESS };
 }
 
 // ----------thunck creaters----------
@@ -122,6 +131,23 @@ export function saveStatus(status) {
       dispatch(setMyProfile(newProfile));
     } catch (error) {
       console.error("Error fetching profile:", error);
+    }
+  };
+}
+export function changePassword(newPasswordData) {
+  console.log(newPasswordData);
+  return async (dispatch) => {
+    try {
+      const responce = await profileAPI.updatePassword(newPasswordData);
+      if (responce.code !== 0) {
+        throw Error("Запись нового профиля в БД не удалась");
+      }
+      dispatch(changeOldPassword(""));
+      dispatch(changeNewPasswordOne(""));
+      dispatch(changeNewPasswordTwo(""));
+      dispatch(changePasswordSuccess());
+    } catch (error) {
+      console.error("Error changing password:", error);
     }
   };
 }
@@ -226,6 +252,36 @@ function profileReducer(state = initialState, action) {
           ...state.newProfileData,
           backhand_pad: action.payload,
         },
+      };
+    case CHANGE_OLD_PASSWORD:
+      return {
+        ...state,
+        newPasswordData: {
+          ...state.newPasswordData,
+          oldPassword: action.payload,
+        },
+      };
+    case CHANGE_NEW_PASSWORD_ONE:
+      return {
+        ...state,
+        newPasswordData: {
+          ...state.newPasswordData,
+          newPasswordOne: action.payload,
+        },
+      };
+    case CHANGE_NEW_PASSWORD_TWO:
+      return {
+        ...state,
+        newPasswordData: {
+          ...state.newPasswordData,
+          newPasswordTwo: action.payload,
+        },
+      };
+    case CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        isChangedPassword: true,
+        
       };
     default:
       return state;

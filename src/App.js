@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reduser';
 import { withRouter } from './redux/withRouter';
-import Preloader from './UI/preloader/PreloaderBall';
+import LoaderSVG from "../src/UI/SpinerPreloader/Spiner";
 
 class App extends React.Component {
 
@@ -15,11 +15,12 @@ class App extends React.Component {
   
   render() {
     if (!this.props.initialized) {
-      return <Preloader />
+      return <LoaderSVG /> 
     }
 
     return (
       <div className="App">
+        {/* <LoaderSVG />  */}
         <Content />
       </div>
     );

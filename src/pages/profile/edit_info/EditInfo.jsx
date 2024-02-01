@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import s from "./EditInfo.module.css";
-import exit from "../../../icons/svg/exit.svg";
-import airplane from "../../../icons/svg/airplane.svg";
 import MainInfo from "../section/mainInfo/mainInfo";
 import PersonalInfo from "../section/personalInfo/personalInfo";
 import EquipmentInfo from "../section/equipmentInfo/equipmentInfo";
@@ -48,7 +46,7 @@ function EditInfo(props) {
   return (
     <div className={`${s.EditInfo}`}>
       <div className={`${s.headerContainer}`}>
-        <Header headName="Редактировать" exit={"/profile"} />
+        <Header headName="Редактировать" exit={"/profile"} confirm={handleSave} />
 
         <MainInfo
           avatar={avatarPath}
@@ -93,18 +91,6 @@ function EditInfo(props) {
               : props.profile.backhand_pad
           }
         />
-        <div className={s.manageBlock}>
-          <div className={s.exitButton} onClick={handleSave}>
-            <img src={exit} alt="exit" />
-            Сохранить
-          </div>
-
-          <div className={s.bugReport}>
-            <img src={airplane} alt="exit" />
-            {/*TODO прописать на бэке и добавить таблицу в БД  */}
-            <span>Сообщить об ошибке</span>
-          </div>
-        </div>
 
         <ConfirmPopUp
           saveQwest={saveQwest}

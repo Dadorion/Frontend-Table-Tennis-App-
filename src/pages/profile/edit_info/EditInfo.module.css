@@ -34,13 +34,7 @@ h3 {
   margin-right: 8px;
 }
 
-.manageBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 24px;
-  padding: 0 16px;
-}
+
 
 .exitButton {
   display: flex;
@@ -61,22 +55,3 @@ h3 {
   font-weight: 400;
   line-height: normal;
 }
-
-.bugReport {
-  display: inline-flex;
-  padding: 0px 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  margin-bottom: 24px;
-
-  color: var(--Basic-text, #333);
-  font-family: Open Sans;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-decoration-line: underline;
-}
-

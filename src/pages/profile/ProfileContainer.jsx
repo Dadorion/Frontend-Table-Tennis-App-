@@ -17,6 +17,7 @@ function mapStateToProps(state) {
   return {
     profile: state.profileReducer.profile,
     newProfileData: state.profileReducer.newProfileData,
+    newPasswordData: state.profileReducer.newPasswordData,
   };
 }
 export default compose(

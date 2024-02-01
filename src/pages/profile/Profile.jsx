@@ -24,7 +24,7 @@ function Profile(props) {
   // }
   const dispatch = useDispatch();
   const [exitQwest, setExitQwest] = useState(false);
-  const [changePassQwest, setChangePassQwest] = useState(true);
+  const [changePassQwest, setChangePassQwest] = useState(false);
 
   const profile = useSelector((state) => state.profileReducer.profile);
   const newProfileData = useSelector(
@@ -33,7 +33,7 @@ function Profile(props) {
 
   const handleExit = () => {
     // setExitQwest(!exitQwest);
-    window.alert('hop')
+    window.alert("hop");
   };
   const handleChangePass = () => {
     setChangePassQwest(!changePassQwest);
@@ -47,8 +47,8 @@ function Profile(props) {
   if (!profile) {
     return <div>Загрузка...</div>;
   }
-  const avatar = profile.photo_path
-  const avatarPath = `http://localhost:5000/${avatar}`
+  const avatar = profile.photo_path;
+  const avatarPath = `http://localhost:5000/${avatar}`;
 
   return (
     <div className={`${s.Profile}`}>
@@ -59,9 +59,7 @@ function Profile(props) {
           avatar={avatarPath}
           name={profile && profile.name}
           surname={profile && profile.surname}
-          status={
-            newProfileData  ? newProfileData.status : profile.status
-          }
+          status={newProfileData ? newProfileData.status : profile.status}
         />
       </div>
 
@@ -79,13 +77,17 @@ function Profile(props) {
         />
         <div className={s.manageBlock}>
           <h3>Настройки</h3>
-          <CustomButton btnName={'Сообщить об ошибке'} handler={handleExit}/>
-          <CustomButton btnName={'Сменить пароль'} handler={handleChangePass}/>
-          <CustomButton btnName={'Выйти из профиля'} handler={handleExit}/>
+          <CustomButton btnName={"Сообщить об ошибке"} handler={handleExit} />
+          <CustomButton btnName={"Сменить пароль"} handler={handleChangePass} />
+          <CustomButton btnName={"Выйти из профиля"} handler={handleExit} />
         </div>
 
         <ConfirmPopUp qwest={exitQwest} setQwest={setExitQwest} TC={logoutTC} />
-        <ChangePasswordPopup qwest={changePassQwest} setQwest={setChangePassQwest} />
+        <ChangePasswordPopup
+          qwest={changePassQwest}
+          setQwest={setChangePassQwest}
+          newPasswordData={props.newPasswordData}
+        />
       </div>
     </div>
   );

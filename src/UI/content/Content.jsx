@@ -9,15 +9,26 @@ import Registration from "../../pages/registration/RegistrationContainer";
 import AddMatch from "../../pages/add_match/AddMatch";
 import HomePageContainer from "../../pages/home_page/HomePageContainer";
 import Tabbar from "../../UI/Tabbar/Tabbar";
-import AvatarEditor from "../../pages/profile/avatar_editor/avatar_editor_react";
+import AvatarEditor from "../../pages/profile/avatar_editor/avatar_editor";
 import HistoryContainer from "../../pages/history/HistoryContainer";
 
 // UsersContainer = React.lazy(() => import('../../pages/users/UsersContainer'));
 
 function Content(props) {
   const location = useLocation();
+  const showTabbar = (path)=>{
+    const blockArr = ["/edit-my-profile", "/edit-photo"]
+    return blockArr.includes(path)
+  }
+  
   return (
-    <div className={location.pathname !== "/edit-my-profile" ? s.ContentWithTabbar : s.ContentWithoutTabbar}>
+    <div
+      className={
+        !showTabbar(location.pathname)
+          ? s.ContentWithTabbar
+          : s.ContentWithoutTabbar
+      }
+    >
       <Routes>
         <Route path="/" element={<HomePageContainer />} />
         <Route path="/profile/:userId" element={<ProfileContainer />} />

@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./CustomButton.module.css";
 import exitIcon from "../../../icons/svg_pack/Colored/SignOut_secondary_pink.svg";
 import changePassIcon from "../../../icons/svg_pack/Black/Regular/Key.svg";

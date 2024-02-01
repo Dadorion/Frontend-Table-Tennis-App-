@@ -1,112 +1,137 @@
 import React, { useState } from "react";
+import AvatarEditor from "react-avatar-editor";
+import Dropzone from "react-dropzone";
 import s from "./avatar_editor.module.css";
-import avatarAlt from "../../../icons/profile.png";
+import { useDispatch } from "react-redux";
+import { savePhoto } from "../../../redux/profile-reducer";
 
-const AvatarEditor = () => {
+const AvatarEditorComponent = () => {
+  const [image, setImage] = useState(null);
+  const [editor, setEditor] = useState(null);
   const [scale, setScale] = useState(1);
   const [rotation, setRotation] = useState(0);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [showDropzone, setShowDropzone] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const handleDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    if (file) {
+      setImage(file);
+      setShowDropzone(false);
+    }
+  };
+
+  const handleCancel = () => {
+    // history.push("/edit-my-profile");
+  };
 
   const handleScaleChange = (e) => {
     const newScale = parseFloat(e.target.value);
     setScale(newScale);
-    updatePreviewImage(newScale, rotation);
   };
 
   const handleRotationChange = (e) => {
     const newRotation = parseFloat(e.target.value);
     setRotation(newRotation);
-    updatePreviewImage(scale, newRotation);
+  };
+  const handleChooseNewPhoto = (e) => {
+    setImage(null);
+    setShowDropzone(true);
   };
 
-  const updatePreviewImage = (newScale, newRotation) => {
-    // Здесь вы можете использовать ваш компонент аватара и обновить его предварительный просмотр
-    // Например, создайте Canvas, нарисуйте на нем изображение с учетом масштаба и поворота
-    // и установите получившееся изображение в state previewImage
-  };
+  const handleSave = async () => {
+    if (editor) {
+      const canvas = editor.getImageScaledToCanvas();
+      const editedImage = canvas.toDataURL();
 
-  const handleSave = () => {
-    // Отправьте previewImage на сервер
-    // Например, используйте API запрос с библиотекой axios или fetch
-    // После успешного сохранения обновите изображение в профиле пользователя
+      if (editedImage) {
+        const blob = await fetch(editedImage).then((res) => res.blob());
+        const file = new File([blob], "avatar.png", { type: "image/png" });
+
+        const fileFD = new FormData();
+        fileFD.append("avatar", file);
+
+        dispatch(savePhoto(fileFD));
+      }
+    }
   };
 
   return (
-    <div className={s.AvatarEditor}>
-      <div>
-        <label htmlFor="scale">Масштаб:</label>
-        <input
-          type="range"
-          id="scale"
-          name="scale"
-          min="1"
-          max="3"
-          step="0.1"
-          value={scale}
-          onChange={handleScaleChange}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="rotation">Поворот:</label>
-        <input
-          type="range"
-          id="rotation"
-          name="rotation"
-          min="-180"
-          max="180"
-          step="1"
-          value={rotation}
-          onChange={handleRotationChange}
-        />
-      </div>
-
-      <div>
-        {/* Здесь вы можете использовать ваш компонент аватара и передать ему значения scale и rotation */}
-        <img
-          src={avatarAlt}
-          alt="Аватар"
-          style={{
-            transform: `scale(${scale}) rotate(${rotation}deg)`,
-            // Добавьте другие стили, если необходимо
-          }}
-        />
-      </div>
-
-      {previewImage && (
-        <div>
-          <p>Предварительный просмотр:</p>
-          <img
-            src={previewImage}
-            alt="Предварительный просмотр"
-            style={{
-              maxWidth: "100%",
-              maxHeight: "300px", // Ограничение по высоте
-            }}
-          />
+    <div className={s.avatarEditorContainer}>
+      {showDropzone && (
+        <div className={s.dropzoneWrapper}>
+          <Dropzone onDrop={handleDrop}>
+            {({ getRootProps, getInputProps }) => (
+              <div
+                {...getRootProps()}
+                className={s.dropzone}
+                style={dropzoneStyle}
+              >
+                <input {...getInputProps()} />
+                <p>Нажмите, чтобы выбрать фото</p>
+              </div>
+            )}
+          </Dropzone>
+          <button>Назад</button>but
         </div>
       )}
 
-      <button onClick={handleSave}>Сохранить</button>
-      <div
-        className={s.backgroundPopup}
-        // onClick={handleChangePhoto}
-      >
-        <div className={s.loadPopup}>
-          <span>Загрузить фото</span>
-          <label htmlFor="avatar">
-            Выбрать файл
-          </label>
+      {image && (
+        <div className={s.editorWrapper}>
+          <label htmlFor="scale">Scale:</label>
           <input
-            type="file"
-            id="avatar"
-            accept=".png, .jpg, .jpeg"
-            // onChange={handleFileChange}
+            type="range"
+            id="scale"
+            min="1"
+            max="2"
+            step="0.01"
+            value={scale}
+            onChange={handleScaleChange}
           />
+
+          <label htmlFor="rotation">Rotation:</label>
+          <input
+            type="range"
+            id="rotation"
+            min="-90"
+            max="90"
+            step="1"
+            value={rotation}
+            onChange={handleRotationChange}
+          />
+
+          <AvatarEditor
+            ref={(editorInstance) => setEditor(editorInstance)}
+            image={image}
+            width={250}
+            height={250}
+            border={50}
+            color={[255, 255, 255, 0.6]}
+            scale={scale}
+            rotate={rotation}
+          />
+
+          <button onClick={handleSave}>Сохранить</button>
+          <button onClick={handleChooseNewPhoto}>Выбрать другое фото</button>
+          <button onClick={handleCancel} className={s.cancelBtn}>Отменить</button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
 
-export default AvatarEditor;
+const dropzoneStyle = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "200px",
+  height: "200px",
+  border: "1px dashed #76767A",
+  borderRadius: "12px",
+  cursor: "pointer",
+  padding: "89px 27px",
+};
+
+export default AvatarEditorComponent;

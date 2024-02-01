@@ -123,4 +123,16 @@ export const profileAPI = {
       throw error;
     }
   },
+  async updatePassword(newPasswordData) {
+    try {
+      const response = await instance.put(`auth/update_my_password`, {
+        newPasswordData,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при обновлении пароля: ", error);
+      
+      throw error;
+    }
+  },
 };
