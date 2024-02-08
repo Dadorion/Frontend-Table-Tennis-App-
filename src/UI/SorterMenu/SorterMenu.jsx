@@ -1,23 +1,14 @@
 import React from "react";
 import s from "./SorterMenu.module.css";
 
-function SorterMenu({handlesetSortMode}) {
-  const sortItems = [
-    "Последние",
-    "Частые",
-    "Давние",
-    "По алфавиту (А – Я)",
-    "По алфавиту (Я – А)",
-    "По победам (от большего)",
-    "По победам (от меньшего)",
-  ]
-  const items = sortItems.map(item => {
-    return (
-      <div>{item}</div>
-    )
-  })
+function SorterMenu({ list, handle }) {
+  
+  const items = list.map((item) => {
+    return <p key={item.id}>{item.name}</p>;
+  });
+
   return (
-    <div className={s.sortMenu} onClick={handlesetSortMode}>
+    <div className={s.sortMenu} onClick={handle}>
       {items}
     </div>
   );

@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, legacy_createStore as createStore, compose } from "redux";
 import profileReducer from './profile-reducer';
+import playersReducer from './players-reducer';
 import gameReducer from './game-reducer';
 import usersReducer from './users-reducer';
 import authReducer from './auth-reduser';
@@ -12,6 +13,7 @@ import { reducer as formReducer } from "redux-form";
 
 let redusers = combineReducers({
    profileReducer,
+   playersReducer,
    gameReducer,
    usersReducer,
    registrationReducer,

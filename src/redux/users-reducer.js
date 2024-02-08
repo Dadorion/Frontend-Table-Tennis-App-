@@ -3,7 +3,8 @@ import { usersAPI } from "../api/api";
 const initialState = {
   users: null,
   findUserName: "",
-  pageSize: 10,
+
+  pageSize: 5,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
@@ -26,6 +27,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE-IS-FOLLOWING-PROGRESS";
 const PLUS_PAGE_COUNTER = "PLUS-PAGE-COUNTER";
 const CICLE_PAGE_COUNTER = "CICLE-PAGE-COUNTER";
 const SET_FIND_USER_NAME = "SET_FIND_USER_NAME";
+
 
 // ----------action creaters----------
 export function followSuccess(id) {
@@ -58,6 +60,7 @@ export function CiclePagesFunc(cicle) {
 export function setFindUserName(text) {
   return { type: SET_FIND_USER_NAME, text };
 }
+
 
 // ----------thunck creaters----------
 const followUnfollowFlow = async (

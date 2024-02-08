@@ -20,22 +20,6 @@
   padding-top: 24px;
 }
 
-h3 {
-  color: var(--Basic-text, #333);
-  grid-column: 2;
-
-  /* Heading 3/semibold */
-  font-family: Open Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-
-  margin-right: 8px;
-}
-
-
-
 .exitButton {
   display: flex;
   padding: 18px 24px;

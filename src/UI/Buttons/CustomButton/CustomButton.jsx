@@ -3,19 +3,37 @@ import s from "./CustomButton.module.css";
 import exitIcon from "../../../icons/svg_pack/Colored/SignOut_secondary_pink.svg";
 import changePassIcon from "../../../icons/svg_pack/Black/Regular/Key.svg";
 import reportIcon from "../../../icons/svg_pack/Black/Regular/Callback.svg";
+import checkIcon from "../../../icons/svg_pack/White/Regular/Check.svg"
+import deleteIcon from "../../../icons/svg_pack/Colored/Delete.svg"
 
 function CustomButton({ btnName, handler }) {
-  let icon, color;
+  let icon, colorText, style;
   switch (btnName) {
     case "Выйти из профиля":
       icon = exitIcon;
-      color = s.pink;
+      colorText = s.pink;
+      style = s.CustomButton
       break;
     case "Сменить пароль":
       icon = changePassIcon;
+      style = s.CustomButton
       break;
     case "Сообщить об ошибке":
       icon = reportIcon;
+      style = s.CustomButton
+      break;
+    case "Удалить игрока":
+      icon = deleteIcon;
+      colorText = s.pink;
+      style = s.CustomButton
+      break;
+    case "Готово":
+      icon = checkIcon;
+      style = s.CustomButtonDone;
+      break;
+    case "Добавить":
+      icon = checkIcon;
+      style = s.CustomButtonDone;
       break;
 
     default:
@@ -23,9 +41,9 @@ function CustomButton({ btnName, handler }) {
   }
 
   return (
-      <div className={s.CustomButton} onClick={handler}>
+      <div className={style} onClick={handler}>
         <img src={icon} alt="btn-icon" className={s.icon} />
-        <p className={color}>{btnName || "no props"}</p>
+        <p className={colorText}>{btnName || "no props"}</p>
       </div>
   );
 }

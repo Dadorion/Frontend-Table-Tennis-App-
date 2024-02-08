@@ -1,6 +1,6 @@
 import s from './Button.module.css'
 function Button(props) {
-    const { isDisabled, type, onClick, buttName } = props
+    const { isDisabled, type, handle, buttName } = props
     switch (buttName) {
         case 'Далее':
             return (
@@ -8,7 +8,7 @@ function Button(props) {
                     <button
                         disabled={isDisabled}
                         type={type || 'button'}
-                        onClick={onClick}
+                        onClick={handle}
                     >{buttName}</button>
                 </div>
             )

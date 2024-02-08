@@ -143,7 +143,7 @@ const RegistrationForm = (props) => {
                   <Button
                      buttName="Далее"
                      isDisabled={!props.valid}
-                     onClick={handleNextClick}
+                     handle={handleNextClick}
                   />
                ) : (
                   // <button type="submit" disabled={!props.valid} onClick={handleNextClick}>Зарегистрироваться</button>

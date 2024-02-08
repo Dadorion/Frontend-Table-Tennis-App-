@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./DayCard.module.css";
-import UserItem from "../../../UI/User_Item/User_item";
+import UserItem from "../../../UI/Player_Item/Player_Item";
 
 function DayCard(props) {
   if (!props.users) {

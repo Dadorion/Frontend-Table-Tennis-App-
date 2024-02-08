@@ -15,14 +15,12 @@ const minLength4 = minLengthCreator(4);
 
 function LoginForm(props) {
   const [isChecked, setIsChecked] = useState(true);
-  const prevProps = useRef(props); // Используем useRef для отслеживания предыдущих props
+  const prevProps = useRef(props); 
 
   useEffect(() => {
-    // Ваш код, зависящий от изменения props
     if (prevProps.current.someProp !== props.someProp) {
-      // Ваш код обработки изменения props
+      // Обработка изменения props
     }
-    
     // Обновляем prevProps после обработки
     prevProps.current = props;
     // eslint-disable-next-line react-hooks/exhaustive-deps

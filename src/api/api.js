@@ -69,7 +69,7 @@ export const usersAPI = {
   },
   async getUsersWithName(name) {
     try {
-      const response = await instance.post(`api/players`, {name});
+      const response = await instance.post(`api/players`, { name });
       return response.data.body;
     } catch (error) {
       console.error("Ошибка при запросе поиска по имени: ", error);
@@ -131,7 +131,42 @@ export const profileAPI = {
       return response.data;
     } catch (error) {
       console.error("Ошибка при обновлении пароля: ", error);
-      
+
+      throw error;
+    }
+  },
+};
+export const playerAPI = {
+  async addNewPlayer(name, surname) {
+    try {
+      const response = await instance.post(`api/players/add`, {
+        name,
+        surname,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при добавлении нового призрака: ", error);
+      throw error;
+    }
+  },
+  async getPlayers(page, pageSize, mode, direct ) {
+    try {
+      const response = await instance.get(`api/players`, {
+        params: { page, pageSize, mode, direct  },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при запросе за игроками: ", error);
+      throw error;
+    }
+  },
+  async getPlayersWithName(name) {
+    try {
+      const response = await instance.post(`api/players`, { name });
+      return response.data.body;
+    } catch (error) {
+      console.error("Ошибка при запросе поиска по имени: ", error);
       throw error;
     }
   },

@@ -1,4 +1,5 @@
 .EquipmentInfo {
+   --H: 40px;
    display: flex;
    padding: 0 calc(16px + 12px);
    flex-direction: column;
@@ -77,8 +78,8 @@
 
 .inpItem input {
    display: flex;
-   width: 328px;
-   height: 40px;
+   width: 100%;
+   height: var(--H);
    padding: 18px 12px;
    align-items: center;
    gap: 10px;

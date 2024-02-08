@@ -197,7 +197,6 @@ function profileReducer(state = initialState, action) {
         },
       };
     case CHANGE_STATUS:
-      // console.log(state.newProfileData.status);
       return {
         ...state,
         newProfileData: {

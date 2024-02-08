@@ -1,50 +1,27 @@
 import React from "react";
 import s from "./FinderInput.module.css";
-import cros from "../../icons/svg/cros.svg";
-import { useDispatch } from "react-redux";
-import {
-  requestUsers,
-  requestUsersWithName,
-  setFindUserNameTC,
-  setUsers,
-} from "../../redux/users-reducer";
+import closeIcon from "../../icons/svg_pack/Black/Light/Close_light.svg";
+import magnifierIcon from "../../icons/svg_pack/Black/Light/Search_light.svg";
 
-function FinderInput(props) {
-  const dispatch = useDispatch();
-
-  const handleClose = () => {
-    dispatch(setFindUserNameTC(""));
-    dispatch(setUsers([]));
-    dispatch(requestUsers(1, 10));
-  };
-  const handleOnCangeFind = (e) => {
-    const text = e.target.value.trim(); // Удаляем пробелы в начале и в конце
-
-    if (text === "") {
-      dispatch(setFindUserNameTC(""));
-      dispatch(setUsers([]));
-      dispatch(requestUsers(1, 10));
-    } else {
-      // Если есть текст, делаем запрос на пользователей с соответствующим именем
-      dispatch(setFindUserNameTC(text));
-      setTimeout(() => {
-        dispatch(requestUsersWithName(text));
-      }, 300);
-    }
-  };
+function FinderInput({value, handleOnChange, placeholder, handleReset}) {
+  
 
   return (
     <div className={s.FinderInput}>
-      <input
-        name="findUserName"
-        type="text"
-        placeholder="начните вводить имя"
-        value={props.findUserName}
-        onChange={handleOnCangeFind}
-      />
-      <div className={s.cros} onClick={handleClose}>
-        <img src={cros} alt="cros" />
+      <img src={magnifierIcon} className={s.magnifier} alt="magnifierIcon" />
+      <div className={s.inputWrap}>
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={value}
+          onChange={handleOnChange}
+        />
       </div>
+      {value && (
+        <div className={s.closeIcon} onClick={handleReset}>
+          <img src={closeIcon} alt="closeIcon" />
+        </div>
+      )}
     </div>
   );
 }

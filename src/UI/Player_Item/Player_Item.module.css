@@ -73,19 +73,33 @@
 }
 
 .tapContainer {
+   position: relative;
    display: flex;
    justify-content: center;
    width: 44px;
    height: 44px;
    padding: 8px;
-
-   border-radius: 8px;
-   border: 1px solid var(--Main-main, #385A64);
 }
 
+.editPlayerBtn {
+   position: absolute;
+   right: 0;
+   top: 33px;
 
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
 
+   border-radius: 12px;
+   padding: 12px 12px 12px 12px;
 
+   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+   background: var(--Light-grey);
+}
+
+.editPlayerBtn>p {
+   margin-left: 4px;
+}
 
 .subtitle {
    opacity: 0.5;

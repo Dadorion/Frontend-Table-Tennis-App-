@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import s from "./Content.module.css";
-import UsersContainer from "../../pages/users/UsersContainer";
+import UsersContainer from "../../pages/players/PlayersContainer";
 import Login from "../../pages/login/LoginContainer";
 import ProfileContainer from "../../pages/profile/ProfileContainer";
 import EditInfoContainer from "../../pages/profile/edit_info/EditInfoContainer";
