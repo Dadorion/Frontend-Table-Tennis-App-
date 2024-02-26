@@ -63,7 +63,7 @@ function Players(props) {
         key={player.id}
         name={player.name}
         surname={player.surname}
-        pers={player.winsPersent}
+        percent={player.winsPercent}
         photoPath={player.photo_path}
       />
     );

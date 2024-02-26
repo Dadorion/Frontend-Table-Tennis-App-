@@ -3,9 +3,9 @@ import "./App.css";
 import Content from "./UI/content/Content";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reduser";
+import { initializeApp } from "./redux/app-reducer";
 import { withRouter } from "./redux/withRouter";
-import LoaderSVG from "../src/UI/SpinerPreloader/Spiner";
+import LoaderSVG from "../src/UI/SpinnerPreloader/Spinner";
 
 class App extends React.Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class App extends React.Component {
       //   return <LoaderSVG />;
       // }, 1000);
       return <LoaderSVG />;
-      // TODO Уточнить, чтобы не мерцало 
+      // TODO Уточнить, чтобы не мерцало
     }
 
     return (

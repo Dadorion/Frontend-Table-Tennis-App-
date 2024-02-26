@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Registration.module.css";
 import RegistrationReduxForm from "./RegistrationForm";
 import { connect } from "react-redux";
-import { registrationTC } from "../../redux/registration-reduser";
+import { registrationTC } from "../../redux/registration-reducer";
 // import { Navigate } from 'react-router-dom';
 import loginImage from "../../assets/images/loginImage.jpg";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import s from "./ChangePassword_popup.module.css";
-import crosIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
+import closeIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
 import checkIcon from "../../assets/icons/svg_pack/White/Regular/Check.svg";
 import InputPassword from "../InputPassword/InputPassword";
 import {
@@ -34,20 +34,20 @@ function ChangePasswordPopup(props) {
     dispatch(changeNewPasswordTwo(text));
   };
   const handleCancel = () => {
-    props.setQwest(!props.qwest);
+    props.setQuest(!props.quest);
   };
-  const handleFogotPass = () => {
+  const handleForgotPass = () => {
     window.alert("Попей таблеток для памяти.");
   };
 
   return (
     <>
-      {props.qwest && (
+      {props.quest && (
         <div className={s.Popup}>
           <div className={s.container}>
-            <div className={s.cros}>
+            <div className={s.cross}>
               <div className={s.tapArea} onClick={handleCancel}>
-                <img src={crosIcon} alt="crosIcon" />
+                <img src={closeIcon} alt="closeIcon" />
               </div>
             </div>
 
@@ -59,7 +59,7 @@ function ChangePasswordPopup(props) {
                 handle={handleChangeOldPass}
               />
               <div>
-                <span onClick={handleFogotPass}>Забыли пароль?</span>
+                <span onClick={handleForgotPass}>Забыли пароль?</span>
               </div>
             </div>
             <div>

@@ -21,7 +21,7 @@ let initialState = {
   isFetching: false,
 };
 
-// ----------reduser's types----------
+// ----------reducers types----------
 const SET_PLAYERS = "players/SET-PLAYERS";
 const SET_NEW_NAME = "players/SET_NEW_NAME";
 const SET_NEW_SURNAME = "players/SET_NEW_SURNAME";
@@ -36,7 +36,7 @@ const SET_CURRENT_PAGE = "players/SET-CURRENT-PAGE";
 const SET_FIND_PLAYER_NAME = "players/SET_FIND_PLAYER_NAME";
 const SET_TOTAL_PLAYER_COUNT = "players/SET_TOTAL_PLAYER_COUNT";
 
-// ----------action creaters----------
+// ----------action creators----------
 export function setPlayers(players) {
   return { type: SET_PLAYERS, payload: players };
 }
@@ -77,18 +77,18 @@ export function setTotalPlayersCount(count) {
   return { type: SET_TOTAL_PLAYER_COUNT, payload: count };
 }
 
-// ----------thunck creaters----------
+// ----------thunk creators----------
 export function addNewPlayerTC(name, surname) {
   return async (dispatch) => {
     try {
-      let responce = await playerAPI.addNewPlayer(name, surname);
-      if (responce.code === 0) {
+      let response = await playerAPI.addNewPlayer(name, surname);
+      if (response.code === 0) {
         dispatch(addNewPlayer());
         dispatch(setComplete(true));
-        dispatch(setOperationMessage(responce));
+        dispatch(setOperationMessage(response));
       } else {
         dispatch(setComplete(false));
-        dispatch(setOperationMessage(responce));
+        dispatch(setOperationMessage(response));
       }
     } catch (error) {
       console.error("Error adding new player:", error);
@@ -100,10 +100,10 @@ export function requestPlayersTC(page, pageSize, mode, direct) {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
-    let responce = await playerAPI.getPlayers(page, pageSize, mode, direct);
+    let response = await playerAPI.getPlayers(page, pageSize, mode, direct);
     dispatch(toggleIsFetching(false));
-    dispatch(setPlayers(responce.body));
-    dispatch(setTotalPlayersCount(responce.pagination.totalCount));
+    dispatch(setPlayers(response.body));
+    dispatch(setTotalPlayersCount(response.pagination.totalCount));
   };
 }
 export function requestPlayersWithNameTC(text) {
@@ -127,7 +127,7 @@ export function setFindPlayerNameTC(text) {
   };
 }
 
-// --------------reduser--------------
+// --------------reducer--------------
 function playersReducer(state = initialState, action) {
   switch (action.type) {
     case SET_NEW_NAME:

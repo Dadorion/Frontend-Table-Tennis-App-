@@ -7,7 +7,7 @@ import PersonalInfo from "./section/personalInfo/personalInfo";
 import EquipmentInfo from "./section/equipmentInfo/equipmentInfo";
 import ConfirmPopUp from "../../UI/Confirm_popup/Confirm_popup";
 import { getProfile } from "../../redux/profile-reducer";
-import { logoutTC } from "../../redux/auth-reduser";
+import { logoutTC } from "../../redux/auth-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../UI/header/header";
 import CustomButton from "../../UI/Buttons/CustomButton/CustomButton";
@@ -23,8 +23,8 @@ function Profile(props) {
   //   </div>
   // }
   const dispatch = useDispatch();
-  const [exitQwest, setExitQwest] = useState(false);
-  const [changePassQwest, setChangePassQwest] = useState(false);
+  const [exitQuest, setExitQuest] = useState(false);
+  const [changePassQuest, setChangePassQuest] = useState(false);
 
   const profile = useSelector((state) => state.profileReducer.profile);
   const newProfileData = useSelector(
@@ -32,11 +32,11 @@ function Profile(props) {
   );
 
   const handleExit = () => {
-    // setExitQwest(!exitQwest);
+    // setExitQuest(!exitQuest);
     window.alert("hop");
   };
   const handleChangePass = () => {
-    setChangePassQwest(!changePassQwest);
+    setChangePassQuest(!changePassQuest);
   };
 
   useEffect(() => {
@@ -72,7 +72,7 @@ function Profile(props) {
         />
         <EquipmentInfo
           base={profile && profile.base}
-          forhand_pad={profile && profile.forhand_pad}
+          forehand_pad={profile && profile.forehand_pad}
           backhand_pad={profile && profile.backhand_pad}
         />
         <div className={s.manageBlock}>
@@ -82,10 +82,10 @@ function Profile(props) {
           <CustomButton btnName={"Выйти из профиля"} handler={handleExit} />
         </div>
 
-        <ConfirmPopUp qwest={exitQwest} setQwest={setExitQwest} TC={logoutTC} />
+        <ConfirmPopUp quest={exitQuest} setQuest={setExitQuest} TC={logoutTC} />
         <ChangePasswordPopup
-          qwest={changePassQwest}
-          setQwest={setChangePassQwest}
+          quest={changePassQuest}
+          setQuest={setChangePassQuest}
           newPasswordData={props.newPasswordData}
         />
       </div>

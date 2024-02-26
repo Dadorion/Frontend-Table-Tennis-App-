@@ -2,10 +2,10 @@ import React from "react";
 import s from "./Login.module.css";
 import LoginReduxForm from "./LoginForm";
 import { connect } from "react-redux";
-import { loginTC } from "../../redux/auth-reduser";
+import { loginTC } from "../../redux/auth-reducer";
 import { getProfile } from "../../redux/profile-reducer";
 import { Navigate } from "react-router-dom";
-import loginImgage from "../../assets/images/loginImage_2.jpg";
+import loginImage from "../../assets/images/loginImage_2.jpg";
 
 function Login({ isAuth, loginTC, getProfile }) {
   const onSubmit = (formData) => {
@@ -17,7 +17,7 @@ function Login({ isAuth, loginTC, getProfile }) {
   }
   return (
     <div className={s.Login}>
-      <img src={loginImgage} alt="logo_img" />
+      <img src={loginImage} alt="logo_img" />
       <h1>Войти</h1>
       <LoginReduxForm onSubmit={onSubmit} />
     </div>
