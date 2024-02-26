@@ -1,7 +1,7 @@
 import React, {useState}   from "react";
 import s from "./Player_Item.module.css";
-import dotsIcon from "../../icons/svg_pack/Black/Light/DotsThreeOutline_light.svg"
-import editIcon from "../../icons/svg_pack/Black/Light/Edit.svg"
+import dotsIcon from "../../assets/icons/svg_pack/Black/Light/DotsThreeOutline_light.svg"
+import editIcon from "../../assets/icons/svg_pack/Black/Light/Edit.svg"
 import PopupEditPlayer from "../Popup_EditPlayer/Popup_EditPlayer"
 
 function Player_Item(props) {

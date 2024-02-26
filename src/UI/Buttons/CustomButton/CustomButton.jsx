@@ -1,10 +1,10 @@
 import React from "react";
 import s from "./CustomButton.module.css";
-import exitIcon from "../../../icons/svg_pack/Colored/SignOut_secondary_pink.svg";
-import changePassIcon from "../../../icons/svg_pack/Black/Regular/Key.svg";
-import reportIcon from "../../../icons/svg_pack/Black/Regular/Callback.svg";
-import checkIcon from "../../../icons/svg_pack/White/Regular/Check.svg"
-import deleteIcon from "../../../icons/svg_pack/Colored/Delete.svg"
+import exitIcon from "../../../assets/icons/svg_pack/Colored/SignOut_secondary_pink.svg";
+import changePassIcon from "../../../assets/icons/svg_pack/Black/Regular/Key.svg";
+import reportIcon from "../../../assets/icons/svg_pack/Black/Regular/Callback.svg";
+import checkIcon from "../../../assets/icons/svg_pack/White/Regular/Check.svg"
+import deleteIcon from "../../../assets/icons/svg_pack/Colored/Delete.svg"
 
 function CustomButton({ btnName, handler }) {
   let icon, colorText, style;

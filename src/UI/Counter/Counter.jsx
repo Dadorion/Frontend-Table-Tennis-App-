@@ -1,14 +1,14 @@
 import s from "./Counter.module.css";
-import calIcon from "../../icons/svg/cal.svg";
-import mapPointIcon from "../../icons/svg/map_point.svg";
-import miniArrowIcon from "../../icons/svg/mini_arrow.svg";
-import crosIcon from "../../icons/svg/cros.svg";
-import defaultAvatar from "../../icons/profile.png";
+import calIcon from "../../assets/icons/svg_pack/Black/Regular/Callback.svg";
+import mapPointIcon from "../../assets/icons/svg_pack/Black/Regular/Tennis.svg";
+import miniArrowIcon from "../../assets/icons/svg_pack/Black/Regular/CaretDown.svg";
+import closeIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
+import defaultAvatar from "../../assets/images/profile.png";
 import { useState } from "react";
 
 function Counter(props) {
   const [isChooseScreen, setIsChooseScreen] = useState(true);
-  const handleCrosClick = () => {
+  const handleCloseClick = () => {
     setIsChooseScreen(false);
   };
   const handleChooseClick = () => {
@@ -48,7 +48,7 @@ function Counter(props) {
         <div className={s.choosePlayers}>
           <div className={s.choosePlayersHeader}>
             <h3>Выбрать соперника</h3>
-            <img src={crosIcon} alt="crossIcon" onClick={handleCrosClick} />
+            <img src={closeIcon} alt="crossIcon" onClick={handleCloseClick} />
           </div>
 
           <input type="text" />

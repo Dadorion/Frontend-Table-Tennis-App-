@@ -1,9 +1,9 @@
 import React from "react";
 import s from "./header.module.css";
 import { Link } from "react-router-dom";
-import editIcon from "../../icons/svg_pack/White/Light/Edit.svg";
-import backIcon from "../../icons/svg_pack/White/Regular/ArrowLeft.svg"
-import checkIcon from "../../icons/svg_pack/White/Regular/Check.svg"
+import editIcon from "../../assets/icons/svg_pack/White/Light/Edit.svg";
+import backIcon from "../../assets/icons/svg_pack/White/Regular/ArrowLeft.svg"
+import checkIcon from "../../assets/icons/svg_pack/White/Regular/Check.svg"
 
 function Header(props) {
   return (

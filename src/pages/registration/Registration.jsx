@@ -4,7 +4,7 @@ import RegistrationReduxForm from "./RegistrationForm";
 import { connect } from "react-redux";
 import { registrationTC } from "../../redux/registration-reduser";
 // import { Navigate } from 'react-router-dom';
-import loginImgage from "../../images/15f512bdb71f5743453e06165780308b.jpg";
+import loginImage from "../../assets/images/loginImage.jpg";
 
 function Registration(props) {
   const onSubmit = (formData) => {
@@ -16,7 +16,7 @@ function Registration(props) {
   // }
   return (
     <div className={s.Registration}>
-      <img src={loginImgage} alt="logo_img" />
+      <img src={loginImage} alt="logo_img" />
       <h1>Регистрация</h1>
       <RegistrationReduxForm onSubmit={onSubmit} />
       Уже есть аккаунт?

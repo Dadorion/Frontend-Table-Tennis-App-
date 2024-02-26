@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Popup_EditPlayer.module.css";
 // import { useDispatch } from "react-redux";
-import closeIcon from "../../icons/svg_pack/Black/Regular/Close.svg";
+import closeIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
 import CustomButton from "../Buttons/CustomButton/CustomButton";
 
 function Popup_EditPlayer({ exit }) {

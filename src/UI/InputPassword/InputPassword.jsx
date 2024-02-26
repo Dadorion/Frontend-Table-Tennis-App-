@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./InputPassword.module.css";
-import eyeOpen from "../../icons/svg_pack/Black/Light/EyeSlash_light.svg";
-import eyeClose from "../../icons/svg_pack/Black/Light/Eye_light.svg";
+import eyeOpen from "../../assets/icons/svg_pack/Black/Light/EyeSlash_light.svg";
+import eyeClose from "../../assets/icons/svg_pack/Black/Light/Eye_light.svg";
 
 function InputPassword({ value, handle }) {
   const [showPassword, setShowPassword] = useState(false);

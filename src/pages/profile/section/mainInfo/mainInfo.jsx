@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import s from "./mainInfo.module.css";
-import avatarAlt from "../../../../icons/profile.png";
+import avatarAlt from "../../../../assets/images/profile.png";
 import { useLocation } from "react-router-dom";
 import {
   changeName,

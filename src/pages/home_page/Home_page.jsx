@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 import { connect } from "react-redux";
 import s from "./Home_page.module.css";
-import greyCirclIcon from "../../icons/svg/grey_circl.svg";
+import greyCirclesIcon from "../../assets/icons/svg_pack/Black/Regular/CirclesFour.svg";
 
 function HomePage(props) {
   return (
@@ -50,7 +50,7 @@ function HomePage(props) {
       </div>
       <div className={s.records}>
         Достижения
-        <img src={greyCirclIcon} alt="grey_circl" />
+        <img src={greyCirclesIcon} alt="grey_circl" />
       </div>
     </div>
   );

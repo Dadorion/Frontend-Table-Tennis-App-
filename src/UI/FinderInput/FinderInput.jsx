@@ -1,10 +1,10 @@
 import React from "react";
 import s from "./FinderInput.module.css";
-import closeIcon from "../../icons/svg_pack/Black/Light/Close_light.svg";
-import magnifierIcon from "../../icons/svg_pack/Black/Light/Search_light.svg";
+import closeIcon from "../../assets/icons/svg_pack/Black/Light/Close_light.svg";
+import magnifierIcon from "../../assets/icons/svg_pack/Black/Light/Search_light.svg";
 
 function FinderInput({value, handleOnChange, placeholder, handleReset}) {
-  
+
 
   return (
     <div className={s.FinderInput}>

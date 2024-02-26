@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import s from "./Tabbar.module.css";
-import profileIcon from "../../icons/svg_pack/Black/Light/User_light.svg";
-import homeIcon from "../../icons/svg_pack/Black/Regular/House.svg";
-import plusIcon from "../../icons/svg_pack/Black/Regular/AddCircle.svg";
+import profileIcon from "../../assets/icons/svg_pack/Black/Light/User_light.svg";
+import homeIcon from "../../assets/icons/svg_pack/Black/Regular/House.svg";
+import plusIcon from "../../assets/icons/svg_pack/Black/Regular/AddCircle.svg";
 import { Link, useLocation } from "react-router-dom";
 
 function Tabbar(props) {
@@ -15,7 +15,7 @@ function Tabbar(props) {
     setShowTabbar(!blockArr.includes(currentPath));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPath]);
-  
+
 
   return (
     <>

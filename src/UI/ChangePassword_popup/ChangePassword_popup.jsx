@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import s from "./ChangePassword_popup.module.css";
-import crosIcon from "../../icons/svg_pack/Black/Regular/Close.svg";
-import checkIcon from "../../icons/svg_pack/White/Regular/Check.svg";
+import crosIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
+import checkIcon from "../../assets/icons/svg_pack/White/Regular/Check.svg";
 import InputPassword from "../InputPassword/InputPassword";
 import {
   changeOldPassword,
@@ -13,7 +13,7 @@ import {
 
 function ChangePasswordPopup(props) {
   const dispatch = useDispatch();
-  
+
   const [passwordsDoNotMatch, setErrorPassword] = useState(false);
 
   const handleConfirm = () => {

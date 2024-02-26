@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import s from "./History.module.css";
-import SorterMenu from "../../UI/SorterMenu/SorterMenu";
-import sorterIcon from "../../icons/svg/sorter_w.svg";
-import settingsIcon from "../../icons/svg/settings_w.svg";
+import SorterMenu from "../../assets/icons/svg_pack/Black/Regular/Swap.svg";
+import sorterIcon from "../../assets/icons/svg_pack/Black/Regular/Swap.svg";
+import settingsIcon from "../../assets/icons/svg_pack/Black/Regular/Preference.svg";
 import DayCard from "./DayCard/DayCard";
 
 function History(props) {
@@ -14,7 +14,7 @@ function History(props) {
   // if (!props.profile) {
   //   return <div className={s.Users}>Loading...</div>;
   // }
-  
+
 
   const handleSetSortMode = (e) => {
     const mode = e.target.innerHTML;

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { loginTC } from "../../redux/auth-reduser";
 import { getProfile } from "../../redux/profile-reducer";
 import { Navigate } from "react-router-dom";
-import loginImgage from "../../images/b4e94ff0b6f1b09b24d24c7c0212a3f6.jpg";
+import loginImgage from "../../assets/images/loginImage_2.jpg";
 
 function Login({ isAuth, loginTC, getProfile }) {
   const onSubmit = (formData) => {

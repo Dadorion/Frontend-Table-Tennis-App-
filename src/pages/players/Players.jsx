@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import s from "./Players.module.css";
-import sorterIcon from "../../icons/svg/sorter.svg";
-import plusIcon from "../../icons/svg_pack/Black/Regular/Plus.svg";
+import sorterIcon from "../../assets/icons/svg_pack/Black/Regular/Swap.svg";
+import plusIcon from "../../assets/icons/svg_pack/Black/Regular/Plus.svg";
 import PlayerItem from "../../UI/Player_Item/Player_Item";
-import magnifier from "../../icons/svg_pack/Black/Light/Search_light.svg";
+import magnifier from "../../assets/icons/svg_pack/Black/Light/Search_light.svg";
 import SorterMenu from "../../UI/SorterMenu/SorterMenu";
 import FinderInput from "../../UI/FinderInput/FinderInput";
-import arrowLeftIcon from "../../icons/svg_pack/Black/Light/ArrowLeft_light.svg";
-import caretLeftIcon from "../../icons/svg_pack/Black/Regular/CaretLeft.svg";
-import caretRightIcon from "../../icons/svg_pack/Black/Regular/CaretRight.svg";
+import arrowLeftIcon from "../../assets/icons/svg_pack/Black/Light/ArrowLeft_light.svg";
+import caretLeftIcon from "../../assets/icons/svg_pack/Black/Regular/CaretLeft.svg";
+import caretRightIcon from "../../assets/icons/svg_pack/Black/Regular/CaretRight.svg";
 import PopupAddNewPlayer from "../../UI/Popup_AddNewPlayer/Popup_AddNewPlayer";
 import {
   requestPlayersTC,
