@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import s from "./FilterMenu.module.css";
-import cros from "../../icons/svg/cros.svg";
-import Button from "../Buttons/Button/Button";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import s from './FilterMenu.module.css'
+
+import cros from '../../icons/svg/cros.svg'
 import {
   setRivals,
   setDate,
@@ -11,10 +12,11 @@ import {
   setLocations,
   setStartDate,
   setEndDate,
-} from "../../redux/filter-reducer";
+} from '../../redux/filter-reducer'
+import Button from '../Buttons/Button/Button'
 
 function FilterMenu(props) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const [localState, setLocalState] = useState({
     rivals: null,
@@ -30,38 +32,38 @@ function FilterMenu(props) {
       gender: null,
       wins: null,
     },
-  });
+  })
 
   const citiesName = [
-    { id: 1, name: "Балашов" },
-    { id: 2, name: "Реутов" },
-    { id: 3, name: "Никополь" },
-    { id: 4, name: "Бердянск" },
-    { id: 5, name: "Санкт-Петербург" },
-  ];
+    { id: 1, name: 'Балашов' },
+    { id: 2, name: 'Реутов' },
+    { id: 3, name: 'Никополь' },
+    { id: 4, name: 'Бердянск' },
+    { id: 5, name: 'Санкт-Петербург' },
+  ]
   const cities = citiesName.map((city) => {
     return (
       <div key={city.id}>
-        {city.name} <img src={cros} alt="city" />
+        {city.name} <img src={cros} alt='city' />
       </div>
-    );
-  });
+    )
+  })
   const handleClose = () => {
-    props.setShowFilters(false);
-  };
+    props.setShowFilters(false)
+  }
   const handleShow = () => {
     // Сохраняем значения в глобальный стейт
-    dispatch(setRivals(localState.rivals));
-    dispatch(setDate(localState.date));
-    dispatch(setGender(localState.gender));
-    dispatch(setWins(localState.wins));
-    dispatch(setLocations(localState.locations));
-    dispatch(setStartDate(localState.startDate)); // Добавлено
-    dispatch(setEndDate(localState.endDate));
+    dispatch(setRivals(localState.rivals))
+    dispatch(setDate(localState.date))
+    dispatch(setGender(localState.gender))
+    dispatch(setWins(localState.wins))
+    dispatch(setLocations(localState.locations))
+    dispatch(setStartDate(localState.startDate)) // Добавлено
+    dispatch(setEndDate(localState.endDate))
 
     // Закрываем фильтр
-    props.setShowFilters(false);
-  };
+    props.setShowFilters(false)
+  }
   const handleReset = () => {
     // Сбрасываем значения в локальном стейте
     setLocalState({
@@ -78,8 +80,8 @@ function FilterMenu(props) {
         gender: null,
         wins: null,
       },
-    });
-  };
+    })
+  }
   const handleRadioChange = (group, value) => {
     setLocalState((prevState) => ({
       ...prevState,
@@ -87,32 +89,32 @@ function FilterMenu(props) {
         ...prevState.radioState,
         [group]: prevState.radioState[group] === value ? null : value,
       },
-    }));
-  };
-  
+    }))
+  }
+
   const handleInputChange = (name, value) => {
     // Обновляем локальный стейт при изменении значения
-    setLocalState((prev) => ({ ...prev, [name]: value }));
-  };
+    setLocalState((prev) => ({ ...prev, [name]: value }))
+  }
   const handleLocationChange = (e) => {
-    const selectedLocation = e.target.value;
-    handleInputChange("locations", selectedLocation);
-  };
+    const selectedLocation = e.target.value
+    handleInputChange('locations', selectedLocation)
+  }
   const handleStartDateChange = (e) => {
-    const startDate = e.target.value;
-    handleInputChange("startDate", startDate);
-  };
+    const startDate = e.target.value
+    handleInputChange('startDate', startDate)
+  }
 
   const handleEndDateChange = (e) => {
-    const endDate = e.target.value;
-    handleInputChange("endDate", endDate);
-  };
+    const endDate = e.target.value
+    handleInputChange('endDate', endDate)
+  }
 
   return (
     <div className={s.FilterMenu}>
       <div className={s.FilterHeader}>
         <div className={s.cros} id={s.left} onClick={handleClose}>
-          <img src={cros} alt="cros" />
+          <img src={cros} alt='cros' />
         </div>
         <h3 id={s.center}>Фильтры</h3>
         <div id={s.right} onClick={handleReset}>
@@ -127,12 +129,12 @@ function FilterMenu(props) {
             <div className={s.dateContent_item}>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="players"
-                  value="rival"
-                  checked={localState.radioState.players === "rival"}
-                  onChange={() => handleRadioChange("players", "rival")}
+                  name='players'
+                  value='rival'
+                  checked={localState.radioState.players === 'rival'}
+                  onChange={() => handleRadioChange('players', 'rival')}
                 />
                 <span className={s.customRadio}></span>
                 соперники
@@ -141,12 +143,12 @@ function FilterMenu(props) {
             <div className={s.dateContent_item}>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="players"
-                  value="all_players"
-                  checked={localState.radioState.players === "all_players"}
-                  onChange={() => handleRadioChange("players", "all_players")}
+                  name='players'
+                  value='all_players'
+                  checked={localState.radioState.players === 'all_players'}
+                  onChange={() => handleRadioChange('players', 'all_players')}
                 />
                 <span className={s.customRadio}></span>
                 все игроки
@@ -158,22 +160,22 @@ function FilterMenu(props) {
             <div className={s.dateContent_item}>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="date"
-                  value="today"
-                  onChange={() => handleInputChange("date", "today")}
+                  name='date'
+                  value='today'
+                  onChange={() => handleInputChange('date', 'today')}
                 />
                 <span className={s.customRadio}></span>
                 сегодня
               </label>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="date"
-                  value="yesterday"
-                  onChange={() => handleInputChange("date", "yesterday")}
+                  name='date'
+                  value='yesterday'
+                  onChange={() => handleInputChange('date', 'yesterday')}
                 />
                 <span className={s.customRadio}></span>
                 вчера
@@ -182,22 +184,22 @@ function FilterMenu(props) {
             <div className={s.dateContent_item}>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="date"
-                  value="week"
-                  onChange={() => handleInputChange("date", "week")}
+                  name='date'
+                  value='week'
+                  onChange={() => handleInputChange('date', 'week')}
                 />
                 <span className={s.customRadio}></span>
                 за неделю
               </label>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="date"
-                  value="month"
-                  onChange={() => handleInputChange("date", "month")}
+                  name='date'
+                  value='month'
+                  onChange={() => handleInputChange('date', 'month')}
                 />
                 <span className={s.customRadio}></span>
                 за месяц
@@ -210,11 +212,11 @@ function FilterMenu(props) {
             <div className={s.dateContent_period_items}>
               <div>
                 <span>с</span>
-                <input type="date" value={localState.startDate} onChange={handleStartDateChange}/>
+                <input type='date' value={localState.startDate} onChange={handleStartDateChange} />
               </div>
               <div>
                 <span>по</span>
-                <input type="date" value={localState.endDate} onChange={handleEndDateChange}/>
+                <input type='date' value={localState.endDate} onChange={handleEndDateChange} />
               </div>
             </div>
           </div>
@@ -224,22 +226,22 @@ function FilterMenu(props) {
             <div>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="gender"
-                  value="male"
-                  onChange={() => handleInputChange("gender", "male")}
+                  name='gender'
+                  value='male'
+                  onChange={() => handleInputChange('gender', 'male')}
                 />
                 <span className={s.customRadio}></span>
                 только мужчины
               </label>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="gender"
-                  value="female"
-                  onChange={() => handleInputChange("gender", "female")}
+                  name='gender'
+                  value='female'
+                  onChange={() => handleInputChange('gender', 'female')}
                 />
                 <span className={s.customRadio}></span>
                 только женщины
@@ -251,33 +253,33 @@ function FilterMenu(props) {
             <div>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="wins"
-                  value="win"
-                  onChange={() => handleInputChange("wins", "win")}
+                  name='wins'
+                  value='win'
+                  onChange={() => handleInputChange('wins', 'win')}
                 />
                 <span className={s.customRadio}></span>
                 кого выигрываю
               </label>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="wins"
-                  value="loose"
-                  onChange={() => handleInputChange("wins", "loose")}
+                  name='wins'
+                  value='loose'
+                  onChange={() => handleInputChange('wins', 'loose')}
                 />
                 <span className={s.customRadio}></span>
                 кому проигрываю
               </label>
               <label>
                 <input
-                  type="radio"
+                  type='radio'
                   className={s.realRadio}
-                  name="wins"
-                  value="hardest"
-                  onChange={() => handleInputChange("wins", "hardest")}
+                  name='wins'
+                  value='hardest'
+                  onChange={() => handleInputChange('wins', 'hardest')}
                 />
                 <span className={s.customRadio}></span>
                 топ сложных соперников
@@ -298,12 +300,12 @@ function FilterMenu(props) {
             <div className={s.lastLocation}>{cities}</div>
           </div>
           <div className={s.btnShow} onClick={handleShow}>
-            <Button buttName="Показать" />
+            <Button buttName='Показать' />
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default FilterMenu;
+export default FilterMenu

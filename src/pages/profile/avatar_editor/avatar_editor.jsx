@@ -1,61 +1,63 @@
-import React, { useState } from "react";
-import AvatarEditor from "react-avatar-editor";
-import Dropzone from "react-dropzone";
-import s from "./avatar_editor.module.css";
-import { useDispatch } from "react-redux";
-import { savePhoto } from "../../../redux/profile-reducer";
+import React, { useState } from 'react'
+import AvatarEditor from 'react-avatar-editor'
+import Dropzone from 'react-dropzone'
+import { useDispatch } from 'react-redux'
+
+import s from './avatar_editor.module.css'
+
+import { savePhoto } from '../../../redux/profile-reducer'
 
 const AvatarEditorComponent = () => {
-  const [image, setImage] = useState(null);
-  const [editor, setEditor] = useState(null);
-  const [scale, setScale] = useState(1);
-  const [rotation, setRotation] = useState(0);
-  const [showDropzone, setShowDropzone] = useState(true);
+  const [image, setImage] = useState(null)
+  const [editor, setEditor] = useState(null)
+  const [scale, setScale] = useState(1)
+  const [rotation, setRotation] = useState(0)
+  const [showDropzone, setShowDropzone] = useState(true)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleDrop = (acceptedFiles) => {
-    const file = acceptedFiles[0];
+    const file = acceptedFiles[0]
     if (file) {
-      setImage(file);
-      setShowDropzone(false);
+      setImage(file)
+      setShowDropzone(false)
     }
-  };
+  }
 
   const handleCancel = () => {
     // history.push("/edit-my-profile");
-  };
+  }
 
   const handleScaleChange = (e) => {
-    const newScale = parseFloat(e.target.value);
-    setScale(newScale);
-  };
+    const newScale = parseFloat(e.target.value)
+    setScale(newScale)
+  }
 
   const handleRotationChange = (e) => {
-    const newRotation = parseFloat(e.target.value);
-    setRotation(newRotation);
-  };
+    const newRotation = parseFloat(e.target.value)
+    setRotation(newRotation)
+  }
   const handleChooseNewPhoto = (e) => {
-    setImage(null);
-    setShowDropzone(true);
-  };
+    setImage(null)
+    setShowDropzone(true)
+  }
 
   const handleSave = async () => {
     if (editor) {
-      const canvas = editor.getImageScaledToCanvas();
-      const editedImage = canvas.toDataURL();
+      const canvas = editor.getImageScaledToCanvas()
+      const editedImage = canvas.toDataURL()
 
       if (editedImage) {
-        const blob = await fetch(editedImage).then((res) => res.blob());
-        const file = new File([blob], "avatar.png", { type: "image/png" });
+        const blob = await fetch(editedImage).then((res) => res.blob())
+        const file = new File([blob], 'avatar.png', { type: 'image/png' })
 
-        const fileFD = new FormData();
-        fileFD.append("avatar", file);
+        const fileFD = new FormData()
+        fileFD.append('avatar', file)
 
-        dispatch(savePhoto(fileFD));
+        dispatch(savePhoto(fileFD))
       }
     }
-  };
+  }
 
   return (
     <div className={s.avatarEditorContainer}>
@@ -63,11 +65,7 @@ const AvatarEditorComponent = () => {
         <div className={s.dropzoneWrapper}>
           <Dropzone onDrop={handleDrop}>
             {({ getRootProps, getInputProps }) => (
-              <div
-                {...getRootProps()}
-                className={s.dropzone}
-                style={dropzoneStyle}
-              >
+              <div {...getRootProps()} className={s.dropzone} style={dropzoneStyle}>
                 <input {...getInputProps()} />
                 <p>Нажмите, чтобы выбрать фото</p>
               </div>
@@ -79,24 +77,16 @@ const AvatarEditorComponent = () => {
 
       {image && (
         <div className={s.editorWrapper}>
-          <label htmlFor="scale">Scale:</label>
-          <input
-            type="range"
-            id="scale"
-            min="1"
-            max="2"
-            step="0.01"
-            value={scale}
-            onChange={handleScaleChange}
-          />
+          <label htmlFor='scale'>Scale:</label>
+          <input type='range' id='scale' min='1' max='2' step='0.01' value={scale} onChange={handleScaleChange} />
 
-          <label htmlFor="rotation">Rotation:</label>
+          <label htmlFor='rotation'>Rotation:</label>
           <input
-            type="range"
-            id="rotation"
-            min="-90"
-            max="90"
-            step="1"
+            type='range'
+            id='rotation'
+            min='-90'
+            max='90'
+            step='1'
             value={rotation}
             onChange={handleRotationChange}
           />
@@ -114,24 +104,26 @@ const AvatarEditorComponent = () => {
 
           <button onClick={handleSave}>Сохранить</button>
           <button onClick={handleChooseNewPhoto}>Выбрать другое фото</button>
-          <button onClick={handleCancel} className={s.cancelBtn}>Отменить</button>
+          <button onClick={handleCancel} className={s.cancelBtn}>
+            Отменить
+          </button>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 const dropzoneStyle = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "200px",
-  height: "200px",
-  border: "1px dashed #76767A",
-  borderRadius: "12px",
-  cursor: "pointer",
-  padding: "89px 27px",
-};
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '200px',
+  height: '200px',
+  border: '1px dashed #76767A',
+  borderRadius: '12px',
+  cursor: 'pointer',
+  padding: '89px 27px',
+}
 
-export default AvatarEditorComponent;
+export default AvatarEditorComponent

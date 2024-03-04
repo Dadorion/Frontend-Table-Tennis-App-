@@ -1,16 +1,14 @@
-import React from "react";
-import s from "./equipmentInfo.module.css";
-import { useLocation } from "react-router-dom";
-import {
-  changeRacketBase,
-  changeRacketForhand,
-  changeRacketBackhand,
-} from "../../../../redux/profile-reducer";
-import { useDispatch } from "react-redux";
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+
+import s from './equipmentInfo.module.css'
+
+import { changeRacketBase, changeRacketForhand, changeRacketBackhand } from '../../../../redux/profile-reducer'
 
 function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
-  const location = useLocation();
-  const dispatch = useDispatch();
+  const location = useLocation()
+  const dispatch = useDispatch()
 
   // const [equipData, setEquipData] = useState({
   //   base: base || '',
@@ -19,21 +17,21 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
   // })
 
   const handlerChangeRacketBase = (e) => {
-    const text = e.target.value;
-    dispatch(changeRacketBase(text));
-  };
+    const text = e.target.value
+    dispatch(changeRacketBase(text))
+  }
   const handlerChangeRacketForhand = (e) => {
-    const text = e.target.value;
-    dispatch(changeRacketForhand(text));
-  };
+    const text = e.target.value
+    dispatch(changeRacketForhand(text))
+  }
   const handlerChangeRacketBackhand = (e) => {
-    const text = e.target.value;
-    dispatch(changeRacketBackhand(text));
-  };
+    const text = e.target.value
+    dispatch(changeRacketBackhand(text))
+  }
 
   return (
     <div className={s.EquipmentInfo}>
-      {location.pathname === "/profile" && (
+      {location.pathname === '/profile' && (
         <>
           <div className={s.header}>
             <h3>Ракетка</h3>
@@ -61,7 +59,7 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
         </>
       )}
 
-      {location.pathname === "/edit-my-profile" && (
+      {location.pathname === '/edit-my-profile' && (
         <>
           <div className={s.header}>
             <h3>Ракетка</h3>
@@ -97,7 +95,7 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
         </>
       )}
     </div>
-  );
+  )
 }
 
-export default EquipmentInfo;
+export default EquipmentInfo

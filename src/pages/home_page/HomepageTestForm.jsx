@@ -1,25 +1,20 @@
-import React from "react"
+import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 let HomepageTestForm = (props) => {
-   const { handleSubmit } = props
-   return (
-      <form onSubmit={handleSubmit}>
-         <Field
-            name="testName"
-            component="input"
-            type="text"
-            placeholder="test input text"
-         />
-         <br />
-         <br />
-         <button type="submit">Click for test</button>
-      </form>
-   )
+  const { handleSubmit } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <Field name='testName' component='input' type='text' placeholder='test input text' />
+      <br />
+      <br />
+      <button type='submit'>Click for test</button>
+    </form>
+  )
 }
 
 const HomepageTestReduxForm = reduxForm({
-   form: 'test_form'
+  form: 'test_form',
 })(HomepageTestForm)
 
 export default HomepageTestReduxForm

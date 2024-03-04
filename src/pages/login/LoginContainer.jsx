@@ -1,26 +1,28 @@
-import React from "react";
-import Login from "./Login";
-import { connect } from "react-redux";
-import { getProfile } from "../../redux/profile-reducer";
-import { withRouter } from "../../redux/withRouter";
+import React from 'react'
+import { connect } from 'react-redux'
+
+import Login from './Login'
+
+import { getProfile } from '../../redux/profile-reducer'
+import { withRouter } from '../../redux/withRouter'
 
 function LoginContainer(props) {
   return (
     <>
       <Login />
     </>
-  );
+  )
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {}
 }
 function mapDispatchToProps(state) {
   return {
-    getProfile
-  };
+    getProfile,
+  }
 }
 
-let WithUrlDataContainerComponent = withRouter(LoginContainer);
+let WithUrlDataContainerComponent = withRouter(LoginContainer)
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(WithUrlDataContainerComponent)

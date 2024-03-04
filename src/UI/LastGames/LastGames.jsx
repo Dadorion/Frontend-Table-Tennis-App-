@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
+
 // import GameCard from '../GameCard/GameCard';
 // import GameCardMatch from '../GameCard/GameCardMatch';
-import s from './LastGames.module.css';
+import s from './LastGames.module.css'
+
 import pro_face from '../../icons/profile.png'
 
 function LastGame(props) {
@@ -9,21 +11,23 @@ function LastGame(props) {
     <div className={s.wrapperBlock}>
       <h2 className={s.title}>Последняя игра</h2>
       <div className={s.wrapper}>
-        <p className={s.date}>{props.date !=null ? props.date : '02.02.2022'}</p>
+        <p className={s.date}>{props.date != null ? props.date : '02.02.2022'}</p>
         <div className={s.info}>
           <div className={s.player}>
-            <img className={s.avatarLk} src={props.avatar !=null ? props.avatar : pro_face} alt="Avatar" />
+            <img className={s.avatarLk} src={props.avatar != null ? props.avatar : pro_face} alt='Avatar' />
             <p className={s.playerName}>{props.playerName != null ? props.playerName : 'Игрок1'}</p>
           </div>
           <div>
-            <p>{props.score !=null ? props.score : '0 : 0'}</p>
+            <p>{props.score != null ? props.score : '0 : 0'}</p>
           </div>
           <div className={s.player}>
-            <img className={s.avatarLk} src={props.avatar !=null ? props.avatar : pro_face} alt="Avatar" />
+            <img className={s.avatarLk} src={props.avatar != null ? props.avatar : pro_face} alt='Avatar' />
             <p className={s.playerName}>{props.playerName != null ? props.playerName : 'Игрок2'}</p>
           </div>
         </div>
-        <a className={s.link} href="/">добавить ещё &#8594;</a>
+        <a className={s.link} href='/'>
+          добавить ещё &#8594;
+        </a>
       </div>
     </div>
   )
@@ -73,11 +77,10 @@ function LastGame(props) {
 
 // })
 
-
 // return (
 //   <div className={`${s.LastGames}`}>
 //     {printGames}
 //   </div>
 // )
 
-export default LastGame;
+export default LastGame

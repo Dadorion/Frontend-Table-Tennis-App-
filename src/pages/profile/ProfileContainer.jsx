@@ -1,7 +1,9 @@
 import React from "react";
-import Profile from "./Profile";
 import { connect } from "react-redux";
 import { compose } from "redux";
+
+import Profile from "./Profile";
+
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { withRouter } from "../../redux/withRouter";
 
@@ -23,5 +25,5 @@ function mapStateToProps(state) {
 export default compose(
   connect(mapStateToProps, {}),
   withRouter,
-  withAuthRedirect
+  withAuthRedirect,
 )(ProfileContainer);

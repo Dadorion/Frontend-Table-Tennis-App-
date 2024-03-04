@@ -1,130 +1,130 @@
-import { playerAPI } from "../api/api";
+import { playerAPI } from '../api/api'
 
 let initialState = {
   players: null,
   newPlayerData: {
-    name: "",
-    surname: "",
+    name: '',
+    surname: '',
   },
   isComplete: false,
-  operationMessage: "",
+  operationMessage: '',
 
-  findPlayerName: "",
+  findPlayerName: '',
 
   sortModeName: 'Недавние',
-  sortMode: "id", // по какому параметру
-  sortDirection: "DESC", // возрастание/убывание
+  sortMode: 'id', // по какому параметру
+  sortDirection: 'DESC', // возрастание/убывание
 
   pageSize: 5,
   totalPlayerCount: 0,
   currentPage: 1,
   isFetching: false,
-};
+}
 
 // ----------reducers types----------
-const SET_PLAYERS = "players/SET-PLAYERS";
-const SET_NEW_NAME = "players/SET_NEW_NAME";
-const SET_NEW_SURNAME = "players/SET_NEW_SURNAME";
-const ADD_PLAYER = "players/ADD_PLAYER";
-const SET_COMPLETE = "players/SET_COMPLETE";
-const SET_OPERATION_MSG = "players/SET_OPERATION_MSG";
-const SET_SORT_MODE = "players/SET_SORT_MODE";
-const SET_SORT_MODE_NAME = "players/SET_SORT_MODE_NAME";
-const SET_SORT_DIRECTION = "players/SET_SORT_DIRECTION";
-const TOGGLE_IS_FETCHING = "players/TOGGLE-IS-FETCHING";
-const SET_CURRENT_PAGE = "players/SET-CURRENT-PAGE";
-const SET_FIND_PLAYER_NAME = "players/SET_FIND_PLAYER_NAME";
-const SET_TOTAL_PLAYER_COUNT = "players/SET_TOTAL_PLAYER_COUNT";
+const SET_PLAYERS = 'players/SET-PLAYERS'
+const SET_NEW_NAME = 'players/SET_NEW_NAME'
+const SET_NEW_SURNAME = 'players/SET_NEW_SURNAME'
+const ADD_PLAYER = 'players/ADD_PLAYER'
+const SET_COMPLETE = 'players/SET_COMPLETE'
+const SET_OPERATION_MSG = 'players/SET_OPERATION_MSG'
+const SET_SORT_MODE = 'players/SET_SORT_MODE'
+const SET_SORT_MODE_NAME = 'players/SET_SORT_MODE_NAME'
+const SET_SORT_DIRECTION = 'players/SET_SORT_DIRECTION'
+const TOGGLE_IS_FETCHING = 'players/TOGGLE-IS-FETCHING'
+const SET_CURRENT_PAGE = 'players/SET-CURRENT-PAGE'
+const SET_FIND_PLAYER_NAME = 'players/SET_FIND_PLAYER_NAME'
+const SET_TOTAL_PLAYER_COUNT = 'players/SET_TOTAL_PLAYER_COUNT'
 
 // ----------action creators----------
 export function setPlayers(players) {
-  return { type: SET_PLAYERS, payload: players };
+  return { type: SET_PLAYERS, payload: players }
 }
 export function setNewName(text) {
-  return { type: SET_NEW_NAME, payload: text };
+  return { type: SET_NEW_NAME, payload: text }
 }
 export function setNewSurname(text) {
-  return { type: SET_NEW_SURNAME, payload: text };
+  return { type: SET_NEW_SURNAME, payload: text }
 }
 export function setComplete(text) {
-  return { type: SET_COMPLETE, payload: text };
+  return { type: SET_COMPLETE, payload: text }
 }
 export function setOperationMessage(message) {
-  return { type: SET_OPERATION_MSG, payload: message };
+  return { type: SET_OPERATION_MSG, payload: message }
 }
 export function addNewPlayer() {
-  return { type: ADD_PLAYER };
+  return { type: ADD_PLAYER }
 }
 export function setSortMode(mode) {
-  return { type: SET_SORT_MODE, payload: mode };
+  return { type: SET_SORT_MODE, payload: mode }
 }
 export function setSortModeName(modeName) {
-  return { type: SET_SORT_MODE_NAME, payload: modeName };
+  return { type: SET_SORT_MODE_NAME, payload: modeName }
 }
 export function setSortDirection(direct) {
-  return { type: SET_SORT_DIRECTION, payload: direct };
+  return { type: SET_SORT_DIRECTION, payload: direct }
 }
 export function setCurrentPage(page) {
-  return { type: SET_CURRENT_PAGE, payload: page };
+  return { type: SET_CURRENT_PAGE, payload: page }
 }
 export function toggleIsFetching(isFetching) {
-  return { type: TOGGLE_IS_FETCHING, payload: isFetching };
+  return { type: TOGGLE_IS_FETCHING, payload: isFetching }
 }
 export function setFindPlayerName(text) {
-  return { type: SET_FIND_PLAYER_NAME, payload: text };
+  return { type: SET_FIND_PLAYER_NAME, payload: text }
 }
 export function setTotalPlayersCount(count) {
-  return { type: SET_TOTAL_PLAYER_COUNT, payload: count };
+  return { type: SET_TOTAL_PLAYER_COUNT, payload: count }
 }
 
 // ----------thunk creators----------
 export function addNewPlayerTC(name, surname) {
   return async (dispatch) => {
     try {
-      let response = await playerAPI.addNewPlayer(name, surname);
+      let response = await playerAPI.addNewPlayer(name, surname)
       if (response.code === 0) {
-        dispatch(addNewPlayer());
-        dispatch(setComplete(true));
-        dispatch(setOperationMessage(response));
+        dispatch(addNewPlayer())
+        dispatch(setComplete(true))
+        dispatch(setOperationMessage(response))
       } else {
-        dispatch(setComplete(false));
-        dispatch(setOperationMessage(response));
+        dispatch(setComplete(false))
+        dispatch(setOperationMessage(response))
       }
     } catch (error) {
-      console.error("Error adding new player:", error);
+      console.error('Error adding new player:', error)
     }
-  };
+  }
 }
 export function requestPlayersTC(page, pageSize, mode, direct) {
   return async (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    dispatch(setCurrentPage(page));
+    dispatch(toggleIsFetching(true))
+    dispatch(setCurrentPage(page))
 
-    let response = await playerAPI.getPlayers(page, pageSize, mode, direct);
-    dispatch(toggleIsFetching(false));
-    dispatch(setPlayers(response.body));
-    dispatch(setTotalPlayersCount(response.pagination.totalCount));
-  };
+    let response = await playerAPI.getPlayers(page, pageSize, mode, direct)
+    dispatch(toggleIsFetching(false))
+    dispatch(setPlayers(response.body))
+    dispatch(setTotalPlayersCount(response.pagination.totalCount))
+  }
 }
 export function requestPlayersWithNameTC(text) {
   if (!text.trim()) {
     return async (dispatch) => {
-      dispatch(setPlayers([]));
-    };
+      dispatch(setPlayers([]))
+    }
   }
 
   return async (dispatch) => {
-    dispatch(toggleIsFetching(true));
+    dispatch(toggleIsFetching(true))
 
-    let players = await playerAPI.getPlayersWithName(text);
-    dispatch(toggleIsFetching(false));
-    dispatch(setPlayers(players));
-  };
+    let players = await playerAPI.getPlayersWithName(text)
+    dispatch(toggleIsFetching(false))
+    dispatch(setPlayers(players))
+  }
 }
 export function setFindPlayerNameTC(text) {
   return async (dispatch) => {
-    dispatch(setFindPlayerName(text));
-  };
+    dispatch(setFindPlayerName(text))
+  }
 }
 
 // --------------reducer--------------
@@ -137,7 +137,7 @@ function playersReducer(state = initialState, action) {
           ...state.newPlayerData,
           name: action.payload,
         },
-      };
+      }
     case SET_NEW_SURNAME:
       return {
         ...state,
@@ -145,70 +145,70 @@ function playersReducer(state = initialState, action) {
           ...state.newPlayerData,
           surname: action.payload,
         },
-      };
+      }
     case SET_COMPLETE:
       return {
         ...state,
         isComplete: true,
-      };
+      }
     case SET_OPERATION_MSG:
       return {
         ...state,
         operationMessage: action.payload,
-      };
+      }
     case SET_PLAYERS:
       return {
         ...state,
         players: action.payload,
-      };
+      }
     case ADD_PLAYER:
       return {
         ...state,
         newPlayerData: {
           ...state.newPlayerData,
-          name: "",
-          surname: "",
+          name: '',
+          surname: '',
         },
-      };
+      }
     case TOGGLE_IS_FETCHING:
       return {
         ...state,
         isFetching: action.payload,
-      };
+      }
     case SET_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.payload,
-      };
+      }
     case SET_SORT_MODE:
       return {
         ...state,
         sortMode: action.payload,
-      };
+      }
     case SET_SORT_MODE_NAME:
       return {
         ...state,
         sortModeName: action.payload,
-      };
+      }
     case SET_SORT_DIRECTION:
       return {
         ...state,
         sortDirection: action.payload,
-      };
+      }
     case SET_FIND_PLAYER_NAME:
       return {
         ...state,
         findUserName: action.payload,
-      };
+      }
     case SET_TOTAL_PLAYER_COUNT:
       return {
         ...state,
         totalPlayersCount: action.payload,
-      };
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default playersReducer;
+export default playersReducer

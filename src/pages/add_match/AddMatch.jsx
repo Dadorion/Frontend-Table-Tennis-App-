@@ -1,11 +1,12 @@
-import React from 'react';
-import s from './AddMatch.module.css';
-import { connect } from 'react-redux';
-import Tabbar from '../../UI/Tabbar/Tabbar';
-import Counter from '../../UI/Counter/Counter';
+import React from 'react'
+import { connect } from 'react-redux'
+
+import s from './AddMatch.module.css'
+
+import Counter from '../../UI/Counter/Counter'
+import Tabbar from '../../UI/Tabbar/Tabbar'
 
 function AddMatch(props) {
-
   // const onSubmit = (formData) => {
   //   props.registrationTC(formData)
   // }
@@ -23,8 +24,8 @@ function AddMatch(props) {
 function mapStateToProps(state) {
   return {
     isAuth: state.auth.isAuth,
-    captchaUrl: state.auth.captchaUrl
+    captchaUrl: state.auth.captchaUrl,
   }
 }
 
-export default connect(mapStateToProps, {  })(AddMatch);
+export default connect(mapStateToProps, {})(AddMatch)

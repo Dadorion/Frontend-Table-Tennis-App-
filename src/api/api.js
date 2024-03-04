@@ -20,7 +20,7 @@ instance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // ---------------------------
@@ -91,7 +91,7 @@ export const profileAPI = {
     try {
       const response = await instance.put(
         `api/profile/update_my_profile`,
-        newProfileData
+        newProfileData,
       );
       return response.data;
     } catch (error) {
@@ -149,10 +149,10 @@ export const playerAPI = {
       throw error;
     }
   },
-  async getPlayers(page, pageSize, mode, direct ) {
+  async getPlayers(page, pageSize, mode, direct) {
     try {
       const response = await instance.get(`api/players`, {
-        params: { page, pageSize, mode, direct  },
+        params: { page, pageSize, mode, direct },
       });
 
       return response.data;

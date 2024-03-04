@@ -1,38 +1,41 @@
-import AddGame from './AddGame';
-import { updateFirstNameActionCreator, updateSecondNameActionCreator, updateFirstScoreActionCreator, updateSecondScoreActionCreator, addNewGameActionCreator } from '../../redux/game-reducer';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+
+import AddGame from './AddGame'
+
+import {
+  updateFirstNameActionCreator,
+  updateSecondNameActionCreator,
+  updateFirstScoreActionCreator,
+  updateSecondScoreActionCreator,
+  addNewGameActionCreator,
+} from '../../redux/game-reducer'
 
 function mapStateToProps(state) {
   return {
-    state: state.gameReducer
+    state: state.gameReducer,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     firstNameChange: (body) => {
-      dispatch(updateFirstNameActionCreator(body));
+      dispatch(updateFirstNameActionCreator(body))
     },
     secondNameChange: (body) => {
-      dispatch(updateSecondNameActionCreator(body));
+      dispatch(updateSecondNameActionCreator(body))
     },
     firstScoreChange: (body) => {
-      dispatch(updateFirstScoreActionCreator(body));
+      dispatch(updateFirstScoreActionCreator(body))
     },
     secondScoreChange: (body) => {
-      dispatch(updateSecondScoreActionCreator(body));
+      dispatch(updateSecondScoreActionCreator(body))
     },
     addGame: () => {
-      dispatch(addNewGameActionCreator());
+      dispatch(addNewGameActionCreator())
     },
   }
 }
 
-const AddGameContainer =
-  connect(mapStateToProps, mapDispatchToProps)(AddGame);
+const AddGameContainer = connect(mapStateToProps, mapDispatchToProps)(AddGame)
 
-
-
-
-
-export default AddGameContainer;
+export default AddGameContainer

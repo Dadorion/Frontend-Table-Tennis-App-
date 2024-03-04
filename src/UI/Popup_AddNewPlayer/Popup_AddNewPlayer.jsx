@@ -1,35 +1,31 @@
-import React from "react";
-import s from "./Popup_AddNewPlayer.module.css";
-import { useDispatch } from "react-redux";
-import closeIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
-import CustomButton from "../Buttons/CustomButton/CustomButton";
-import {
-  setNewName,
-  setNewSurname,
-  addNewPlayerTC,
-} from "../../redux/players-reducer";
+import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import s from './Popup_AddNewPlayer.module.css'
+
+import closeIcon from '../../assets/icons/svg_pack/Black/Regular/Close.svg'
+import { setNewName, setNewSurname, addNewPlayerTC } from '../../redux/players-reducer'
+import CustomButton from '../Buttons/CustomButton/CustomButton'
 
 function Popup_AddNewPlayer({ exit, player }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handleExit = () => {
-    exit(false);
-  };
+    exit(false)
+  }
   const handleChangeName = (e) => {
-    dispatch(setNewName(e.target.value));
-  };
+    dispatch(setNewName(e.target.value))
+  }
   const handleChangeSurname = (e) => {
-    dispatch(setNewSurname(e.target.value));
-  };
+    dispatch(setNewSurname(e.target.value))
+  }
   const handleAddNewPlayer = () => {
-    dispatch(
-      addNewPlayerTC(player.newPlayerData.name, player.newPlayerData.surname)
-    );
-  };
+    dispatch(addNewPlayerTC(player.newPlayerData.name, player.newPlayerData.surname))
+  }
 
   return (
     <div className={s.EditPlayer}>
       <div className={s.closeIcon} onClick={handleExit}>
-        <img src={closeIcon} alt="closeIcon" />
+        <img src={closeIcon} alt='closeIcon' />
       </div>
       <div className={s.header}>
         <h2>Редактировать</h2>
@@ -37,19 +33,11 @@ function Popup_AddNewPlayer({ exit, player }) {
       <div className={s.inputsName}>
         <div>
           <p>Имя</p>
-          <input
-            type="text"
-            value={player.newPlayerData.name}
-            onChange={handleChangeName}
-          />
+          <input type='text' value={player.newPlayerData.name} onChange={handleChangeName} />
         </div>
         <div>
           <p>Фамилия</p>
-          <input
-            type="text"
-            value={player.newPlayerData.surname}
-            onChange={handleChangeSurname}
-          />
+          <input type='text' value={player.newPlayerData.surname} onChange={handleChangeSurname} />
         </div>
       </div>
 
@@ -59,10 +47,10 @@ function Popup_AddNewPlayer({ exit, player }) {
         </div>
       )}
       <div>
-        <CustomButton btnName="Добавить" handler={handleAddNewPlayer} />
+        <CustomButton btnName='Добавить' handler={handleAddNewPlayer} />
       </div>
     </div>
-  );
+  )
 }
 
-export default Popup_AddNewPlayer;
+export default Popup_AddNewPlayer

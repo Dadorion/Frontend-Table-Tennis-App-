@@ -1,25 +1,5 @@
-:root {
-  --Background: #FFF;
-  --Basic-text: #333;
-  --Main-dark: #123741;
-  --Main-main: #385A64;
-  --Main-light: #87A8B2;
-  --Secondary-Brown_dark: #68431C;
-  --Secondary-Brown: #A17D58;
-  --Secondary-Brown_light: #D0B69C;
-  --Secondary-Pink_dark: #68271C;
-  --Secondary-Pink: #A16258;
-  --Secondary-Pink_light: #D0A39C;
-  --Accent-Green_dark: #154D26;
-  --Accent-Green: #417751;
-  --Accent-Green_light: #8CBB9A;
-  --Accent-Blue_dark: #151F47;
-  --Accent-Blue: #424A6D;
-  --Accent-Blue_light: #8E96B6;
-  --Disabled-grey: #999;
-  --Negative-red: #E36A6A;
-  --Light-grey: #d9d9d9
-}
+@import './base/reset';
+@import './base/vars';
 
 *,
 *::after,
@@ -30,17 +10,21 @@
 }
 
 html {
-  background: var(--Background);
+  background: $Background;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  color: var(--Basic-text);
+  color: $Basic-text;
   user-select: none;
 
   font-size: 16px;
 }
 
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 
 body {
   margin: 0;
@@ -61,7 +45,7 @@ code {
 }
 
 a {
-  color: var(--Main-main);
+  color: $Main-main;
   margin: 0;
   padding: 0;
 }

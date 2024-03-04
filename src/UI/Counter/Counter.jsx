@@ -1,28 +1,30 @@
-import s from "./Counter.module.css";
-import calIcon from "../../assets/icons/svg_pack/Black/Regular/Callback.svg";
-import mapPointIcon from "../../assets/icons/svg_pack/Black/Regular/Tennis.svg";
-import miniArrowIcon from "../../assets/icons/svg_pack/Black/Regular/CaretDown.svg";
-import closeIcon from "../../assets/icons/svg_pack/Black/Regular/Close.svg";
-import defaultAvatar from "../../assets/images/profile.png";
-import { useState } from "react";
+import { useState } from 'react'
+
+import s from './Counter.module.css'
+
+import calIcon from '../../assets/icons/svg_pack/Black/Regular/Callback.svg'
+import miniArrowIcon from '../../assets/icons/svg_pack/Black/Regular/CaretDown.svg'
+import closeIcon from '../../assets/icons/svg_pack/Black/Regular/Close.svg'
+import mapPointIcon from '../../assets/icons/svg_pack/Black/Regular/Tennis.svg'
+import defaultAvatar from '../../assets/images/profile.png'
 
 function Counter(props) {
-  const [isChooseScreen, setIsChooseScreen] = useState(true);
+  const [isChooseScreen, setIsChooseScreen] = useState(true)
   const handleCloseClick = () => {
-    setIsChooseScreen(false);
-  };
+    setIsChooseScreen(false)
+  }
   const handleChooseClick = () => {
-    setIsChooseScreen(true);
-  };
+    setIsChooseScreen(true)
+  }
   return (
     <div className={s.Counter}>
       <div className={s.whereMatch}>
         <div>
-          <img src={calIcon} alt="cal_icon" />
+          <img src={calIcon} alt='cal_icon' />
           Сегодня
         </div>
         <div>
-          <img src={mapPointIcon} alt="map_point" />
+          <img src={mapPointIcon} alt='map_point' />
           Старый Хопер
         </div>
       </div>
@@ -37,36 +39,36 @@ function Counter(props) {
       <div className={s.setup}>
         <div onClick={handleChooseClick}>
           Первый игрок
-          <img src={miniArrowIcon} alt="mini_arrow" />
+          <img src={miniArrowIcon} alt='mini_arrow' />
         </div>
         <div onClick={handleChooseClick}>
           Второй игрок
-          <img src={miniArrowIcon} alt="mini_arrow" />
+          <img src={miniArrowIcon} alt='mini_arrow' />
         </div>
       </div>
       {isChooseScreen && (
         <div className={s.choosePlayers}>
           <div className={s.choosePlayersHeader}>
             <h3>Выбрать соперника</h3>
-            <img src={closeIcon} alt="crossIcon" onClick={handleCloseClick} />
+            <img src={closeIcon} alt='crossIcon' onClick={handleCloseClick} />
           </div>
 
-          <input type="text" />
+          <input type='text' />
           <h4>Последние соперники</h4>
           <div className={s.playersPlace}>
             <div className={s.avatar}>
-              <img src={defaultAvatar} alt="avatar" />
+              <img src={defaultAvatar} alt='avatar' />
               <div className={s.playerInfo}>
                 <div>Василий Твердоухов</div>
                 <div>рейтинг 358 (Балашов)</div>
               </div>
             </div>
           </div>
-          <a href="/">+ Добавить игрока</a>
+          <a href='/'>+ Добавить игрока</a>
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default Counter;
+export default Counter

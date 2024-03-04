@@ -1,24 +1,23 @@
-import React, { useEffect, useRef } from "react";
-import Players from "./Players";
-import { connect, useDispatch } from "react-redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { compose } from "redux";
-import { withRouter } from "../../redux/withRouter";
-import { requestPlayersTC } from "../../redux/players-reducer";
+import React, { useEffect, useRef } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { compose } from 'redux'
+
+import Players from './Players'
+
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import { requestPlayersTC } from '../../redux/players-reducer'
+import { withRouter } from '../../redux/withRouter'
 
 function PlayersContainer(props) {
-  const dispatch = useDispatch();
-  const prevPlayersRef = useRef();
-  const { players, pagination, sort } = props;
+  const dispatch = useDispatch()
+  const prevPlayersRef = useRef()
+  const { players, pagination, sort } = props
 
-  
-  
+  useEffect(() => {
+    if (players !== prevPlayersRef.current) {
+      dispatch(requestPlayersTC(pagination.currentPage, pagination.pageSize, sort.mode, sort.direct))
 
-  useEffect(()=>{
-    if ( players !== prevPlayersRef.current) {
-      dispatch(requestPlayersTC(pagination.currentPage, pagination.pageSize, sort.mode, sort.direct));
-  
-      prevPlayersRef.current = players;
+      prevPlayersRef.current = players
     }
     // eslint-disable-next-line
   },[dispatch, pagination.currentPage, pagination.pageSize, sort.mode, sort.direct])
@@ -27,19 +26,12 @@ function PlayersContainer(props) {
     <>
       <Players {...props} />
     </>
-  );
+  )
 }
 
 function mapStateToProps(state) {
-  const {
-    pageSize,
-    totalPlayersCount,
-    currentPage,
-    isFetching,
-    sortModeName,
-    sortMode,
-    sortDirection,
-  } = state.playersReducer;
+  const { pageSize, totalPlayersCount, currentPage, isFetching, sortModeName, sortMode, sortDirection } =
+    state.playersReducer
   return {
     findUserName: state.playersReducer.findUserName,
     filter: state.filterReducer,
@@ -47,7 +39,7 @@ function mapStateToProps(state) {
     pagination: {
       pageSize,
       totalPlayersCount,
-      pagesCount: Math.round(totalPlayersCount/pageSize),
+      pagesCount: Math.round(totalPlayersCount / pageSize),
       currentPage,
       isFetching,
     },
@@ -58,14 +50,10 @@ function mapStateToProps(state) {
     },
     authorizedUserId: state.auth.userId,
     isAuth: state.auth.isAuth,
-  };
+  }
 }
 function mapDispatchToProps() {
-  return {  };
+  return {}
 }
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withRouter,
-  withAuthRedirect
-)(PlayersContainer);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter, withAuthRedirect)(PlayersContainer)

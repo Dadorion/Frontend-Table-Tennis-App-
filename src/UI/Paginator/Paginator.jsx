@@ -1,40 +1,33 @@
 // import React, { useState } from 'react';
-import s from './Paginator.module.css';
+import s from './Paginator.module.css'
 
 function Paginator(props) {
-   let pagesCount = Math.ceil(props.totalsersCount / props.pageSize);
-   let pages = [];
-   for (let i = 1; i <= pagesCount; i++) {
-      pages.push(i);
-   }
+  let pagesCount = Math.ceil(props.totalsersCount / props.pageSize)
+  let pages = []
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i)
+  }
 
-   return (
-      <div className={`${s.pageNumbers}`}>
-         {
-            pages.map(p => {
-               return (
-                  <span
-                     key={p}
-                     className={props.currentPage === p
-                        ? s.selectedPage
-                        : undefined}
-                     onClick={(e) => { props.onPageChanged(p); }}>
-
-                     {p}
-                  </span>)
-            })
-         }
-      </div >
-   )
+  return (
+    <div className={`${s.pageNumbers}`}>
+      {pages.map((p) => {
+        return (
+          <span
+            key={p}
+            className={props.currentPage === p ? s.selectedPage : undefined}
+            onClick={(e) => {
+              props.onPageChanged(p)
+            }}
+          >
+            {p}
+          </span>
+        )
+      })}
+    </div>
+  )
 }
 
-export default Paginator;
-
-
-
-
-
-
+export default Paginator
 
 // let sersPaginator = (props) => {
 

@@ -1,5 +1,6 @@
-import React from "react";
-import s from "./User_item.module.css";
+import React from 'react'
+
+import s from './User_item.module.css'
 
 function ExtraInfo() {
   return (
@@ -11,6 +12,6 @@ function ExtraInfo() {
       </div>
       <button className={`${s.button}`}>Показать встречи</button>
     </div>
-  );
+  )
 }
-export default ExtraInfo;
+export default ExtraInfo

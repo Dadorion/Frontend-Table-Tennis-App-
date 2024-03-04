@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import { Field, reduxForm } from "redux-form";
-import {
-  required,
-  maxLengthCreator,
-  minLengthCreator,
-} from "../../utils/validators/validators";
-import Input from "../../UI/FormControls/FormControls";
-import ArrowIcon from "../../assets/icons/svg_pack/Black/Regular/ArrowLeft.svg";
-import Button from "../../UI/Buttons/Button/Button";
-import s from "./Registration.module.css";
-import sFC from "../../UI/FormControls/FormControls.module.css";
+import React, { useState } from 'react'
+import { Field, reduxForm } from 'redux-form'
 
-const maxLength30 = maxLengthCreator(30);
-const minLength4 = minLengthCreator(4);
+import s from './Registration.module.css'
+
+import ArrowIcon from '../../assets/icons/svg_pack/Black/Regular/ArrowLeft.svg'
+import Button from '../../UI/Buttons/Button/Button'
+import Input from '../../UI/FormControls/FormControls'
+import sFC from '../../UI/FormControls/FormControls.module.css'
+import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators'
+
+const maxLength30 = maxLengthCreator(30)
+const minLength4 = minLengthCreator(4)
 
 const RegistrationForm = (props) => {
-  const [isFirstScreen, setIsFirstScreen] = useState(true);
+  const [isFirstScreen, setIsFirstScreen] = useState(true)
 
   const handleNextClick = () => {
-    setIsFirstScreen(false);
-  };
+    setIsFirstScreen(false)
+  }
   const handleBackClick = () => {
-    setIsFirstScreen(true);
-  };
+    setIsFirstScreen(true)
+  }
 
   return (
     <div className={s.FormContainer}>
@@ -41,8 +39,8 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="name"
-                  placeholder="Имя"
+                  name='name'
+                  placeholder='Имя'
                   component={Input}
                   validate={[required, maxLength30]}
                 />
@@ -50,8 +48,8 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="surname"
-                  placeholder="Фамилия"
+                  name='surname'
+                  placeholder='Фамилия'
                   component={Input}
                   validate={[required, maxLength30]}
                 />
@@ -59,9 +57,9 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="birthday"
-                  placeholder="Дата рождения"
-                  type="date"
+                  name='birthday'
+                  placeholder='Дата рождения'
+                  type='date'
                   component={Input}
                   validate={[required, maxLength30]}
                 />
@@ -69,8 +67,8 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="city"
-                  placeholder="Город"
+                  name='city'
+                  placeholder='Город'
                   component={Input}
                   validate={[required, maxLength30]}
                 />
@@ -81,8 +79,8 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="email"
-                  placeholder="Емайл"
+                  name='email'
+                  placeholder='Емайл'
                   component={Input}
                   validate={[required, maxLength30]}
                 />
@@ -90,9 +88,9 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="password_1"
-                  placeholder="Пароль"
-                  type="password"
+                  name='password_1'
+                  placeholder='Пароль'
+                  type='password'
                   component={Input}
                   validate={[required, minLength4]}
                 />
@@ -100,9 +98,9 @@ const RegistrationForm = (props) => {
               <div>
                 <Field
                   className={s.InputForm}
-                  name="password_2"
-                  placeholder="Пароль еще раз"
-                  type="password"
+                  name='password_2'
+                  placeholder='Пароль еще раз'
+                  type='password'
                   component={Input}
                   validate={[required, minLength4]}
                 />
@@ -123,41 +121,29 @@ const RegistrationForm = (props) => {
         </div>
 
         <div className={s.ScreenIndicators}>
-          <div
-            className={`${s.Indicator} ${isFirstScreen ? s.Active : ""}`}
-          ></div>
-          <div
-            className={`${s.Indicator} ${!isFirstScreen ? s.Active : ""}`}
-          ></div>
+          <div className={`${s.Indicator} ${isFirstScreen ? s.Active : ''}`}></div>
+          <div className={`${s.Indicator} ${!isFirstScreen ? s.Active : ''}`}></div>
         </div>
 
-        <div>
-          {props.error && (
-            <div className={sFC.formSummaryError}>{props.error}</div>
-          )}
-        </div>
+        <div>{props.error && <div className={sFC.formSummaryError}>{props.error}</div>}</div>
 
         <div className={s.ButtonFormBlock}>
           {isFirstScreen ? (
             // FIXME кнопка работает корректно один раз вперед, стрелка назад тоже отрабатывает. Но после возвращения кнопка дизейблится и уже ни как не разблокируется.
-            <Button
-              buttName="Далее"
-              isDisabled={!props.valid}
-              handle={handleNextClick}
-            />
+            <Button buttName='Далее' isDisabled={!props.valid} handle={handleNextClick} />
           ) : (
             // <button type="submit" disabled={!props.valid} onClick={handleNextClick}>Зарегистрироваться</button>
-            <Button buttName="Зарегистрироваться" />
+            <Button buttName='Зарегистрироваться' />
           )}
           <div className={s.hasAkkaunt}></div>
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 const RegistrationReduxForm = reduxForm({
-  form: "registration",
-})(RegistrationForm);
+  form: 'registration',
+})(RegistrationForm)
 
-export default RegistrationReduxForm;
+export default RegistrationReduxForm

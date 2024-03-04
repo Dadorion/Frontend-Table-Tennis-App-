@@ -1,20 +1,20 @@
-import React from "react";
-import s from "./Confirm_popup.module.css";
+import React from 'react'
+
+import s from './Confirm_popup.module.css'
 
 function ConfirmPopUp(props) {
-
   const handleYes = () => {
     if (props.dispatchQwest !== undefined) {
-      props.setDispatchQwest(!props.dispatchQwest);
-      props.setSaveQwest(!props.saveQwest);
+      props.setDispatchQwest(!props.dispatchQwest)
+      props.setSaveQwest(!props.saveQwest)
     } else {
-      props.setExitQWest(!props.exitQwest);
+      props.setExitQWest(!props.exitQwest)
     }
-  };
+  }
 
   const handleNo = () => {
-    props.setSaveQwest(!props.saveQwest);
-  };
+    props.setSaveQwest(!props.saveQwest)
+  }
 
   return (
     <>
@@ -32,7 +32,7 @@ function ConfirmPopUp(props) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default ConfirmPopUp;
+export default ConfirmPopUp

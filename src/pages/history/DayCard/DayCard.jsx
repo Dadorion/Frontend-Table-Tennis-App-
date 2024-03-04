@@ -1,14 +1,16 @@
-import React from "react";
-import s from "./DayCard.module.css";
-import UserItem from "../../../UI/Player_Item/Player_Item";
+import React from 'react'
+
+import s from './DayCard.module.css'
+
+import UserItem from '../../../UI/Player_Item/Player_Item'
 
 function DayCard(props) {
   if (!props.users) {
-    return <div className={s.Users}>Loading...</div>;
+    return <div className={s.Users}>Loading...</div>
   }
 
   const matches = props.users.map((user) => {
-    const handlePlayer =()=>{
+    const handlePlayer = () => {
       window.alert('Смотрим пользователя')
     }
     return (
@@ -24,8 +26,8 @@ function DayCard(props) {
           />
         </div>
       </div>
-    );
-  });
+    )
+  })
 
   return (
     <div className={s.DayCard}>
@@ -33,11 +35,9 @@ function DayCard(props) {
         <span>24 декабря</span>
         <span>с. Ст. Хопер</span>
       </div>
-      <div className={s.matches}>
-        {matches}
-      </div>
+      <div className={s.matches}>{matches}</div>
     </div>
-  );
+  )
 }
 
-export default DayCard;
+export default DayCard

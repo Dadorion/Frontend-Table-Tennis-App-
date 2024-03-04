@@ -1,10 +1,12 @@
 import React from "react";
-import "./App.css";
-import Content from "./UI/content/Content";
-import { compose } from "redux";
+import "./scss/App.css";
 import { connect } from "react-redux";
+import { compose } from "redux";
+
 import { initializeApp } from "./redux/app-reducer";
 import { withRouter } from "./redux/withRouter";
+import Content from "./UI/content/Content";
+
 import LoaderSVG from "../src/UI/SpinnerPreloader/Spinner";
 
 class App extends React.Component {
@@ -35,5 +37,5 @@ function mapStateToProps(state) {
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { initializeApp })
+  connect(mapStateToProps, { initializeApp }),
 )(App);

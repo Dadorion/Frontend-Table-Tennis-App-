@@ -1,85 +1,73 @@
-import {
-   registrationAPI
-} from "../api/api";
+import { registrationAPI } from '../api/api'
 // import { stopSubmit } from "redux-form";
 
 // -------------= preparing constatnt =--------------
 const initialState = {
-   name: null,
-   surname: null,
-   city: null,
-   birthday: null,
-   email: null
+  name: null,
+  surname: null,
+  city: null,
+  birthday: null,
+  email: null,
 }
 
-const REGISTRATION = 'ttsh/auth/REGISTRATION';
+const REGISTRATION = 'ttsh/auth/REGISTRATION'
 
 export function setRegistrationUserData(name, surname, city, birthday, email) {
-   return {
-      type: REGISTRATION,
-      payload: {
-         name,
-         surname,
-         city,
-         birthday,
-         email
-      }
-   }
+  return {
+    type: REGISTRATION,
+    payload: {
+      name,
+      surname,
+      city,
+      birthday,
+      email,
+    },
+  }
 }
 
 export function registrationTC(formData) {
-   return async (dispatch) => {
-      const responce = await registrationAPI.registration(formData)
-      if (responce.status) {
-         console.log("responce.status: ", responce.status)
-         console.log("responce: ", responce)
-      }
+  return async (dispatch) => {
+    const responce = await registrationAPI.registration(formData)
+    if (responce.status) {
+      console.log('responce.status: ', responce.status)
+      console.log('responce: ', responce)
+    }
 
+    if (responce.status !== 200) {
+      console.log('Ошибка: Ответ от сервера не пришел.')
+    }
+    console.log(responce.data.message)
 
-      if (responce.status !== 200) {
-         console.log('Ошибка: Ответ от сервера не пришел.')
-      }
-      console.log(responce.data.message)
+    // const { name, surname, city, birthday, email } = responce
+    // dispatch(setRegistrationUserData(name, surname, city, birthday, email))
 
-      // const { name, surname, city, birthday, email } = responce
-      // dispatch(setRegistrationUserData(name, surname, city, birthday, email))
-
-      // ответ сервера ожидается таким:
-      // {
-      //    user: { id: 1004 },
-      //    player: {
-      //      id: 2486,
-      //      name: 'Test3',
-      //      surname: 'Test3',
-      //      birthday: 1985-05-24T19:00:00.000Z,
-      //      status: null,
-      //      city: 'Test3',
-      //      user_id: 1004,
-      //      base: null,
-      //      forhand_pad: null,
-      //      backhand_pad: null
-      //    }
-      //  }
-   }
+    // ответ сервера ожидается таким:
+    // {
+    //    user: { id: 1004 },
+    //    player: {
+    //      id: 2486,
+    //      name: 'Test3',
+    //      surname: 'Test3',
+    //      birthday: 1985-05-24T19:00:00.000Z,
+    //      status: null,
+    //      city: 'Test3',
+    //      user_id: 1004,
+    //      base: null,
+    //      forhand_pad: null,
+    //      backhand_pad: null
+    //    }
+    //  }
+  }
 }
 
 // registrationThunkCreator ->
 export const getRegistrationUserData = () => async (dispatch) => {
+  const responce = await registrationAPI.registration()
 
-   const responce = await registrationAPI.registration();
-
-   if (responce.data.resultCode === 0) {
-      const {
-         name,
-         surname,
-         city,
-         birthday,
-         email,
-         password
-      } = responce.data.data;
-      dispatch(setRegistrationUserData(name, surname, city, birthday, email, password))
-   }
-
+  if (responce.data.resultCode === 0) {
+    const { name, surname, city, birthday, email, password } = responce.data.data
+    dispatch(setRegistrationUserData(name, surname, city, birthday, email, password))
+  }
 }
 
 // //registrationThunkCreator ->
@@ -102,16 +90,15 @@ export const getRegistrationUserData = () => async (dispatch) => {
 
 // -------------= reduser =--------------------------
 function registrationReducer(state = initialState, action) {
-
-   switch (action.type) {
-      case REGISTRATION:
-         return {
-            ...state,
-            ...action.payload,
-         }
-         default:
-            return state;
-   };
+  switch (action.type) {
+    case REGISTRATION:
+      return {
+        ...state,
+        ...action.payload,
+      }
+    default:
+      return state
+  }
 }
 
-export default registrationReducer;
+export default registrationReducer

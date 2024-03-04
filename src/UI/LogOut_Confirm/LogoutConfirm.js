@@ -1,19 +1,21 @@
-import React from "react";
-import s from "./LogoutConfirm.module.css";
-import { useDispatch } from "react-redux";
-import { logoutTC } from "../../redux/auth-reduser";
+import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import s from './LogoutConfirm.module.css'
+
+import { logoutTC } from '../../redux/auth-reduser'
 
 function LogoutConfirm(props) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleYes = () => {
-    dispatch(logoutTC());
-    props.setExitQwest(!props.exitQwest);
-  };
+    dispatch(logoutTC())
+    props.setExitQwest(!props.exitQwest)
+  }
 
   const handleNo = () => {
-    props.setExitQwest(!props.exitQwest);
-  };
+    props.setExitQwest(!props.exitQwest)
+  }
 
   return (
     <>
@@ -31,7 +33,7 @@ function LogoutConfirm(props) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default LogoutConfirm;
+export default LogoutConfirm

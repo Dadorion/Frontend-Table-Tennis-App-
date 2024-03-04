@@ -1,26 +1,26 @@
-import React from 'react';
-import s from './FormControls.module.css';
+import React from 'react'
 
+import s from './FormControls.module.css'
 
 function FormControl({ input, meta, ...props }) {
+  const hasErrors = meta.touched && meta.error
 
-   const hasErrors = meta.touched && meta.error
-
-   return <div className={s.formControl + ' ' + (hasErrors ? s.error : '')}>
+  return (
+    <div className={s.formControl + ' ' + (hasErrors ? s.error : '')}>
       {props.children}
       {hasErrors && <span>{meta.error}</span>}
-   </div>
+    </div>
+  )
 }
 
-
-function Input(props ) {
-   const { input, meta, ...restProps } = props;
-   return (
-      <FormControl {...props}>
-         <input {...input} {...restProps} />
-      </FormControl>)
+function Input(props) {
+  const { input, meta, ...restProps } = props
+  return (
+    <FormControl {...props}>
+      <input {...input} {...restProps} />
+    </FormControl>
+  )
 }
-
 
 // function Input({ input, meta, ...props }) {
 
@@ -32,4 +32,4 @@ function Input(props ) {
 //    </div>
 // }
 
-export default Input;
+export default Input
