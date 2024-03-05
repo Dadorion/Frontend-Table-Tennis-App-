@@ -1,0 +1,15 @@
+@import '../../scss/base/vars';
+
+.Tournament {
+   background: #000;
+
+   .whereBlock {
+      display: flex;
+   }
+   .howBlock {
+      display: flex;
+   }
+   .whoBlock {
+      display: flex;
+   }
+}

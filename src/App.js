@@ -9,7 +9,7 @@ import { withRouter } from './redux/withRouter'
 import Content from './UI/content/Content'
 import LoaderSVG from './UI/SpinnerPreloader/Spinner'
 
-const App = ({ initialized, initializeApp }) => {
+function App({ initialized, initializeApp }) {
   useEffect(() => {
     initializeApp()
   }, [initializeApp])
