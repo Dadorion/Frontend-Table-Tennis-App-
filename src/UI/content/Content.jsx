@@ -13,6 +13,7 @@ import EditInfoContainer from '../../pages/profile/edit_info/EditInfoContainer'
 import ProfileContainer from '../../pages/profile/ProfileContainer'
 import Registration from '../../pages/registration/RegistrationContainer'
 import Tabbar from '../Tabbar/Tabbar'
+import Tournament from '../../pages/tournament/Tournament'
 
 // UsersContainer = React.lazy(() => import('../../pages/users/UsersContainer'));
 
@@ -43,6 +44,7 @@ function Content(props) {
         <Route path='/registration' element={<Registration />} />
         <Route path='/add_match' element={<AddMatch />} />
         <Route path='/history' element={<HistoryContainer />} />
+        <Route path='/counter' element={<Tournament />} />
       </Routes>
       <Tabbar />
     </div>
