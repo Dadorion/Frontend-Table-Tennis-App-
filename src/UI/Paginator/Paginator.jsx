@@ -2,27 +2,25 @@
 import s from './Paginator.module.css'
 
 function Paginator(props) {
-  let pagesCount = Math.ceil(props.totalsersCount / props.pageSize)
-  let pages = []
+  const pagesCount = Math.ceil(props.totalsersCount / props.pageSize)
+  const pages = []
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
   }
 
   return (
     <div className={`${s.pageNumbers}`}>
-      {pages.map((p) => {
-        return (
-          <span
-            key={p}
-            className={props.currentPage === p ? s.selectedPage : undefined}
-            onClick={(e) => {
-              props.onPageChanged(p)
-            }}
-          >
-            {p}
-          </span>
-        )
-      })}
+      {pages.map((p) => (
+        <span
+          key={p}
+          className={props.currentPage === p ? s.selectedPage : undefined}
+          onClick={(e) => {
+            props.onPageChanged(p)
+          }}
+        >
+          {p}
+        </span>
+      ))}
     </div>
   )
 }

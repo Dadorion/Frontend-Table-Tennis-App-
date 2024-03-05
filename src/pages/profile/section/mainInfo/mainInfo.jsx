@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useLocation } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 
 import s from './mainInfo.module.css'
 
@@ -63,7 +62,7 @@ function MainInfo({ name, surname, status, avatar }) {
             <>
               <div className={s.avatar}>
                 <img src={avatar || avatarAlt} alt='avatar' />
-                <Link to={'/edit-photo'}>
+                <Link to='/edit-photo'>
                   <span>изменить</span>
                 </Link>
               </div>

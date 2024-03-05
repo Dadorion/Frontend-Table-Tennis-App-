@@ -9,7 +9,7 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
 const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS'
 
-let initialState = {
+const initialState = {
   profiles: [],
   newName: '',
   newSurname: '',
@@ -38,7 +38,7 @@ function profileReducer(state = initialState, action) {
         newCityText: action.newLocRating,
       }
     case ADD_NEW_PROFILE:
-      let newProfile = {
+      const newProfile = {
         id: new Date(),
         name: state.newName,
         surname: state.newSurname,
@@ -110,32 +110,32 @@ export function savePhotoSuccess(photos) {
   return { type: SAVE_PHOTO_SUCCESS, photos }
 }
 
-//getProfileThunkCreator ->
+// getProfileThunkCreator ->
 // export const getProfile = (userId) => async (dispatch) => {
 //     let responce = await usersAPI.getProfile(userId);
 //     dispatch(setUserProfile(responce.data));
 // }
 export function getProfile(userId) {
   return async (dispatch) => {
-    let responce = await usersAPI.getProfile(userId)
+    const responce = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(responce.data))
   }
 }
-//getStatusThunkCreator ->
+// getStatusThunkCreator ->
 export const getStatus = (userId) => async (dispatch) => {
-  let responce = await profileAPI.getStatus(userId)
+  const responce = await profileAPI.getStatus(userId)
   dispatch(setStatus(responce.data))
 }
-//updateStatusThunkCreator ->
+// updateStatusThunkCreator ->
 export const updateStatus = (status) => async (dispatch) => {
-  let responce = await profileAPI.updateStatus(status)
+  const responce = await profileAPI.updateStatus(status)
   if (responce.data.resultCode === 0) {
     dispatch(setStatus(status))
   }
 }
-//savePhotoThunkCreator ->
+// savePhotoThunkCreator ->
 export const savePhoto = (file) => async (dispatch) => {
-  let responce = await profileAPI.savePhoto(file)
+  const responce = await profileAPI.savePhoto(file)
   if (responce.data.resultCode === 0) {
     dispatch(savePhotoSuccess(responce.data.data.photos))
   }

@@ -12,7 +12,7 @@ import { required, maxLengthCreator, minLengthCreator } from '../../utils/valida
 const maxLength30 = maxLengthCreator(30)
 const minLength4 = minLengthCreator(4)
 
-const RegistrationForm = (props) => {
+function RegistrationForm(props) {
   const [isFirstScreen, setIsFirstScreen] = useState(true)
 
   const handleNextClick = () => {
@@ -121,8 +121,8 @@ const RegistrationForm = (props) => {
         </div>
 
         <div className={s.ScreenIndicators}>
-          <div className={`${s.Indicator} ${isFirstScreen ? s.Active : ''}`}></div>
-          <div className={`${s.Indicator} ${!isFirstScreen ? s.Active : ''}`}></div>
+          <div className={`${s.Indicator} ${isFirstScreen ? s.Active : ''}`} />
+          <div className={`${s.Indicator} ${!isFirstScreen ? s.Active : ''}`} />
         </div>
 
         <div>{props.error && <div className={sFC.formSummaryError}>{props.error}</div>}</div>
@@ -135,7 +135,7 @@ const RegistrationForm = (props) => {
             // <button type="submit" disabled={!props.valid} onClick={handleNextClick}>Зарегистрироваться</button>
             <Button buttName='Зарегистрироваться' />
           )}
-          <div className={s.hasAkkaunt}></div>
+          <div className={s.hasAkkaunt} />
         </div>
       </form>
     </div>

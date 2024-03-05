@@ -10,25 +10,28 @@
   gap: 4px;
 }
 
-.LastGames {}
+.LastGames {
+}
 
-.fpName {}
+.fpName {
+}
 .spName {
   grid-row: row 2;
 }
 
-.fpScore {}
+.fpScore {
+}
 .fpScoreW {
   font-weight: 700;
 }
-.fpScore div{
+.fpScore div {
   display: inline-block;
   margin-right: 4px;
 }
 .spScore {
   grid-row: row 2;
 }
-.spScore div{
+.spScore div {
   display: inline-block;
   margin-right: 4px;
 }
@@ -36,10 +39,11 @@
 .date {
   grid-column: col 4;
   grid-row: row 3;
-  font-size: .6em;
+  font-size: 0.6em;
   justify-self: end;
   align-self: end;
   padding: 4px;
 }
 
-.winner{}
+.winner {
+}

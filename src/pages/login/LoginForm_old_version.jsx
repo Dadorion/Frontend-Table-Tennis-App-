@@ -69,7 +69,7 @@ function LoginForm(props) {
 }
 
 const LoginReduxForm = reduxForm({
-  //an unique name for the form
+  // an unique name for the form
   form: 'login',
 })(LoginForm)
 

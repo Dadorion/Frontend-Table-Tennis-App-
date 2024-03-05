@@ -21,7 +21,7 @@
   justify-content: space-between;
   align-self: stretch;
 
-  color: var(--Background, #FFF);
+  color: var(--Background, #fff);
 
   /* Paragraph/regular */
   font-family: Open Sans;
@@ -37,8 +37,7 @@
 }
 
 .sortMode img {
-  color: var(--Background, #FFF);
-
+  color: var(--Background, #fff);
 }
 
 .filter img {

@@ -12,11 +12,7 @@ function HistoryContainer(props) {
     dispatch(requestUsers(1, 10))
   }
 
-  return (
-    <>
-      <History {...props} />
-    </>
-  )
+  return <History {...props} />
 }
 
 function mapStateToProps(state) {

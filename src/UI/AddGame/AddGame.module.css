@@ -1,19 +1,19 @@
 .AddGame {
   grid-area: d;
   display: grid;
-  grid-template-areas: "a a""b b""c c""d d""e e""f f""g g""h h";
+  grid-template-areas: 'a a' 'b b' 'c c' 'd d' 'e e' 'f f' 'g g' 'h h';
   gap: 8px;
 }
 
-.names{
+.names {
   grid-area: a;
 }
-.part{
+.part {
   grid-area: b;
 }
-.score{
+.score {
   grid-area: c;
 }
-.btn{
+.btn {
   grid-area: d;
 }

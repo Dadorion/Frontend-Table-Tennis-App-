@@ -1,4 +1,5 @@
 import s from './NavItem.module.css'
+
 function NavItem(props) {
   return (
     <div>

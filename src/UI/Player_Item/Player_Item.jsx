@@ -21,7 +21,7 @@ function Player_Item(props) {
   // const winsPersentStr =
   //   props.pers !== "пока нет побед" ? `побед: ${props.pers}%` : props.pers;
 
-  const winsCount = props.count ? `победных очков: ${props.count}` : `победных очков: 0`
+  const winsCount = props.count ? `победных очков: ${props.count}` : 'победных очков: 0'
 
   // const avatar = props.photoPath
   //   ? `http://localhost:5000/${props.photoPath}`

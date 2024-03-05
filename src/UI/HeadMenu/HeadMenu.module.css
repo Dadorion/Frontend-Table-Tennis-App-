@@ -1,51 +1,51 @@
 .HeadMenu {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* padding: 12px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 12px; */
 }
-.HeadMenu a{
-    text-decoration: none;
-    color: var(--Basic-text)
+.HeadMenu a {
+  text-decoration: none;
+  color: var(--Basic-text);
 }
 
 .block {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .HeadMenu img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 .name {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
 .ring {
-    width: 24px;
-    height: 24px;
-    padding: 2px 4px;
-    justify-content: center;
-    align-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 2px 4px;
+  justify-content: center;
+  align-items: center;
 
-    margin-right: 16px;
+  margin-right: 16px;
 }
 
 .gear {
-    width: 24px;
-    height: 24px;
-    padding: 2.248px 2.65px 2.248px 2.648px;
-    justify-content: center;
-    align-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 2.248px 2.65px 2.248px 2.648px;
+  justify-content: center;
+  align-items: center;
 
-    margin-right: 16px;
+  margin-right: 16px;
 }
 
 .logout {
-    padding: 2.248px 2.65px 2.248px 2.648px;
-    justify-content: center;
-    align-items: center;
+  padding: 2.248px 2.65px 2.248px 2.648px;
+  justify-content: center;
+  align-items: center;
 }

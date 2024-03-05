@@ -1,13 +1,11 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import s from './ProfileStatus.module.css'
 
 function ProfileStatusWithHooks(props) {
-  //хуки
-  let [editMode, setEditMode] = useState(false)
-  let [status, setStatus] = useState(props.status)
+  // хуки
+  const [editMode, setEditMode] = useState(false)
+  const [status, setStatus] = useState(props.status)
 
   useEffect(() => {
     setStatus(props.status)
@@ -28,11 +26,11 @@ function ProfileStatusWithHooks(props) {
     <div className={`${s.Status}`}>
       {!editMode ? (
         <div>
-          <span onDoubleClick={activateEditMode}>{props.status ? props.status : `create your status`}</span>
+          <span onDoubleClick={activateEditMode}>{props.status ? props.status : 'create your status'}</span>
         </div>
       ) : (
         <div>
-          <input autoFocus={true} onBlur={deactivateEditMode} value={status} onChange={onStatusChange} />
+          <input autoFocus onBlur={deactivateEditMode} value={status} onChange={onStatusChange} />
         </div>
       )}
     </div>

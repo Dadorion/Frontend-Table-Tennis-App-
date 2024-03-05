@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-let HomepageTestForm = (props) => {
+function HomepageTestForm(props) {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>

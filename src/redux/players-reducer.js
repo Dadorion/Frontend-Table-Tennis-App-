@@ -1,6 +1,6 @@
 import { playerAPI } from '../api/api'
 
-let initialState = {
+const initialState = {
   players: null,
   newPlayerData: {
     name: '',
@@ -81,7 +81,7 @@ export function setTotalPlayersCount(count) {
 export function addNewPlayerTC(name, surname) {
   return async (dispatch) => {
     try {
-      let response = await playerAPI.addNewPlayer(name, surname)
+      const response = await playerAPI.addNewPlayer(name, surname)
       if (response.code === 0) {
         dispatch(addNewPlayer())
         dispatch(setComplete(true))
@@ -100,7 +100,7 @@ export function requestPlayersTC(page, pageSize, mode, direct) {
     dispatch(toggleIsFetching(true))
     dispatch(setCurrentPage(page))
 
-    let response = await playerAPI.getPlayers(page, pageSize, mode, direct)
+    const response = await playerAPI.getPlayers(page, pageSize, mode, direct)
     dispatch(toggleIsFetching(false))
     dispatch(setPlayers(response.body))
     dispatch(setTotalPlayersCount(response.pagination.totalCount))
@@ -116,7 +116,7 @@ export function requestPlayersWithNameTC(text) {
   return async (dispatch) => {
     dispatch(toggleIsFetching(true))
 
-    let players = await playerAPI.getPlayersWithName(text)
+    const players = await playerAPI.getPlayersWithName(text)
     dispatch(toggleIsFetching(false))
     dispatch(setPlayers(players))
   }

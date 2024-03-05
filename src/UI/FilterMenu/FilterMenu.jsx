@@ -41,13 +41,11 @@ function FilterMenu(props) {
     { id: 4, name: 'Бердянск' },
     { id: 5, name: 'Санкт-Петербург' },
   ]
-  const cities = citiesName.map((city) => {
-    return (
-      <div key={city.id}>
-        {city.name} <img src={cros} alt='city' />
-      </div>
-    )
-  })
+  const cities = citiesName.map((city) => (
+    <div key={city.id}>
+      {city.name} <img src={cros} alt='city' />
+    </div>
+  ))
   const handleClose = () => {
     props.setShowFilters(false)
   }
@@ -136,7 +134,7 @@ function FilterMenu(props) {
                   checked={localState.radioState.players === 'rival'}
                   onChange={() => handleRadioChange('players', 'rival')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 соперники
               </label>
             </div>
@@ -150,7 +148,7 @@ function FilterMenu(props) {
                   checked={localState.radioState.players === 'all_players'}
                   onChange={() => handleRadioChange('players', 'all_players')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 все игроки
               </label>
             </div>
@@ -166,7 +164,7 @@ function FilterMenu(props) {
                   value='today'
                   onChange={() => handleInputChange('date', 'today')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 сегодня
               </label>
               <label>
@@ -177,7 +175,7 @@ function FilterMenu(props) {
                   value='yesterday'
                   onChange={() => handleInputChange('date', 'yesterday')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 вчера
               </label>
             </div>
@@ -190,7 +188,7 @@ function FilterMenu(props) {
                   value='week'
                   onChange={() => handleInputChange('date', 'week')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 за неделю
               </label>
               <label>
@@ -201,7 +199,7 @@ function FilterMenu(props) {
                   value='month'
                   onChange={() => handleInputChange('date', 'month')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 за месяц
               </label>
             </div>
@@ -232,7 +230,7 @@ function FilterMenu(props) {
                   value='male'
                   onChange={() => handleInputChange('gender', 'male')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 только мужчины
               </label>
               <label>
@@ -243,7 +241,7 @@ function FilterMenu(props) {
                   value='female'
                   onChange={() => handleInputChange('gender', 'female')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 только женщины
               </label>
             </div>
@@ -259,7 +257,7 @@ function FilterMenu(props) {
                   value='win'
                   onChange={() => handleInputChange('wins', 'win')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 кого выигрываю
               </label>
               <label>
@@ -270,7 +268,7 @@ function FilterMenu(props) {
                   value='loose'
                   onChange={() => handleInputChange('wins', 'loose')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 кому проигрываю
               </label>
               <label>
@@ -281,7 +279,7 @@ function FilterMenu(props) {
                   value='hardest'
                   onChange={() => handleInputChange('wins', 'hardest')}
                 />
-                <span className={s.customRadio}></span>
+                <span className={s.customRadio} />
                 топ сложных соперников
               </label>
             </div>

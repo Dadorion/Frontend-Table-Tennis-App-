@@ -8,7 +8,7 @@ const IS_FETCHING_ON = 'IS_FETCHING_ON'
 const IS_FETCHING_OFF = 'IS_FETCHING_OF'
 const SET_PROFILE_INFO = 'SET_PROFILE_INFO'
 
-let initialState = {
+const initialState = {
   name: 'nameless',
   newNameText: '',
   isEditingName: false,

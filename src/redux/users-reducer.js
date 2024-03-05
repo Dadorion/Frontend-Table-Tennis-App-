@@ -63,37 +63,29 @@ export function setFindUserName(text) {
 // ----------thunck creaters----------
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actiionCreator) => {
   dispatch(toggleFollowingProgress(true, userId))
-  let responce = await apiMethod(userId)
+  const responce = await apiMethod(userId)
   if (responce.data.resultCode === 0) {
     dispatch(actiionCreator(userId))
   }
   dispatch(toggleFollowingProgress(false, userId))
 }
 
-export const follow = (userId) => {
-  return async (dispatch) => {
-    followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
-  }
+export const follow = (userId) => async (dispatch) => {
+  followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
 }
-export const unfollow = (userId) => {
-  return async (dispatch) => {
-    followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
-  }
+export const unfollow = (userId) => async (dispatch) => {
+  followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
 }
-export const setFindUserNameTC = (text) => {
-  return async (dispatch) => {
-    dispatch(setFindUserName(text))
-  }
+export const setFindUserNameTC = (text) => async (dispatch) => {
+  dispatch(setFindUserName(text))
 }
-export const requestUsers = (page, pageSize) => {
-  return async (dispatch) => {
-    dispatch(toggleIsFetching(true))
-    dispatch(setCurrentPage(page))
+export const requestUsers = (page, pageSize) => async (dispatch) => {
+  dispatch(toggleIsFetching(true))
+  dispatch(setCurrentPage(page))
 
-    let users = await usersAPI.getUsers(page, pageSize)
-    dispatch(toggleIsFetching(false))
-    dispatch(setUsers(users))
-  }
+  const users = await usersAPI.getUsers(page, pageSize)
+  dispatch(toggleIsFetching(false))
+  dispatch(setUsers(users))
 }
 export const requestUsersWithName = (text) => {
   if (!text.trim()) {
@@ -105,7 +97,7 @@ export const requestUsersWithName = (text) => {
   return async (dispatch) => {
     dispatch(toggleIsFetching(true))
 
-    let users = await usersAPI.getUsersWithName(text)
+    const users = await usersAPI.getUsersWithName(text)
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(users))
   }

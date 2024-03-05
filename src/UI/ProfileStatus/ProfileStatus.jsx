@@ -8,7 +8,7 @@ class ProfileStatus extends React.Component {
     status: this.props.status,
   }
 
-  //Стрелочный синтаксис позволяет не байндить колбэки.
+  // Стрелочный синтаксис позволяет не байндить колбэки.
   activateEditMode = () => {
     this.setState({ editMode: true })
   }
@@ -34,13 +34,13 @@ class ProfileStatus extends React.Component {
         {!this.state.editMode ? (
           <div>
             <span onDoubleClick={this.activateEditMode}>
-              {this.props.status ? this.props.status : `create your status`}
+              {this.props.status ? this.props.status : 'create your status'}
             </span>
           </div>
         ) : (
           <div>
             <input
-              autoFocus={true}
+              autoFocus
               onBlur={this.deactivateEditMode}
               value={this.state.status}
               onChange={this.onStatusChange}

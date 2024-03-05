@@ -2,8 +2,6 @@
   width: 100%;
   margin: auto;
   padding: 16px;
-
-
 }
 
 .Home_page h1 {
@@ -47,14 +45,14 @@
   width: 40px;
   height: 10px;
   flex-shrink: 0;
-  background: var(--main-light, #87A8B2);
+  background: var(--main-light, #87a8b2);
 }
 
 #two {
   width: 40px;
   height: 10px;
   flex-shrink: 0;
-  background: var(--secondary-pink-light, #D0A39C);
+  background: var(--secondary-pink-light, #d0a39c);
 }
 
 .chart {
@@ -78,18 +76,18 @@
   align-items: center;
 
   border-radius: 12px;
-  background: var(--Background, #FFF);
+  background: var(--Background, #fff);
 
   /* Drop shadow */
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .total {
   border-radius: 12px;
-  background: var(--main-light, #87A8B2);
+  background: var(--main-light, #87a8b2);
 
   /* Drop shadow--blue */
-  box-shadow: 0px 2px 10px 0px rgba(135, 168, 178, 0.60);
+  box-shadow: 0px 2px 10px 0px rgba(135, 168, 178, 0.6);
 }
 
 .factor {
@@ -117,16 +115,16 @@
 }
 
 .red {
-  color: var(--Negative-red, #E36A6A);
+  color: var(--Negative-red, #e36a6a);
 }
 
 .green {
-  color: var(--Positive-green, #0CCD08);
+  color: var(--Positive-green, #0ccd08);
 }
 
 .records {
   margin-top: 50px;
-  
+
   display: flex;
   flex-direction: column;
 }

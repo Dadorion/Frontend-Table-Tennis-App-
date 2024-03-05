@@ -78,7 +78,7 @@ function PersonalInfo({ city, region, birthday, percentOfWin }) {
             <div className={s.item}>
               <div>
                 <p className={s.leftColumn}>Пол</p>
-                <p className={s.rightColumn}>{'мужской'}</p>
+                <p className={s.rightColumn}>мужской</p>
               </div>
             </div>
             <div className={s.item}>

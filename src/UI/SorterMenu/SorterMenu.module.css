@@ -1,23 +1,23 @@
 .sortMenu {
-   position: absolute;
-   left: 8px;
-   top: 42px;
-   z-index: 100;
+  position: absolute;
+  left: 8px;
+  top: 42px;
+  z-index: 100;
 
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 
-   border-radius: 12px;
-   background: var(--Light-grey);
-   box-shadow: 1px 1px 8px grey;
+  border-radius: 12px;
+  background: var(--Light-grey);
+  box-shadow: 1px 1px 8px grey;
 
-   padding: 25px 65px 25px 54px;
+  padding: 25px 65px 25px 54px;
 }
 
 .sortMenu p {
-   width: 100%;
-   border-bottom: #33333328 1px solid;
-   padding: 4px;
+  width: 100%;
+  border-bottom: #33333328 1px solid;
+  padding: 4px;
 }

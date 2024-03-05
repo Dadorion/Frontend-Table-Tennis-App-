@@ -23,10 +23,10 @@ function initializedSuccess() {
   return { type: INITIALIZED_SUCCESS }
 }
 
-//authThunkCreator ->
+// authThunkCreator ->
 export function initializeApp() {
   return (dispatch) => {
-    let promise = dispatch(getAuthUserData())
+    const promise = dispatch(getAuthUserData())
     Promise.all([promise]).then(() => {
       dispatch(initializedSuccess())
     })

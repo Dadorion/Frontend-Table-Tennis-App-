@@ -17,34 +17,34 @@ function HomePage(props) {
       <h1>Твои успехи за неделю</h1>
       <h2>В сравнении с предыдущей</h2>
       <div className={s.chartLegend}>
-        <div className={s.chartLegend} id={s.one}></div>
+        <div className={s.chartLegend} id={s.one} />
         выиграно
-        <div className={s.chartLegend} id={s.two}></div>
+        <div className={s.chartLegend} id={s.two} />
         проиграно
       </div>
-      <div className={s.chart}></div>
+      <div className={s.chart} />
       <div className={s.resume}>
         <div className={s.item}>
           Всего встреч
           <div className={s.factor}>10</div>
-          <div className={s.delta + ' ' + s.green}>+2</div>
+          <div className={`${s.delta} ${s.green}`}>+2</div>
         </div>
         <div className={s.item}>
           Процент побед
           <div className={s.factor}>69%</div>
-          <div className={s.delta + ' ' + s.green}>+0.3%</div>
+          <div className={`${s.delta} ${s.green}`}>+0.3%</div>
         </div>
         <div className={s.item}>
           Выиграно встреч
           <div className={s.factor}>2</div>
-          <div className={s.delta + ' ' + s.red}>-2</div>
+          <div className={`${s.delta} ${s.red}`}>-2</div>
         </div>
         <div className={s.item}>
           Выиграно партий
           <div className={s.factor}>9</div>
-          <div className={s.delta + ' ' + s.red}>-1</div>
+          <div className={`${s.delta} ${s.red}`}>-1</div>
         </div>
-        <div className={s.item + ' ' + s.total}>
+        <div className={`${s.item} ${s.total}`}>
           Разыграно шаров
           <div className={s.factor}>87</div>
           <div className={s.delta}>+12</div>

@@ -9,7 +9,7 @@
   top: 0;
   padding: 36px 16px 0 16px;
 
-  background: var(--Accent-Blue, #424A6D);
+  background: var(--Accent-Blue, #424a6d);
 }
 
 .contentContainer {
@@ -28,7 +28,7 @@
   gap: 8px;
 
   border-radius: 8px;
-  border: 1px solid var(--main-light, #87A8B2);
+  border: 1px solid var(--main-light, #87a8b2);
 
   color: var(--main-dark, #123741);
 

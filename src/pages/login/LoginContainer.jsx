@@ -7,11 +7,7 @@ import { getProfile } from '../../redux/profile-reducer'
 import { withRouter } from '../../redux/withRouter'
 
 function LoginContainer(props) {
-  return (
-    <>
-      <Login />
-    </>
-  )
+  return <Login />
 }
 
 function mapStateToProps(state) {
@@ -23,6 +19,6 @@ function mapDispatchToProps(state) {
   }
 }
 
-let WithUrlDataContainerComponent = withRouter(LoginContainer)
+const WithUrlDataContainerComponent = withRouter(LoginContainer);
 
 export default connect(mapStateToProps, mapDispatchToProps)(WithUrlDataContainerComponent)

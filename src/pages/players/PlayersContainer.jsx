@@ -22,11 +22,7 @@ function PlayersContainer(props) {
     // eslint-disable-next-line
   },[dispatch, pagination.currentPage, pagination.pageSize, sort.mode, sort.direct])
 
-  return (
-    <>
-      <Players {...props} />
-    </>
-  )
+  return <Players {...props} />
 }
 
 function mapStateToProps(state) {

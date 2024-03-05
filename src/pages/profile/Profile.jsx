@@ -53,7 +53,7 @@ function Profile(props) {
   return (
     <div className={`${s.Profile}`}>
       <div className={`${s.headerContainer}`}>
-        <Header headName='Мой профиль' edit={'/edit-my-profile'} />
+        <Header headName='Мой профиль' edit='/edit-my-profile' />
 
         <MainInfo
           avatar={avatarPath}
@@ -77,9 +77,9 @@ function Profile(props) {
         />
         <div className={s.manageBlock}>
           <h3>Настройки</h3>
-          <CustomButton btnName={'Сообщить об ошибке'} handler={handleExit} />
-          <CustomButton btnName={'Сменить пароль'} handler={handleChangePass} />
-          <CustomButton btnName={'Выйти из профиля'} handler={handleExit} />
+          <CustomButton btnName='Сообщить об ошибке' handler={handleExit} />
+          <CustomButton btnName='Сменить пароль' handler={handleChangePass} />
+          <CustomButton btnName='Выйти из профиля' handler={handleExit} />
         </div>
 
         <ConfirmPopUp quest={exitQuest} setQuest={setExitQuest} TC={logoutTC} />

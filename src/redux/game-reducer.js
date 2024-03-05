@@ -4,7 +4,7 @@ const UPDATE_SECOND_NAME = 'UPDATE-SECOND-NAME'
 const UPDATE_FIRST_SCORE = 'UPDATE-FIRST-SCORE'
 const UPDATE_SECOND_SCORE = 'UPDATE-SECOND-SCORE'
 
-let initialState = {
+const initialState = {
   games: [
     {
       id: 0,
@@ -72,15 +72,15 @@ function gameReducer(state = initialState, action) {
         newSecondScore: action.score,
       }
     case ADD_NEW_GAME:
-      let winner = state.newFirstScore > state.newSecondScore
+      const winner = state.newFirstScore > state.newSecondScore
       function toKnowDate() {
-        let Y = new Date().getFullYear()
+        const Y = new Date().getFullYear()
         let M = new Date().getMonth() + 1
         M = M < 10 ? `0${M}` : M
-        let D = new Date().getDate()
+        const D = new Date().getDate()
         return `${D}.${M}.${Y}`
       }
-      let newGame = {
+      const newGame = {
         id: Date.now(),
         date: toKnowDate(),
         gameFrom: 1,

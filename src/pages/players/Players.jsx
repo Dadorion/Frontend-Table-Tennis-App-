@@ -39,37 +39,38 @@ function Players(props) {
   const { mode, direct, sortModeName } = props.sort
 
   const sortItems = [
-    { id: 1, name: 'Недавние', mode: 'id', direct: 'DESC' },
-    { id: 2, name: 'По алфавиту (А – Я)', mode: 'name', direct: 'ASC' },
-    { id: 3, name: 'По алфавиту (Я – А)', mode: 'name', direct: 'DESC' },
-    // {
-    //   id: 4,
-    //   name: "Победные очки (от большего)",
-    //   mode: "score",
-    //   direct: "DESC",
-    // },
-    // {
-    //   id: 5,
-    //   name: "Победные очки (от меньшего)",
-    //   mode: "score",
-    //   direct: "ASC",
-    // },
+    {
+      id: 1,
+      name: 'Недавние',
+      mode: 'id',
+      direct: 'DESC',
+    },
+    {
+      id: 2,
+      name: 'По алфавиту (А – Я)',
+      mode: 'name',
+      direct: 'ASC',
+    },
+    {
+      id: 3,
+      name: 'По алфавиту (Я – А)',
+      mode: 'name',
+      direct: 'DESC',
+    },
   ]
 
   if (!props.players) {
     return <div className={s.Players}>Loading...</div>
   }
-  const players = props.players.map((player) => {
-    return (
-      <PlayerItem
-        key={player.id}
-        name={player.name}
-        surname={player.surname}
-        percent={player.winsPercent}
-        photoPath={player.photo_path}
-      />
-    )
-  })
+  const players = props.players.map((player) => (
+    <PlayerItem
+      key={player.id}
+      name={player.name}
+      surname={player.surname}
+      percent={player.winsPercent}
+      photoPath={player.photo_path}
+    />
+  ))
   const handleOnChangeFind = (e) => {
     const text = e.target.value.trim()
 
@@ -94,9 +95,7 @@ function Players(props) {
     dispatch(requestPlayersTC(currentPage, pageSize, mode, direct))
   }
   const handleSetSortMode = (e) => {
-    const item = sortItems.find((item) => {
-      return item.name === e.target.innerHTML
-    })
+    const item = sortItems.find((item) => item.name === e.target.innerHTML)
 
     dispatch(setSortModeName(item.name))
     setShowSorter(false)
@@ -124,56 +123,59 @@ function Players(props) {
     }
   }
   const handlePageRight = () => {
-    if (props.pagination.currentPage < props.pagination.pagesCount)
-      dispatch(setCurrentPage(props.pagination.currentPage + 1))
-  }
+    if (props.pagination.currentPage < props.pagination.pagesCount) {
+      {
+        dispatch(setCurrentPage(props.pagination.currentPage + 1))
+      }
+    }
 
-  return (
-    <div className={`${s.Players}`}>
-      <div className={`${s.header}`}>
-        <img src={arrowLeftIcon} alt='arrowLeftIcon' onClick={handleGoBack} />
-        <h3>Игроки</h3>
-        <img src={plusIcon} alt='plusIcon' onClick={handleAddNewPlayer} />
-      </div>
-      {showFinderPlayerName && (
-        <div className={s.finderPlayers}>
-          <FinderInput
-            value={props.findPlayerName}
-            placeholder={'Поиск по соперникам'}
-            handleOnChange={handleOnChangeFind}
-            handleReset={handleReset}
-          />
-          <span onClick={handleCancelSearch}>отменить</span>
+    return (
+      <div className={`${s.Players}`}>
+        <div className={`${s.header}`}>
+          <img src={arrowLeftIcon} alt='arrowLeftIcon' onClick={handleGoBack} />
+          <h3>Игроки</h3>
+          <img src={plusIcon} alt='plusIcon' onClick={handleAddNewPlayer} />
         </div>
-      )}
-      {!showFinderPlayerName && (
-        <div className={`${s.filter}`}>
-          <div className={`${s.sorter}`}>
-            <div className={`${s.sortMode}`} onClick={handleSort}>
-              <img src={sorterIcon} alt='sorterIcon' />
-              {sortModeName}
+        {showFinderPlayerName && (
+          <div className={s.finderPlayers}>
+            <FinderInput
+              value={props.findPlayerName}
+              placeholder='Поиск по соперникам'
+              handleOnChange={handleOnChangeFind}
+              handleReset={handleReset}
+            />
+            <span onClick={handleCancelSearch}>отменить</span>
+          </div>
+        )}
+        {!showFinderPlayerName && (
+          <div className={`${s.filter}`}>
+            <div className={`${s.sorter}`}>
+              <div className={`${s.sortMode}`} onClick={handleSort}>
+                <img src={sorterIcon} alt='sorterIcon' />
+                {sortModeName}
+              </div>
+            </div>
+            {showSorter && <SorterMenu list={sortItems} handle={handleSetSortMode} />}
+            {/* {showFilters && <FilterMenu handleSetSortMode={handleSetSortMode} setShowFilters={setShowFilters}/>} */}
+
+            <div onClick={handleFilter}>
+              <img src={magnifier} alt='magnifier' onClick={handleFindPlayerName} />
+              {/* <img src={settingsIcon} alt="filter_icon" /> */}
             </div>
           </div>
-          {showSorter && <SorterMenu list={sortItems} handle={handleSetSortMode} />}
-          {/* {showFilters && <FilterMenu handleSetSortMode={handleSetSortMode} setShowFilters={setShowFilters}/>} */}
+        )}
 
-          <div onClick={handleFilter}>
-            <img src={magnifier} alt='magnifier' onClick={handleFindPlayerName} />
-            {/* <img src={settingsIcon} alt="filter_icon" /> */}
-          </div>
+        <div className={`${s.list}`}>{players}</div>
+
+        <div className={s.pagination}>
+          <img src={caretLeftIcon} alt='caretLeftIcon' onClick={handlePageLeft} />
+          <div>{`${props.pagination.currentPage}/${props.pagination.pagesCount}`}</div>
+          <img src={caretRightIcon} alt='caretRightIcon' onClick={handlePageRight} />
         </div>
-      )}
 
-      <div className={`${s.list}`}>{players}</div>
-
-      <div className={s.pagination}>
-        <img src={caretLeftIcon} alt='caretLeftIcon' onClick={handlePageLeft} />
-        <div>{`${props.pagination.currentPage}/${props.pagination.pagesCount}`}</div>
-        <img src={caretRightIcon} alt='caretRightIcon' onClick={handlePageRight} />
+        {showEditPlayer && <PopupAddNewPlayer player={props.players} exit={setShowEditPlayer} />}
       </div>
-
-      {showEditPlayer && <PopupAddNewPlayer player={props.players} exit={setShowEditPlayer} />}
-    </div>
-  )
+    )
+  }
 }
 export default Players

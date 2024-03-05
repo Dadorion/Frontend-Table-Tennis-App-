@@ -7,7 +7,7 @@ import s from './avatar_editor.module.css'
 
 import { savePhoto } from '../../../redux/profile-reducer'
 
-const AvatarEditorComponent = () => {
+function AvatarEditorComponent() {
   const [image, setImage] = useState(null)
   const [editor, setEditor] = useState(null)
   const [scale, setScale] = useState(1)
@@ -71,7 +71,8 @@ const AvatarEditorComponent = () => {
               </div>
             )}
           </Dropzone>
-          <button>Назад</button>but
+          <button>Назад</button>
+          but
         </div>
       )}
 

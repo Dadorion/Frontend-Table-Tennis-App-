@@ -15,7 +15,7 @@ function Login({ isAuth, loginTC, getProfile }) {
   }
 
   if (isAuth) {
-    return <Navigate to={'/'} />
+    return <Navigate to='/' />
   }
   return (
     <div className={s.Login}>

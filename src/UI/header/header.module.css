@@ -1,17 +1,16 @@
 .header {
-   display: grid;
-   grid-template-columns: 50px auto 50px;
-   justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50px auto 50px;
+  justify-content: space-between;
 
-   text-align: center;
-
+  text-align: center;
 }
 
 .header p {
-   color: var(--Background);
-   opacity: 0.6;
+  color: var(--Background);
+  opacity: 0.6;
 }
 
 .tapArea {
-   padding: 3px 6px 3px 4px;
+  padding: 3px 6px 3px 4px;
 }

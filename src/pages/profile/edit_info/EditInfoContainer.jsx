@@ -8,11 +8,7 @@ import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
 import { withRouter } from '../../../redux/withRouter'
 
 function EditInfoContainer(props) {
-  return (
-    <>
-      <EditInfo {...props} />
-    </>
-  )
+  return <EditInfo {...props} />
 }
 
 function mapStateToProps(state) {

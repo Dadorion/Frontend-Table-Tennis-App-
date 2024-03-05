@@ -4,23 +4,23 @@ import s from './AddGame.module.css'
 
 function AddGame(props) {
   function onFirstNameChange(e) {
-    let body = e.target.value
+    const body = e.target.value
     props.firstNameChange(body)
   }
   function onSecondNameChange(e) {
-    let body = e.target.value
+    const body = e.target.value
     props.secondNameChange(body)
   }
   function onFirstScoreChange(e) {
-    let body = e.target.value
+    const body = e.target.value
     props.firstScoreChange(body)
   }
   function onSecondScoreChange(e) {
-    let body = e.target.value
+    const body = e.target.value
     props.secondScoreChange(body)
   }
   function onAddGame(e) {
-    let body = e.target.value
+    const body = e.target.value
     props.addGame(body)
   }
   function onAddPart(e) {

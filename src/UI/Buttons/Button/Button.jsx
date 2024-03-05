@@ -1,4 +1,5 @@
 import s from './Button.module.css'
+
 function Button(props) {
   const { isDisabled, type, handle, buttName } = props
   switch (buttName) {
@@ -13,7 +14,7 @@ function Button(props) {
     case 'Зарегистрироваться':
       return (
         <div className={s.Button}>
-          <button type={'submit'}>{buttName}</button>
+          <button type='submit'>{buttName}</button>
         </div>
       )
     case 'Войти':

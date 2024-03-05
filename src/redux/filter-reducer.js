@@ -1,6 +1,6 @@
 // import { profileAPI } from "../api/api";
 
-let initialState = {
+const initialState = {
   rivals: null,
   date: null,
   gender: null,

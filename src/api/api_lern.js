@@ -20,12 +20,12 @@ const ttapp = axios.create({
 // ---------------------------
 export const headerPageAPI = {
   getProfileInfo() {
-    return ttapp.get(`profile/1483`).then((response) => response.data)
+    return ttapp.get('profile/1483').then((response) => response.data)
   },
 }
 export const API = {
   getProfileInfo() {
-    return ttapp.get(`profile/1483`).then((response) => response.data)
+    return ttapp.get('profile/1483').then((response) => response.data)
   },
 }
 // ---------------------------
@@ -53,13 +53,13 @@ export const profileAPI = {
     return instance.get(`profile/status/${userId}`)
   },
   updateStatus(status) {
-    return instance.put(`profile/status`, { status: status })
+    return instance.put('profile/status', { status })
   },
   savePhoto(photoFile) {
     const formData = new FormData()
     formData.append('image', photoFile)
     return instance.put(
-      `profile/photo/`,
+      'profile/photo/',
       formData,
       // {
       //    headers: {
@@ -72,24 +72,36 @@ export const profileAPI = {
 
 export const registrationAPI = {
   registration(name, surname, city, birthday, email, password) {
-    return ttapp.post(`auth/registration`, { name, surname, city, birthday, email, password })
+    return ttapp.post('auth/registration', {
+      name,
+      surname,
+      city,
+      birthday,
+      email,
+      password,
+    })
   },
 }
 
 export const authAPI = {
   me() {
-    return instance.get(`auth/me`)
+    return instance.get('auth/me')
   },
   login(email, password, rememberMe = false, captcha = null) {
-    return instance.post(`auth/login`, { email, password, rememberMe, captcha })
+    return instance.post('auth/login', {
+      email,
+      password,
+      rememberMe,
+      captcha,
+    })
   },
   logout() {
-    return instance.delete(`auth/login`)
+    return instance.delete('auth/login')
   },
 }
 
 export const securityAPI = {
   getCaptchaUrl() {
-    return instance.get(`security/get-captcha-url`)
+    return instance.get('security/get-captcha-url')
   },
 }

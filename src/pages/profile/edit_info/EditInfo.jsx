@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 import s from './EditInfo.module.css'
 
-import { getProfile } from '../../../redux/profile-reducer'
-import { saveNewProfile } from '../../../redux/profile-reducer'
+import { getProfile, saveNewProfile } from '../../../redux/profile-reducer'
+
 import ConfirmPopUp from '../../../UI/Confirm_popup/Confirm_popup'
 import Header from '../../../UI/header/header'
 import EquipmentInfo from '../section/equipmentInfo/equipmentInfo'
@@ -46,7 +46,7 @@ function EditInfo(props) {
   return (
     <div className={`${s.EditInfo}`}>
       <div className={`${s.headerContainer}`}>
-        <Header headName='Редактировать' exit={'/profile'} confirm={handleSave} />
+        <Header headName='Редактировать' exit='/profile' confirm={handleSave} />
 
         <MainInfo avatar={avatarPath} name={profile && profile.name} surname={profile && profile.surname} />
       </div>

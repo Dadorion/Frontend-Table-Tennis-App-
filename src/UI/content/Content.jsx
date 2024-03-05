@@ -12,7 +12,7 @@ import AvatarEditor from '../../pages/profile/avatar_editor/avatar_editor'
 import EditInfoContainer from '../../pages/profile/edit_info/EditInfoContainer'
 import ProfileContainer from '../../pages/profile/ProfileContainer'
 import Registration from '../../pages/registration/RegistrationContainer'
-import Tabbar from '../../UI/Tabbar/Tabbar'
+import Tabbar from '../Tabbar/Tabbar'
 
 // UsersContainer = React.lazy(() => import('../../pages/users/UsersContainer'));
 

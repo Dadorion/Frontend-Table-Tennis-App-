@@ -31,7 +31,7 @@ export function setLoginUserData(formData) {
   }
 }
 
-//authThunkCreator ->
+// authThunkCreator ->
 export const getAuthUserData = () => async (dispatch) => {
   try {
     if (!localStorage.token) return
@@ -51,7 +51,7 @@ export const getAuthUserData = () => async (dispatch) => {
   }
 }
 
-//authThunkCreator ->
+// authThunkCreator ->
 export function loginTC(formData) {
   return async (dispatch) => {
     console.log('попытка логинизации')
@@ -77,7 +77,7 @@ export function loginTC(formData) {
   }
 }
 
-//logoutThunkCreator ->
+// logoutThunkCreator ->
 export const logoutTC = () => async (dispatch) => {
   const responce = await authAPI.logout()
   if (responce.data.code === 0) {

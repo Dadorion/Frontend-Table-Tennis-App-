@@ -11,22 +11,21 @@
   padding: 6px 0;
 }
 
-.header>h3 {
+.header > h3 {
   grid-column: 2;
   justify-self: center;
-
 }
 
-.header>img {
+.header > img {
   padding: 10px;
 }
 
-.header>img:first-child {
+.header > img:first-child {
   display: flex;
   justify-self: flex-start;
 }
 
-.header>img:last-child {
+.header > img:last-child {
   display: flex;
   justify-self: flex-end;
 }
@@ -41,7 +40,6 @@
   padding: 11px 0;
   margin-left: 12px;
 }
-
 
 .filter {
   position: relative;
@@ -77,8 +75,8 @@
   margin-top: 1rem;
 }
 
-.pagination img{
+.pagination img {
   padding: 8px;
 
-  opacity: .4;
+  opacity: 0.4;
 }

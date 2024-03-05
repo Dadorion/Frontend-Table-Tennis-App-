@@ -1,6 +1,6 @@
 import { profileAPI } from '../api/api'
 
-let initialState = {
+const initialState = {
   profile: null,
   newProfileData: {
     name: '',
@@ -95,7 +95,7 @@ export function changePasswordSuccess() {
 export function getProfile() {
   return async (dispatch) => {
     try {
-      let responce = await profileAPI.getMyProfile()
+      const responce = await profileAPI.getMyProfile()
       dispatch(setMyProfile(responce))
       dispatch(setMyNewProfile(responce))
     } catch (error) {

@@ -43,7 +43,7 @@ function Popup_AddNewPlayer({ exit, player }) {
 
       {player.isComplete && (
         <div>
-          <p>{`Игрок добавлен`}</p>
+          <p>Игрок добавлен</p>
         </div>
       )}
       <div>

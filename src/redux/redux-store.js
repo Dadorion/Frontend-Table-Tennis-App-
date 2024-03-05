@@ -13,7 +13,7 @@ import profileReducer from './profile-reducer'
 import registrationReducer from './registration-reducer'
 import usersReducer from './users-reducer'
 
-let reducers = combineReducers({
+const reducers = combineReducers({
   profileReducer,
   playersReducer,
   gameReducer,

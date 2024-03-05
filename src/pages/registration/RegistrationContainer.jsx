@@ -8,7 +8,7 @@ import { withRouter } from '../../redux/withRouter'
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId
+    let { userId } = this.props.match.params
     if (!userId) {
       userId = 2
     }
@@ -16,11 +16,7 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return (
-      <>
-        <Profile {...this.props} profile={this.props.profile} />
-      </>
-    )
+    return <Profile {...this.props} profile={this.props.profile} />
   }
 }
 
@@ -30,7 +26,7 @@ function mapStateToProps(state) {
   }
 }
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer)
+const WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps, {
   // getProfile,

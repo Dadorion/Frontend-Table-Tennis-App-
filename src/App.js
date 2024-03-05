@@ -1,41 +1,37 @@
-import React from "react";
-import "./scss/App.css";
-import { connect } from "react-redux";
-import { compose } from "redux";
+import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
+import './scss/App.scss'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 
-import { initializeApp } from "./redux/app-reducer";
-import { withRouter } from "./redux/withRouter";
-import Content from "./UI/content/Content";
+import { initializeApp } from './redux/app-reducer'
+import { withRouter } from './redux/withRouter'
+import Content from './UI/content/Content'
+import LoaderSVG from './UI/SpinnerPreloader/Spinner'
 
-import LoaderSVG from "../src/UI/SpinnerPreloader/Spinner";
+const App = ({ initialized, initializeApp }) => {
+  useEffect(() => {
+    initializeApp()
+  }, [initializeApp])
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.initializeApp();
+  if (!initialized) {
+    return <LoaderSVG />
   }
 
-  render() {
-    if (!this.props.initialized) {
-      // setTimeout(() => {
-      //   return <LoaderSVG />;
-      // }, 1000);
-      return <LoaderSVG />;
-      // TODO Уточнить, чтобы не мерцало
-    }
-
-    return (
-      <div className="App">
-        <Content />
-      </div>
-    );
-  }
+  return (
+    <div className='App'>
+      <Content />
+    </div>
+  )
 }
 
-function mapStateToProps(state) {
-  return { initialized: state.app.initialized };
+App.propTypes = {
+  initialized: PropTypes.bool.isRequired,
+  initializeApp: PropTypes.func.isRequired,
 }
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, { initializeApp }),
-)(App);
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized,
+})
+
+export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)

@@ -9,7 +9,9 @@ import exitIcon from '../../../assets/icons/svg_pack/Colored/SignOut_secondary_p
 import checkIcon from '../../../assets/icons/svg_pack/White/Regular/Check.svg'
 
 function CustomButton({ btnName, handler }) {
-  let icon, colorText, style
+  let icon
+  let colorText
+  let style
   switch (btnName) {
     case 'Выйти из профиля':
       icon = exitIcon

@@ -1,6 +1,6 @@
 import { authAPI } from '../api/api'
 
-let initialState = {
+const initialState = {
   id: null,
   email: null,
   password: null,
