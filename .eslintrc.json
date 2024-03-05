@@ -10,7 +10,6 @@
     "plugin:jsx-a11y/recommended",
     "plugin:import/recommended",
     "airbnb",
-    "plugin:import/jsx-runtime",
     "prettier"
   ],
   "overrides": [{
