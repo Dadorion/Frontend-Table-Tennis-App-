@@ -24,7 +24,7 @@ function initializedSuccess() {
 }
 
 // authThunkCreator ->
-export function initializeApp() {
+export function initializeAppTC() {
   return (dispatch) => {
     const promise = dispatch(getAuthUserData())
     Promise.all([promise]).then(() => {

@@ -2,18 +2,20 @@ import React from 'react'
 
 import s from './Tournament.module.scss'
 
+import Header from '../../UI/header/header'
+
 function Tournament() {
   return (
     <div className={s.Tournament}>
-      Tournament
+      <Header headName='Настройки турнира' />
       <div className={s.whereBlock}>
-        <h1>Где играем?</h1>
+        <h3>Где играем?</h3>
       </div>
       <div className={s.howBlock}>
-        <h1>Как играем?</h1>
+        <h3>Как играем?</h3>
       </div>
       <div className={s.whoBlock}>
-        <h1>С кем играем?</h1>
+        <h3>С кем играем?</h3>
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import './scss/App.scss'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
-import { initializeApp } from './redux/app-reducer'
+import { initializeAppTC } from './redux/app-reducer'
 import { withRouter } from './redux/withRouter'
 import Content from './UI/content/Content'
 import LoaderSVG from './UI/SpinnerPreloader/Spinner'
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 })
 
-export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App)
+export default compose(withRouter, connect(mapStateToProps, { initializeApp: initializeAppTC }))(App)

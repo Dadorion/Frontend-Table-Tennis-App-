@@ -1,5 +1,3 @@
-import { headerPageAPI } from '../api/api_lern'
-
 const CHANGE_NAME = 'CHANGE_NAME'
 const UPDATE_NAME = 'UPDATE_NAME'
 const IS_EDITING_CHANGE = 'IS_EDITING_CHANGE'
@@ -38,18 +36,7 @@ export function setProfileInfo(profileInfo) {
   return { type: SET_PROFILE_INFO, payload: { profileInfo } }
 }
 
-export function getDataThunkCreator() {
-  // возвращает Thunk -> getDataThunk ввиде анонимной функции
-  return (dispatch) => {
-    dispatch(fetchingOnAC())
-    headerPageAPI.getProfileInfo().then((data) => {
-      dispatch(setProfileInfo(data))
-    })
-    dispatch(fetchingOffAC())
-  }
-}
-
-function headerReduser(state = initialState, action) {
+function headerReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_NAME:
       return {
@@ -87,4 +74,4 @@ function headerReduser(state = initialState, action) {
   }
 }
 
-export default headerReduser
+export default headerReducer

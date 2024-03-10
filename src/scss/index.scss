@@ -1,5 +1,4 @@
-@import './base/reset';
-@import './base/vars';
+@import './base/common';
 
 *,
 *::after,
@@ -13,8 +12,6 @@ html {
   background: $Background;
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
   color: $Basic-text;
   user-select: none;
 
