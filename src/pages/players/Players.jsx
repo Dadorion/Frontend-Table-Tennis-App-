@@ -25,18 +25,17 @@ import PlayerItem from '../../UI/Player_Item/Player_Item'
 import PopupAddNewPlayer from '../../UI/Popup_AddNewPlayer/Popup_AddNewPlayer'
 import SorterMenu from '../../UI/SorterMenu/SorterMenu'
 
-function Players(props) {
+function Players({pagination, sort, players, findPlayerName}) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const [showSorter, setShowSorter] = useState(false)
-  // const [sortModeName, setSortModeName] = useState("Недавние");
   const [showFilters, setShowFilters] = useState(false)
   const [showFinderPlayerName, setShowFinderPlayerName] = useState(false)
   const [showEditPlayer, setShowEditPlayer] = useState(false)
 
-  const { currentPage, pageSize } = props.pagination
-  const { mode, direct, sortModeName } = props.sort
+  const { currentPage, pageSize } = pagination
+  const { mode, direct, sortModeName } = sort
 
   const sortItems = [
     {
@@ -59,10 +58,10 @@ function Players(props) {
     },
   ]
 
-  if (!props.players) {
+  if (!players) {
     return <div className={s.Players}>Loading...</div>
   }
-  const players = props.players.map((player) => (
+  const playersItems = players.map((player) => (
     <PlayerItem
       key={player.id}
       name={player.name}
@@ -95,12 +94,12 @@ function Players(props) {
     dispatch(requestPlayersTC(currentPage, pageSize, mode, direct))
   }
   const handleSetSortMode = (e) => {
-    const item = sortItems.find((item) => item.name === e.target.innerHTML)
+    const sortItem = sortItems.find((item) => item.name === e.target.innerHTML)
 
-    dispatch(setSortModeName(item.name))
+    dispatch(setSortModeName(sortItem.name))
     setShowSorter(false)
-    dispatch(setSortMode(item.mode))
-    dispatch(setSortDirection(item.direct))
+    dispatch(setSortMode(sortItem.mode))
+    dispatch(setSortDirection(sortItem.direct))
   }
   const handleSort = () => {
     setShowSorter(!showSorter)
@@ -118,16 +117,16 @@ function Players(props) {
     setShowEditPlayer(true)
   }
   const handlePageLeft = () => {
-    if (props.pagination.currentPage !== 1) {
-      dispatch(setCurrentPage(props.pagination.currentPage - 1))
+    if (pagination.currentPage !== 1) {
+      dispatch(setCurrentPage(pagination.currentPage - 1))
     }
   }
   const handlePageRight = () => {
-    if (props.pagination.currentPage < props.pagination.pagesCount) {
-      {
-        dispatch(setCurrentPage(props.pagination.currentPage + 1))
-      }
+
+    if (pagination.currentPage < pagination.pagesCount) {
+        dispatch(setCurrentPage(pagination.currentPage + 1))
     }
+  }
 
     return (
       <div className={`${s.Players}`}>
@@ -135,16 +134,16 @@ function Players(props) {
           <img src={arrowLeftIcon} alt='arrowLeftIcon' onClick={handleGoBack} />
           <h3>Игроки</h3>
           <img src={plusIcon} alt='plusIcon' onClick={handleAddNewPlayer} />
-        </div>
+                  </div>
         {showFinderPlayerName && (
           <div className={s.finderPlayers}>
             <FinderInput
-              value={props.findPlayerName}
+              value={findPlayerName}
               placeholder='Поиск по соперникам'
               handleOnChange={handleOnChangeFind}
               handleReset={handleReset}
             />
-            <span onClick={handleCancelSearch}>отменить</span>
+<span onClick={handleCancelSearch}>отменить</span>
           </div>
         )}
         {!showFinderPlayerName && (
@@ -165,17 +164,19 @@ function Players(props) {
           </div>
         )}
 
-        <div className={`${s.list}`}>{players}</div>
+        <div className={`${s.list}`}>{playersItems}</div>
 
         <div className={s.pagination}>
           <img src={caretLeftIcon} alt='caretLeftIcon' onClick={handlePageLeft} />
-          <div>{`${props.pagination.currentPage}/${props.pagination.pagesCount}`}</div>
+          <div>{`${pagination.currentPage}/${pagination.pagesCount}`}</div>
           <img src={caretRightIcon} alt='caretRightIcon' onClick={handlePageRight} />
         </div>
 
-        {showEditPlayer && <PopupAddNewPlayer player={props.players} exit={setShowEditPlayer} />}
+        {showEditPlayer && <PopupAddNewPlayer player={players} exit={setShowEditPlayer} />}
       </div>
     )
-  }
 }
+
+
+
 export default Players

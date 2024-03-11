@@ -22,7 +22,7 @@ const initialState = {
         score: [7],
         isWinner: false,
       },
-      table: 'lightskyblue',
+      table: 'lightSkBlue',
     },
     {
       id: 1,
@@ -49,6 +49,13 @@ const initialState = {
   newSecondScore: '',
 }
 
+function toKnowDate() {
+  const Y = new Date().getFullYear()
+  let M = new Date().getMonth() + 1
+  M = M < 10 ? `0${M}` : M
+  const D = new Date().getDate()
+  return `${D}.${M}.${Y}`
+}
 function gameReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_FIRST_NAME:
@@ -72,36 +79,26 @@ function gameReducer(state = initialState, action) {
         newSecondScore: action.score,
       }
     case ADD_NEW_GAME:
-      const winner = state.newFirstScore > state.newSecondScore
-      function toKnowDate() {
-        const Y = new Date().getFullYear()
-        let M = new Date().getMonth() + 1
-        M = M < 10 ? `0${M}` : M
-        const D = new Date().getDate()
-        return `${D}.${M}.${Y}`
-      }
-      const newGame = {
-        id: Date.now(),
-        date: toKnowDate(),
-        gameFrom: 1,
-        firstPlayer: {
-          id: 5,
-          name: state.newFirstName,
-          score: [state.newFirstScore],
-          isWinner: winner,
-        },
-        secondPlayer: {
-          id: 6,
-          name: state.newSecondName,
-          score: [state.newSecondScore],
-          isWinner: !winner,
-        },
-        table: 'blue',
-      }
-
       return {
         ...state,
-        games: [...state.games, newGame],
+        games: [...state.games, {
+          id: Date.now(),
+          date: toKnowDate(),
+          gameFrom: 1,
+          firstPlayer: {
+            id: 5,
+            name: state.newFirstName,
+            score: [state.newFirstScore],
+            isWinner: state.newFirstScore > state.newSecondScore,
+          },
+          secondPlayer: {
+            id: 6,
+            name: state.newSecondName,
+            score: [state.newSecondScore],
+            isWinner: !state.newFirstScore > state.newSecondScore,
+          },
+          table: 'blue',
+        }],
         newFirstName: '',
         newSecondName: '',
         newFirstScore: '',

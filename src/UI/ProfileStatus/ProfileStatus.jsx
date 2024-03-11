@@ -1,55 +1,50 @@
-import React from 'react'
+import React, { useState, useRef, useEffect  } from 'react';
+import s from './ProfileStatus.module.css';
 
-import s from './ProfileStatus.module.css'
+function ProfileStatus({status, updateStatus}) {
+  const [editMode, setEditMode] = useState(false);
+  const [statusCurrent, setStatus] = useState(status);
+  const inputRef = useRef(null);
 
-class ProfileStatus extends React.Component {
-  state = {
-    editMode: false,
-    status: this.props.status,
-  }
+  useEffect(() => {
+    if (editMode && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [editMode]);
 
-  // Стрелочный синтаксис позволяет не байндить колбэки.
-  activateEditMode = () => {
-    this.setState({ editMode: true })
-  }
-  deactivateEditMode = () => {
-    this.setState({ editMode: false })
-    this.props.updateStatus(this.state.status)
-  }
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
 
-  onStatusChange = (e) => {
-    this.setState({ status: e.currentTarget.value })
-  }
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    updateStatus(statusCurrent);
+  };
 
-  // componentDidUpdate -эта функция нужна для того, чтобы своевременно обновлять стейт и компоненту с ним связанную. Но с ним у мнея работает хуже. Если будут проблемы, см. урок 74.
-  componentDidUpdate(prevProps, prevState) {
-    // if (this.props.status !== prevState.status) {
-    //    this.setState({ status: this.props.status });
-    // }
-  }
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value);
+  };
 
-  render() {
-    return (
-      <div className={`${s.Status}`}>
-        {!this.state.editMode ? (
-          <div>
-            <span onDoubleClick={this.activateEditMode}>
-              {this.props.status ? this.props.status : 'create your status'}
-            </span>
-          </div>
-        ) : (
-          <div>
-            <input
-              autoFocus
-              onBlur={this.deactivateEditMode}
-              value={this.state.status}
-              onChange={this.onStatusChange}
-            />
-          </div>
-        )}
-      </div>
-    )
-  }
+  return (
+    <div className={`${s.Status}`}>
+      {!editMode ? (
+        <div>
+          <span onDoubleClick={activateEditMode}>
+            {status || 'create your status'}
+          </span>
+        </div>
+      ) : (
+        <div>
+          <input
+            ref={inputRef}
+            onBlur={deactivateEditMode}
+            value={statusCurrent}
+            onChange={onStatusChange}
+          />
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default ProfileStatus
+export default ProfileStatus;
