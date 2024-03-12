@@ -6,7 +6,7 @@ import s from './Home_page.module.css'
 
 import greyCirclesIcon from '../../assets/icons/svg_pack/Black/Regular/CirclesFour.svg'
 
-function HomePage(props) {
+function HomePage() {
   return (
     <div className={`${s.Home_page}`}>
       <div>

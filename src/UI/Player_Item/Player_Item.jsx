@@ -4,7 +4,7 @@ import s from './Player_Item.module.css'
 
 import dotsIcon from '../../assets/icons/svg_pack/Black/Light/DotsThreeOutline_light.svg'
 import editIcon from '../../assets/icons/svg_pack/Black/Light/Edit.svg'
-import PopupEditPlayer from '../Popup_EditPlayer/Popup_EditPlayer'
+import PopupEditPlayer from '../PopupEditPlayer/PopupEditPlayer'
 
 function Player_Item(props) {
   // const [showExtra, setShowExtra] = useState(false);

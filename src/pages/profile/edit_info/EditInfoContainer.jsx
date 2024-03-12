@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 import EditInfo from './EditInfo'
 
-import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
-import { withRouter } from '../../../redux/withRouter'
+import  withAuthRedirect  from '../../../hoc/withAuthRedirect'
+import  withRouter  from '../../../redux/withRouter'
 
 function EditInfoContainer(props) {
   return <EditInfo {...props} />

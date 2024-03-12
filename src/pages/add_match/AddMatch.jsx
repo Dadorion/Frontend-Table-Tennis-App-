@@ -6,7 +6,7 @@ import s from './AddMatch.module.css'
 import Counter from '../../UI/Counter/Counter'
 import Tabbar from '../../UI/Tabbar/Tabbar'
 
-function AddMatch(props) {
+function AddMatch() {
   // const onSubmit = (formData) => {
   //   props.registrationTC(formData)
   // }

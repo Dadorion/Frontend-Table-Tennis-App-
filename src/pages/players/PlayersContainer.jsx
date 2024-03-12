@@ -1,17 +1,20 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { useEffect, useRef } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { compose } from 'redux'
 
 import Players from './Players'
 
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import  withAuthRedirect  from '../../hoc/withAuthRedirect'
 import { requestPlayersTC } from '../../redux/players-reducer'
-import { withRouter } from '../../redux/withRouter'
+import  withRouter  from '../../redux/withRouter'
 
 function PlayersContainer(props) {
   const dispatch = useDispatch()
   const prevPlayersRef = useRef()
   const { players, pagination, sort } = props
+
 
   useEffect(() => {
     if (players !== prevPlayersRef.current) {
@@ -26,12 +29,12 @@ function PlayersContainer(props) {
 }
 
 function mapStateToProps(state) {
-  const { pageSize, totalPlayersCount, currentPage, isFetching, sortModeName, sortMode, sortDirection } =
+  const { pageSize, totalPlayersCount, currentPage, isFetching, sortModeName, sortMode, sortDirection, findUserName, players } =
     state.playersReducer
   return {
-    findUserName: state.playersReducer.findUserName,
+    players,
+    findUserName,
     filter: state.filterReducer,
-    players: state.playersReducer.players,
     pagination: {
       pageSize,
       totalPlayersCount,

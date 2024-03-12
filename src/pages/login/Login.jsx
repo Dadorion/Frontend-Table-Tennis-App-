@@ -9,7 +9,7 @@ import loginImage from '../../assets/images/loginImage_2.jpg'
 import { loginTC } from '../../redux/auth-reducer'
 import { getProfile } from '../../redux/profile-reducer'
 
-function Login({ isAuth, loginTC, getProfile }) {
+function Login({ isAuth }) {
   const onSubmit = (formData) => {
     loginTC(formData)
   }
@@ -32,4 +32,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { loginTC, getProfile })(Login)
+export default connect(mapStateToProps, { loginProps: loginTC, getProfileProps: getProfile })(Login)

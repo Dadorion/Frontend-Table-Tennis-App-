@@ -4,16 +4,16 @@ import { connect } from 'react-redux'
 import Login from './Login'
 
 import { getProfile } from '../../redux/profile-reducer'
-import { withRouter } from '../../redux/withRouter'
+import  withRouter  from '../../redux/withRouter'
 
-function LoginContainer(props) {
+function LoginContainer() {
   return <Login />
 }
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {}
 }
-function mapDispatchToProps(state) {
+function mapDispatchToProps() {
   return {
     getProfile,
   }

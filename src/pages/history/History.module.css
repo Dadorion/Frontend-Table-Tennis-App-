@@ -54,7 +54,7 @@
   align-self: stretch;
 }
 
-.hitory_flow {
+.history_flow {
   display: flex;
   flex-direction: column;
   align-items: center;

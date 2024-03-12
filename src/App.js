@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 import { initializeAppTC } from './redux/app-reducer'
-import { withRouter } from './redux/withRouter'
+import  withRouter  from './redux/withRouter'
 import Content from './UI/content/Content'
 import LoaderSVG from './UI/SpinnerPreloader/Spinner'
 

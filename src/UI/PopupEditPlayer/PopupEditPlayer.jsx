@@ -1,12 +1,11 @@
 import React from 'react'
 
-import s from './Popup_EditPlayer.module.css'
+import s from './PopupEditPlayer.module.css'
 
-// import { useDispatch } from "react-redux";
 import closeIcon from '../../assets/icons/svg_pack/Black/Regular/Close.svg'
 import CustomButton from '../Buttons/CustomButton/CustomButton'
 
-function Popup_EditPlayer({ exit }) {
+function PopupEditPlayer({ exit }) {
   // const dispatch = useDispatch();
   const handleExit = () => {
     exit(false)
@@ -40,4 +39,4 @@ function Popup_EditPlayer({ exit }) {
   )
 }
 
-export default Popup_EditPlayer
+export default PopupEditPlayer

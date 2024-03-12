@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import Dropzone from 'react-dropzone'
@@ -6,6 +8,19 @@ import { useDispatch } from 'react-redux'
 import s from './avatar_editor.module.css'
 
 import { savePhoto } from '../../../redux/profile-reducer'
+
+const dropzoneStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '200px',
+  height: '200px',
+  border: '1px dashed #76767A',
+  borderRadius: '12px',
+  cursor: 'pointer',
+  padding: '89px 27px',
+}
 
 function AvatarEditorComponent() {
   const [image, setImage] = useState(null)
@@ -37,7 +52,7 @@ function AvatarEditorComponent() {
     const newRotation = parseFloat(e.target.value)
     setRotation(newRotation)
   }
-  const handleChooseNewPhoto = (e) => {
+  const handleChooseNewPhoto = () => {
     setImage(null)
     setShowDropzone(true)
   }
@@ -71,17 +86,17 @@ function AvatarEditorComponent() {
               </div>
             )}
           </Dropzone>
-          <button>Назад</button>
-          but
+          <button type='button'>Назад</button>
         </div>
       )}
 
       {image && (
         <div className={s.editorWrapper}>
-          <label htmlFor='scale'>Scale:</label>
+          <label htmlFor='scale'>Scale:
           <input type='range' id='scale' min='1' max='2' step='0.01' value={scale} onChange={handleScaleChange} />
+          </label>
 
-          <label htmlFor='rotation'>Rotation:</label>
+          <label htmlFor='rotation'>Rotation:
           <input
             type='range'
             id='rotation'
@@ -90,7 +105,8 @@ function AvatarEditorComponent() {
             step='1'
             value={rotation}
             onChange={handleRotationChange}
-          />
+            />
+            </label>
 
           <AvatarEditor
             ref={(editorInstance) => setEditor(editorInstance)}
@@ -103,9 +119,9 @@ function AvatarEditorComponent() {
             rotate={rotation}
           />
 
-          <button onClick={handleSave}>Сохранить</button>
-          <button onClick={handleChooseNewPhoto}>Выбрать другое фото</button>
-          <button onClick={handleCancel} className={s.cancelBtn}>
+          <button type='button' onClick={handleSave}>Сохранить</button>
+          <button type='button' onClick={handleChooseNewPhoto}>Выбрать другое фото</button>
+          <button type='button' onClick={handleCancel} className={s.cancelBtn}>
             Отменить
           </button>
         </div>
@@ -114,17 +130,6 @@ function AvatarEditorComponent() {
   )
 }
 
-const dropzoneStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '200px',
-  height: '200px',
-  border: '1px dashed #76767A',
-  borderRadius: '12px',
-  cursor: 'pointer',
-  padding: '89px 27px',
-}
+
 
 export default AvatarEditorComponent

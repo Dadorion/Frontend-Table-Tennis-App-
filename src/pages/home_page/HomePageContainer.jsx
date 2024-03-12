@@ -4,9 +4,9 @@ import { compose } from 'redux'
 
 import HomePage from './Home_page'
 
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import  withAuthRedirect  from '../../hoc/withAuthRedirect'
 
-function HomePageContainer(props) {
+function HomePageContainer() {
   const auth = useSelector((state) => state.auth)
   return <HomePage user={auth} />
 }

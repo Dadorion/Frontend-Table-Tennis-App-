@@ -12,24 +12,24 @@ import EquipmentInfo from '../section/equipmentInfo/equipmentInfo'
 import MainInfo from '../section/mainInfo/mainInfo'
 import PersonalInfo from '../section/personalInfo/personalInfo'
 
-function EditInfo(props) {
+function EditInfo({newProfileData, profile}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [saveQwest, setSaveQwest] = useState(false)
-  const [dispatchQwest, setDispatchQwest] = useState(false)
+  const [saveQuest, setSaveQuest] = useState(false)
+  const [dispatchQuest, setDispatchQuest] = useState(false)
 
-  const profile = useSelector((state) => state.profileReducer.profile)
-  const newProfileData = useSelector((state) => state.profileReducer.newProfileData)
+  const profileSelector = useSelector((state) => state.profileReducer.profile)
+  // const newProfileData = useSelector((state) => state.profileReducer.newProfileData)
 
-  if (dispatchQwest) {
+  if (dispatchQuest) {
     dispatch(saveNewProfile(newProfileData))
     navigate('/profile')
   }
 
   const handleSave = () => {
     console.log('dispatch в стейт и БД')
-    setSaveQwest(!saveQwest)
+    setSaveQuest(!saveQuest)
   }
 
   useEffect(() => {
@@ -37,10 +37,10 @@ function EditInfo(props) {
     dispatch(getProfile())
   }, [dispatch])
 
-  if (!profile) {
+  if (!profileSelector) {
     return <div>Загрузка...</div>
   }
-  const avatar = profile.photo_path
+  const avatar = profileSelector.photo_path
   const avatarPath = `http://localhost:5000/${avatar}`
 
   return (
@@ -53,26 +53,26 @@ function EditInfo(props) {
 
       <div className={`${s.contentContainer}`}>
         <PersonalInfo
-          city={props.newProfileData.city !== '' ? props.newProfileData.city : props.profile.city}
-          region={props.newProfileData.region !== '' ? props.newProfileData.region : props.profile.region}
-          birthday={props.newProfileData.birthday !== '' ? props.newProfileData.birthday : props.profile.birthday}
-          percentOfWin={props.profile.percentOfWin}
+          city={newProfileData.city !== '' ? newProfileData.city : profile.city}
+          region={newProfileData.region !== '' ? newProfileData.region : profile.region}
+          birthday={newProfileData.birthday !== '' ? newProfileData.birthday : profile.birthday}
+          percentOfWin={profile.percentOfWin}
         />
         <EquipmentInfo
-          base={props.newProfileData.base !== '' ? props.newProfileData.base : props.profile.base}
-          forhand_pad={
-            props.newProfileData.forhand_pad !== '' ? props.newProfileData.forhand_pad : props.profile.forhand_pad
+          base={newProfileData.base !== '' ? newProfileData.base : profile.base}
+          forehandPad={
+            newProfileData.forehandPad !== '' ? newProfileData.forehandPad : profile.forehandPad
           }
           backhand_pad={
-            props.newProfileData.backhand_pad !== '' ? props.newProfileData.backhand_pad : props.profile.backhand_pad
+            newProfileData.backhand_pad !== '' ? newProfileData.backhand_pad : profile.backhand_pad
           }
         />
 
         <ConfirmPopUp
-          saveQwest={saveQwest}
-          setSaveQwest={setSaveQwest}
-          dispatchQwest={dispatchQwest}
-          setDispatchQwest={setDispatchQwest}
+          saveQuest={saveQuest}
+          setSaveQuest={setSaveQuest}
+          dispatchQuest={dispatchQuest}
+          setDispatchQuest={setDispatchQuest}
         />
       </div>
     </div>

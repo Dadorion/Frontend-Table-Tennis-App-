@@ -1,12 +1,13 @@
-import PropTypes from 'prop-types'
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 import Profile from './Profile'
 
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
-import { withRouter } from '../../redux/withRouter'
+import  withAuthRedirect  from '../../hoc/withAuthRedirect'
+import  withRouter  from '../../redux/withRouter'
 
 function ProfileContainer(props) {
   return <Profile {...props} />

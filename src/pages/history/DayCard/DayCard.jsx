@@ -4,12 +4,12 @@ import s from './DayCard.module.css'
 
 import UserItem from '../../../UI/Player_Item/Player_Item'
 
-function DayCard(props) {
-  if (!props.users) {
+function DayCard({users}) {
+  if (!users) {
     return <div className={s.Users}>Loading...</div>
   }
 
-  const matches = props.users.map((user) => {
+  const matches = users.map((user) => {
     const handlePlayer = () => {
       window.alert('Смотрим пользователя')
     }
@@ -21,7 +21,7 @@ function DayCard(props) {
             key={`user_${user.id}`}
             name={user.name}
             surname={user.surname}
-            pers={user.winsPersent}
+            pers={user.winsPercent}
             photoPath={user.photo_path}
           />
         </div>

@@ -4,10 +4,10 @@ import DayCard from './DayCard/DayCard'
 import s from './History.module.css'
 
 import settingsIcon from '../../assets/icons/svg_pack/Black/Regular/Preference.svg'
-import SorterMenu from '../../assets/icons/svg_pack/Black/Regular/Swap.svg'
+import SorterMenu from '../../UI/SorterMenu/SorterMenu'
 import sorterIcon from '../../assets/icons/svg_pack/Black/Regular/Swap.svg'
 
-function History(props) {
+function History({users}) {
   const [showSorter, setShowSorter] = useState(false)
   const [sortMode, setSortMode] = useState('Последние')
   const [showFilters, setShowFilters] = useState(true)
@@ -46,8 +46,8 @@ function History(props) {
         </div>
       </div>
 
-      <div className={s.hitory_flow}>
-        <DayCard users={props.users} />
+      <div className={s.history_flow}>
+        <DayCard users={users} />
       </div>
     </div>
   )

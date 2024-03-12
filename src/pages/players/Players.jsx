@@ -22,7 +22,7 @@ import {
 } from '../../redux/players-reducer'
 import FinderInput from '../../UI/FinderInput/FinderInput'
 import PlayerItem from '../../UI/Player_Item/Player_Item'
-import PopupAddNewPlayer from '../../UI/Popup_AddNewPlayer/Popup_AddNewPlayer'
+import PopupAddNewPlayer from '../../UI/PopupAddNewPlayer/PopupAddNewPlayer'
 import SorterMenu from '../../UI/SorterMenu/SorterMenu'
 
 function Players({pagination, sort, players, findPlayerName}) {

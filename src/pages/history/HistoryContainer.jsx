@@ -5,14 +5,14 @@ import History from './History'
 
 import { requestUsers } from '../../redux/users-reducer'
 
-function HistoryContainer(props) {
+function HistoryContainer({users}) {
   const dispatch = useDispatch()
 
-  if (!props.users) {
+  if (!users) {
     dispatch(requestUsers(1, 10))
   }
 
-  return <History {...props} />
+  return <History users />
 }
 
 function mapStateToProps(state) {

@@ -1,36 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React, { useState } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-import sL from './Login.module.css'
+import sL from './Login.module.css';
+import Button from '../../UI/Buttons/Button/Button';
+import Input from '../../UI/FormControls/FormControls';
+import sFC from '../../UI/FormControls/FormControls.module.css';
+import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators';
 
-import Button from '../../UI/Buttons/Button/Button'
-import Input from '../../UI/FormControls/FormControls'
-import sFC from '../../UI/FormControls/FormControls.module.css'
-import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators'
+const maxLength30 = maxLengthCreator(30);
+const minLength4 = minLengthCreator(4);
 
-const maxLength30 = maxLengthCreator(30)
-const minLength4 = minLengthCreator(4)
-
-function LoginForm(props) {
-  const [isChecked, setIsChecked] = useState(true)
-  const prevProps = useRef(props)
-
-  useEffect(() => {
-    if (prevProps.current.someProp !== props.someProp) {
-      // Обработка изменения props
-    }
-    // Обновляем prevProps после обработки
-    prevProps.current = props
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.someProp])
+function LoginForm({someProp, handleSubmit, error}) {
+  const [isChecked, setIsChecked] = useState(true);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
-  }
+    setIsChecked(!isChecked);
+  };
+
+  console.log('someProp changed:', someProp);
 
   return (
     <div className={sL.LoginForm}>
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <Field
             className={sL.InputForm}
@@ -65,7 +56,7 @@ function LoginForm(props) {
           <a href='/recovery_password'> Забыли пароль? </a>
         </div>
 
-        {props.error && <div className={sFC.formSummaryError}>{props.error}</div>}
+        {error && <div className={sFC.formSummaryError}>{error}</div>}
         <div>
           <Button buttName='Войти' />
           <div>
@@ -74,11 +65,11 @@ function LoginForm(props) {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 const LoginReduxForm = reduxForm({
   form: 'login',
-})(LoginForm)
+})(LoginForm);
 
-export default LoginReduxForm
+export default LoginReduxForm;

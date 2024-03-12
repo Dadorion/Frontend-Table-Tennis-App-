@@ -1,26 +1,25 @@
-import React, { useState } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React, { useState } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import s from './Registration.module.css';
 
-import s from './Registration.module.css'
+import ArrowIcon from '../../assets/icons/svg_pack/Black/Regular/ArrowLeft.svg';
+import Button from '../../UI/Buttons/Button/Button';
+import Input from '../../UI/FormControls/FormControls';
+import sFC from '../../UI/FormControls/FormControls.module.css';
+import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators';
 
-import ArrowIcon from '../../assets/icons/svg_pack/Black/Regular/ArrowLeft.svg'
-import Button from '../../UI/Buttons/Button/Button'
-import Input from '../../UI/FormControls/FormControls'
-import sFC from '../../UI/FormControls/FormControls.module.css'
-import { required, maxLengthCreator, minLengthCreator } from '../../utils/validators/validators'
+const maxLength30 = maxLengthCreator(30);
+const minLength4 = minLengthCreator(4);
 
-const maxLength30 = maxLengthCreator(30)
-const minLength4 = minLengthCreator(4)
-
-function RegistrationForm(props) {
-  const [isFirstScreen, setIsFirstScreen] = useState(true)
+function RegistrationForm({handleSubmit, error, valid}) {
+  const [isFirstScreen, setIsFirstScreen] = useState(true);
 
   const handleNextClick = () => {
-    setIsFirstScreen(false)
-  }
+    setIsFirstScreen(false);
+  };
   const handleBackClick = () => {
-    setIsFirstScreen(true)
-  }
+    setIsFirstScreen(true);
+  };
 
   return (
     <div className={s.FormContainer}>
@@ -32,9 +31,9 @@ function RegistrationForm(props) {
         )}
       </div>
 
-      <form className={s.RegistrationForm} onSubmit={props.handleSubmit}>
+      <form className={s.RegistrationForm} onSubmit={handleSubmit}>
         <div>
-          {isFirstScreen ? (
+          {isFirstScreen? (
             <>
               <div>
                 <Field
@@ -105,45 +104,34 @@ function RegistrationForm(props) {
                   validate={[required, minLength4]}
                 />
               </div>
-              {/* <div className={s.checkboxRemember}>
-                <Field
-                  name='agreement'
-                  type="checkbox"
-                  component={'input'}
-                />
-                <div className={s.textLink}>
-                  <div>Я принимаю условия</div>
-                  <a href="/">Пользовательского соглашения</a>
-                </div>
-              </div> */}
             </>
           )}
         </div>
 
         <div className={s.ScreenIndicators}>
-          <div className={`${s.Indicator} ${isFirstScreen ? s.Active : ''}`} />
-          <div className={`${s.Indicator} ${!isFirstScreen ? s.Active : ''}`} />
+          <div className={`${s.Indicator} ${isFirstScreen? s.Active : ''}`} />
+          <div className={`${s.Indicator} ${!isFirstScreen? s.Active : ''}`} />
         </div>
 
-        <div>{props.error && <div className={sFC.formSummaryError}>{props.error}</div>}</div>
+        <div>{error && <div className={sFC.formSummaryError}>{error}</div>}</div>
 
         <div className={s.ButtonFormBlock}>
-          {isFirstScreen ? (
+          {isFirstScreen? (
             // FIXME кнопка работает корректно один раз вперед, стрелка назад тоже отрабатывает. Но после возвращения кнопка дизейблится и уже ни как не разблокируется.
-            <Button buttName='Далее' isDisabled={!props.valid} handle={handleNextClick} />
+            <Button buttName='Далее' isDisabled={!valid} handle={handleNextClick} />
           ) : (
             // <button type="submit" disabled={!props.valid} onClick={handleNextClick}>Зарегистрироваться</button>
             <Button buttName='Зарегистрироваться' />
           )}
-          <div className={s.hasAkkaunt} />
+          <div className={s.hasAccount} />
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 const RegistrationReduxForm = reduxForm({
   form: 'registration',
-})(RegistrationForm)
+})(RegistrationForm);
 
-export default RegistrationReduxForm
+export default RegistrationReduxForm;

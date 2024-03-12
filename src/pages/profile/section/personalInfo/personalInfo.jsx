@@ -9,7 +9,8 @@ import { changeCity, changeRegion, changeBirthday } from '../../../../redux/prof
 function PersonalInfo({ city, region, birthday, percentOfWin }) {
   const dispatch = useDispatch()
 
-  const ageNum = new Date().getFullYear() - new Date(birthday).getFullYear()
+  const ageNumber = new Date().getFullYear() - new Date(birthday).getFullYear()
+
   function age(ageNum) {
     const lastNum = ageNum.toString().split('').pop()
     let word
@@ -72,7 +73,7 @@ function PersonalInfo({ city, region, birthday, percentOfWin }) {
             <div className={s.item}>
               <div>
                 <p className={s.leftColumn}>Возраст</p>
-                <p className={s.rightColumn}>{age(ageNum)}</p>
+                <p className={s.rightColumn}>{age(ageNumber)}</p>
               </div>
             </div>
             <div className={s.item}>

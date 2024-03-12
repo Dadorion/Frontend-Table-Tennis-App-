@@ -1,13 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import s from './Popup_AddNewPlayer.module.css'
+import s from './PopupAddNewPlayer.module.css'
 
 import closeIcon from '../../assets/icons/svg_pack/Black/Regular/Close.svg'
 import { setNewName, setNewSurname, addNewPlayerTC } from '../../redux/players-reducer'
 import CustomButton from '../Buttons/CustomButton/CustomButton'
 
-function Popup_AddNewPlayer({ exit, player }) {
+function PopupAddNewPlayer({ exit, player }) {
   const dispatch = useDispatch()
   const handleExit = () => {
     exit(false)
@@ -53,4 +53,4 @@ function Popup_AddNewPlayer({ exit, player }) {
   )
 }
 
-export default Popup_AddNewPlayer
+export default PopupAddNewPlayer

@@ -6,14 +6,14 @@ import s from './equipmentInfo.module.css'
 
 import { changeRacketBase, changeRacketForhand, changeRacketBackhand } from '../../../../redux/profile-reducer'
 
-function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
+function EquipmentInfo({ base, forehandPad, backhandPad }) {
   const location = useLocation()
   const dispatch = useDispatch()
 
   // const [equipData, setEquipData] = useState({
   //   base: base || '',
-  //   forhand_pad: forhand_pad || '',
-  //   backhand_pad: backhand_pad || '',
+  //   forehandPad: forehandPad || '',
+  //   backhandPad: backhandPad || '',
   // })
 
   const handlerChangeRacketBase = (e) => {
@@ -46,13 +46,13 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
             <div className={s.item}>
               <div>
                 <p className={s.leftColumn}>Форхенд</p>
-                <p className={s.rightColumn}>{forhand_pad}</p>
+                <p className={s.rightColumn}>{forehandPad}</p>
               </div>
             </div>
             <div className={s.item}>
               <div>
                 <p className={s.leftColumn}>Бекхэнд</p>
-                <p className={s.rightColumn}>{backhand_pad}</p>
+                <p className={s.rightColumn}>{backhandPad}</p>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
               <div className={s.inpItem}>
                 <span className={`${s.leftColumn}`}>Форхенд</span>
                 <input
-                  value={forhand_pad}
+                  value={forehandPad}
                   // ref={racketForhandInput}
                   onChange={handlerChangeRacketForhand}
                 />
@@ -85,7 +85,7 @@ function EquipmentInfo({ base, forhand_pad, backhand_pad }) {
               <div className={s.inpItem}>
                 <span className={`${s.leftColumn}`}>Бекхенд</span>
                 <input
-                  value={backhand_pad}
+                  value={backhandPad}
                   // ref={racketBackhandInput}
                   onChange={handlerChangeRacketBackhand}
                 />

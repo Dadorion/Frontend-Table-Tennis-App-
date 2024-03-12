@@ -6,16 +6,12 @@ import RegistrationReduxForm from './RegistrationForm'
 
 import loginImage from '../../assets/images/loginImage.jpg'
 import { registrationTC } from '../../redux/registration-reducer'
-// import { Navigate } from 'react-router-dom';
 
-function Registration(props) {
+function Registration({registrationProp}) {
   const onSubmit = (formData) => {
-    props.registrationTC(formData)
+    registrationProp(formData)
   }
 
-  // if (props.isAuth) {
-  //   return <Navigate to={"/profile"} />
-  // }
   return (
     <div className={s.Registration}>
       <img src={loginImage} alt='logo_img' />
@@ -34,4 +30,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { registrationTC })(Registration)
+export default connect(mapStateToProps, { registrationProp: registrationTC })(Registration)

@@ -15,7 +15,7 @@ import ChangePasswordPopup from '../../UI/ChangePassword_popup/ChangePassword_po
 import ConfirmPopUp from '../../UI/Confirm_popup/Confirm_popup'
 import Header from '../../UI/header/header'
 
-function Profile(props) {
+function Profile({ newPasswordData }) {
   // if (!props.profile) {
   //   return <div className={`${s.Preloader}`}>
   //     <div className={`${s.msg}`}>I have no User profile</div>
@@ -86,7 +86,7 @@ function Profile(props) {
         <ChangePasswordPopup
           quest={changePassQuest}
           setQuest={setChangePassQuest}
-          newPasswordData={props.newPasswordData}
+          newPasswordData={newPasswordData}
         />
       </div>
     </div>

@@ -1,33 +1,26 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import Profile from './Registration';
+import withRouter from '../../redux/withRouter';
 
-import Profile from './Registration'
-
-// import { getProfile } from '../../redux/profile-reducer';
-import { withRouter } from '../../redux/withRouter'
-
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    let { userId } = this.props.match.params
+function ProfileContainer({ match, getProfile, profile }) {
+  useEffect(() => {
+    let { userId } = match.params;
     if (!userId) {
-      userId = 2
+      userId = 2;
     }
-    this.props.getProfile(userId)
-  }
+    getProfile(userId);
+  }, [match.params, getProfile]);
 
-  render() {
-    return <Profile {...this.props} profile={this.props.profile} />
-  }
-}
+  return <Profile {...{ profile }} />;
+};
 
-function mapStateToProps(state) {
-  return {
-    profile: state.profileReducer.profile,
-  }
-}
+const mapStateToProps = (state) => ({
+  profile: state.profileReducer.profile,
+});
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer)
+const WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
   // getProfile,
-})(WithUrlDataContainerComponent)
+})(WithUrlDataContainerComponent);

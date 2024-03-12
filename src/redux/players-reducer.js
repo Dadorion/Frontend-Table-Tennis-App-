@@ -14,10 +14,10 @@ const initialState = {
   sortModeName: 'Недавние',
   sortMode: 'id', // по какому параметру
   sortDirection: 'DESC', // возрастание/убывание
-
+  
+  currentPage: 1,
   pageSize: 5,
   totalPlayerCount: 0,
-  currentPage: 1,
   isFetching: false,
 }
 
