@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import s from './Tabbar.module.css'
 
 import profileIcon from '../../assets/icons/svg_pack/Black/Light/User_light.svg'
-import plusIcon from '../../assets/icons/svg_pack/Black/Regular/AddCircle.svg'
+import tournamentIcon from '../../assets/icons/svg_pack/Black/Light/Trophy_light.svg'
 import homeIcon from '../../assets/icons/svg_pack/Black/Regular/House.svg'
 
 function Tabbar() {
@@ -30,7 +30,7 @@ function Tabbar() {
 
         <div className={currentPath === '/counter' ? s.active : s.deactivated}>
           <Link to='/counter'>
-            <img src={plusIcon} alt='plusIcon' className={s.plusIcon} />
+            <img src={tournamentIcon} alt='tournamentIcon' className={s.tournamentIcon} />
           </Link>
           <font>Счёт</font>
         </div>

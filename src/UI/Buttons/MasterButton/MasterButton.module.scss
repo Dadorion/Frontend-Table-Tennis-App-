@@ -1,0 +1,117 @@
+@import '../../../scss/base/vars';
+@import '../../../scss/mixins/_flex_mixins';
+
+.actionStyle{
+   @include flex-center;
+
+   width: 100%;
+
+   margin: 4px 0;
+   padding: 18px 24px;
+   gap: 10px;
+
+   border-radius: 12px;
+
+   background-color: $Main-main;
+   color: $Background;
+
+   transition: background-color 0.2s;
+
+   .icon {
+      width: 21px;
+   }
+   &:active{
+      background-color: $Main-dark;
+   }
+}
+.cancelStyle{
+   @include flex-center;
+
+   width: 100%;
+
+   margin: 4px 0;
+   padding: 18px 24px;
+   gap: 10px;
+
+   border-radius: 12px;
+
+   background-color: $Secondary-Pink_dark;
+   color: $Background;
+
+   transition: background-color 0.2s;
+
+   .icon {
+      width: 21px;
+   }
+   &:active{
+      background-color: $Main-dark;
+   }
+}
+
+.navigateStyle{
+   @include flex-center;
+
+   width: 100%;
+
+   margin: 4px 0;
+   padding: 18px 24px;
+   gap: 10px;
+
+   border: 1px solid $Main-main;
+   border-radius: 12px;
+
+   background-color: $Background;
+   transition: background-color 0.2s;
+   color: $Main-main;
+   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+
+   .icon {
+      width: 21px;
+   }
+   &:active{
+      background-color: $Main-light
+   }
+}
+.parameterStyle{
+   @include flex-center;
+
+   width: 100%;
+
+   margin: 4px 0;
+   padding: 18px 24px;
+   gap: 10px;
+
+   border-radius: 12px;
+
+   background-color: $Background;
+   transition: background-color 0.2s;
+   color: $Main-main;
+   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+
+   .icon {
+      width: 21px;
+   }
+   &:active{
+      background-color: $Main-light
+   }
+}
+
+.disabled {
+   @include flex-center;
+
+   width: 100%;
+
+   margin: 4px 0;
+   padding: 18px 24px;
+   gap: 10px;
+
+   border-radius: 12px;
+
+   background-color: $Disabled-grey;
+   color: $Background;
+   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+
+   .icon {
+      width: 21px;
+   }
+}

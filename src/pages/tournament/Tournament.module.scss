@@ -1,14 +1,44 @@
 @import '../../scss/base/vars';
+@import '../../scss/mixins/_flex_mixins';
 
 .Tournament {
+   @include flex-mix(column, space-between, center);
 
-   .whereBlock {
-      display: flex;
+   margin: 36px 16px 0 16px;
+   height: 92%;
+
+   .settingList {
+      @include flex-mix(column, center, stretch);
+
+      border-radius: 12px;
+      padding: 12px 12px;
+      margin: 36px 0px 0px 0px;
+
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+      background: $Background;
+
+      > div {
+         @include flex-mix(row, space-between, center);
+
+         padding: 8px 12px;
+      }
+      .note{
+         padding: 8px 12px;
+         opacity: 0.6;
+         gap: 8px;
+      }
    }
-   .howBlock {
-      display: flex;
+   .playersList {
+      @include flex-mix(column, center, center);
+      padding: 36px 0px 0px 0px;
+
+      .players {
+         @include flex-mix(column, center, center);
+
+         padding: 36px 0px;
+      }
    }
-   .whoBlock {
-      display: flex;
+   .btnStart {
+      width: 100%;
    }
 }

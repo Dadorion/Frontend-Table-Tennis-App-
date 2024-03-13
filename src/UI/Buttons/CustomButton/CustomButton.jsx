@@ -39,16 +39,16 @@ function CustomButton({ btnName, handler }) {
       icon = checkIcon
       style = s.CustomButtonDone
       break
-
     default:
+      style = s.CustomButton
       break
   }
 
   return (
-    <div className={style} onClick={handler}>
-      <img src={icon} alt='btn-icon' className={s.icon} />
+    <button type='button' className={style} onClick={handler}>
+      {icon && <img src={icon} alt='btn-icon' className={s.icon} />}
       <p className={colorText}>{btnName || 'no props'}</p>
-    </div>
+    </button>
   )
 }
 

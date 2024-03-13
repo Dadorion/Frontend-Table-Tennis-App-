@@ -1,0 +1,6 @@
+@import '../../../scss/base/vars';
+@import '../../../scss/mixins/_flex_mixins';
+
+.ArrowInput{
+   @include flex-center;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './User_item.module.css'
+import s from './PlayerItem.module.css'
 
 function ExtraInfo() {
   return (
@@ -10,7 +10,7 @@ function ExtraInfo() {
         <span>встреч проведено: 21</span>
         <span>моих побед: 11 (52%)</span>
       </div>
-      <button className={`${s.button}`}>Показать встречи</button>
+      <button type='button' className={`${s.button}`}>Показать встречи</button>
     </div>
   )
 }

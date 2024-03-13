@@ -2,7 +2,7 @@ import React from 'react'
 
 import s from './DayCard.module.css'
 
-import UserItem from '../../../UI/Player_Item/Player_Item'
+import UserItem from '../../../UI/Player_Item/PlayerItem'
 
 function DayCard({users}) {
   if (!users) {
