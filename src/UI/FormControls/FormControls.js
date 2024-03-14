@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react'
 
 import s from './FormControls.module.css'
@@ -21,15 +23,5 @@ function Input(props) {
     </FormControl>
   )
 }
-
-// function Input({ input, meta, ...props }) {
-
-//    const hasErrors = meta.touched && meta.error;
-
-//    return <div className={s.formControl + ' ' + (hasErrors ? s.error : '')}>
-//       <input {...input} {...props} />
-//       {hasErrors && <span>{meta.error}</span>}
-//    </div>
-// }
 
 export default Input

@@ -28,7 +28,18 @@
   "plugins": [
     "react"
   ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@icons", "./src/assets/icons/svg_pack"]
+        ],
+        "extensions": [".js", ".jsx", ".json"]
+      }
+    }
+  },
   "rules": {
+    "react/destructuring-assignment": "warn",
     "react/jsx-filename-extension": [1, {
       "extensions": [".js", ".jsx"]
     }],

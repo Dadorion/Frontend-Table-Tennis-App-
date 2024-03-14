@@ -1,26 +1,34 @@
-import React from 'react'
+/* eslint-disable */
+import React from "react";
 
-import s from './Confirm_popup.module.css'
+import s from "./Confirm_popup.module.css";
 
-function ConfirmPopUp(props) {
+function ConfirmPopUp({
+  dispatchQuest,
+  setDispatchQuest,
+  setSaveQuest,
+  setExitQWest,
+  saveQuest,
+  exitQuest,
+}) {
   const handleYes = () => {
-    if (props.dispatchQwest !== undefined) {
-      props.setDispatchQwest(!props.dispatchQwest)
-      props.setSaveQwest(!props.saveQwest)
+    if (dispatchQuest !== undefined) {
+      setDispatchQuest(!dispatchQuest);
+      setSaveQuest(!saveQuest);
     } else {
-      props.setExitQWest(!props.exitQwest)
+      setExitQWest(!exitQuest);
     }
-  }
+  };
 
   const handleNo = () => {
-    props.setSaveQwest(!props.saveQwest)
-  }
+    setSaveQuest(!saveQuest);
+  };
 
   return (
     <>
-      {props.saveQwest && (
+      {saveQuest && (
         <div className={s.exit}>
-          <div id={s.qwest}>Are you sure?</div>
+          <div id={s.quest}>Are you sure?</div>
           <div id={s.buttons}>
             <div id={s.yes} onClick={handleYes}>
               Канеш
@@ -32,7 +40,7 @@ function ConfirmPopUp(props) {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default ConfirmPopUp
+export default ConfirmPopUp;

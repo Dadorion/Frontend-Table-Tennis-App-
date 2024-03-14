@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import s from './Counter.module.css'
 
@@ -8,7 +8,7 @@ import closeIcon from '../../assets/icons/svg_pack/Black/Regular/Close.svg'
 import mapPointIcon from '../../assets/icons/svg_pack/Black/Regular/Tennis.svg'
 import defaultAvatar from '../../assets/images/profile.png'
 
-function Counter(props) {
+function Counter() {
   const [isChooseScreen, setIsChooseScreen] = useState(true)
   const handleCloseClick = () => {
     setIsChooseScreen(false)
